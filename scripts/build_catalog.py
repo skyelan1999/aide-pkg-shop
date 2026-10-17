@@ -33,7 +33,7 @@ def main():
    entry=Path(temp)/'index.js';entry.write_bytes(files['index.js'])
    validation=json.loads(subprocess.check_output(['node','-e',host,'validate',str(entry)]))
    if not validation.get('ok'):raise ValueError((ident,validation))
-   files['LICENSE']=git('show',commit+':LICENSE')
+   files.setdefault('LICENSE',git('show',commit+':LICENSE'))
    buffer=io.BytesIO()
    with zipfile.ZipFile(buffer,'w') as z:
     for name in sorted(files):
@@ -48,6 +48,8 @@ def main():
    if ident=='browser-control':dependencies.append('Aide 浏览器运行环境；Safari 模式需要宿主桥接')
    if ident=='computer-control':dependencies.append('Aide Computer Bridge 与操作系统屏幕录制/辅助功能权限')
    if ident=='office':dependencies.append('Aide Office Python 运行环境')
+   if ident=='skill':dependencies.append('需要包含 skill_library 原生执行器的 Aide 源码构建（192b80f3 及后续）；旧版仅上传 ZIP 不足以启用')
+   if ident=='plugin-authoring':dependencies.append('需要 Aide 原生 manage_plugins / manage_references 管理执行器；管理动作遵守角色开关与人工确认')
    readme=files.get('README.md',b'').decode('utf-8',errors='replace')[:16000]
    item=dict(id=ident,kind='plugin',name=manifest['name'],description=manifest.get('description',''),version=manifest['version'],author='Aide',category=category,icon=category,package=package,sha256=digest,bytes=len(raw),minAideVersion='0.1.17.0 RC2',platforms=['windows','macos','linux'],dependencies=dependencies,permissions=PERMISSIONS[category],trustNotice='Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。',features=['skill-library-v1'] if ident=='skill' else ['plugin-authoring-v1'] if ident=='plugin-authoring' else [],source='https://github.com/skyelan1999/aide/tree/'+commit+'/'+prefix.rstrip('/'),license='MIT',readme=readme,screenshots=[],changelog='官方目录首批收录；打包源码固定为 '+commit[:8]+'。')
    items.append(item)
