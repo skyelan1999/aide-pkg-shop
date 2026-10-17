@@ -42,8 +42,14 @@ def main():
    raw=buffer.getvalue();assert len(raw)<=24*1024*1024
    digest=hashlib.sha256(raw).hexdigest();package='packages/'+ident+'/'+manifest['version']+'-'+digest[:12]+'.zip'
    dest=ROOT/package;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw)
+   dependencies=[]
+   if 'package.json' in files:
+    dependencies=[name+' '+version for name,version in json.loads(files['package.json']).get('dependencies',{}).items()]
+   if ident=='browser-control':dependencies.append('Aide 浏览器运行环境；Safari 模式需要宿主桥接')
+   if ident=='computer-control':dependencies.append('Aide Computer Bridge 与操作系统屏幕录制/辅助功能权限')
+   if ident=='office':dependencies.append('Aide Office Python 运行环境')
    readme=files.get('README.md',b'').decode('utf-8',errors='replace')[:16000]
-   item=dict(id=ident,kind='plugin',name=manifest['name'],description=manifest.get('description',''),version=manifest['version'],author='Aide',category=category,icon=category,package=package,sha256=digest,bytes=len(raw),minAideVersion='0.1.17.0 RC2',platforms=['windows','macos','linux'],permissions=PERMISSIONS[category],trustNotice='Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。',features=['skill-library-v1'] if ident=='skill' else ['plugin-authoring-v1'] if ident=='plugin-authoring' else [],source='https://github.com/skyelan1999/aide/tree/'+commit+'/'+prefix.rstrip('/'),license='AGPL-3.0',readme=readme,screenshots=[],changelog='官方目录首批收录；打包源码固定为 '+commit[:8]+'。')
+   item=dict(id=ident,kind='plugin',name=manifest['name'],description=manifest.get('description',''),version=manifest['version'],author='Aide',category=category,icon=category,package=package,sha256=digest,bytes=len(raw),minAideVersion='0.1.17.0 RC2',platforms=['windows','macos','linux'],dependencies=dependencies,permissions=PERMISSIONS[category],trustNotice='Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。',features=['skill-library-v1'] if ident=='skill' else ['plugin-authoring-v1'] if ident=='plugin-authoring' else [],source='https://github.com/skyelan1999/aide/tree/'+commit+'/'+prefix.rstrip('/'),license='MIT',readme=readme,screenshots=[],changelog='官方目录首批收录；打包源码固定为 '+commit[:8]+'。')
    items.append(item)
  catalog=dict(schemaVersion=1,title='Aide 官方插件市场',sourceCommit=commit,plugins=items)
  (ROOT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
