@@ -53,7 +53,12 @@ def main():
    readme=files.get('README.md',b'').decode('utf-8',errors='replace')[:16000]
    item=dict(id=ident,kind='plugin',name=manifest['name'],description=manifest.get('description',''),version=manifest['version'],author='Aide',category=category,icon=category,package=package,sha256=digest,bytes=len(raw),minAideVersion='0.1.17.0 RC2',platforms=['windows','macos','linux'],dependencies=dependencies,permissions=PERMISSIONS[category],trustNotice='Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。',features=['skill-library-v1'] if ident=='skill' else ['plugin-authoring-v1'] if ident=='plugin-authoring' else [],source='https://github.com/skyelan1999/aide/tree/'+commit+'/'+prefix.rstrip('/'),license='MIT',readme=readme,screenshots=[],changelog='官方目录首批收录；打包源码固定为 '+commit[:8]+'。')
    items.append(item)
- catalog=dict(schemaVersion=1,title='Aide 官方插件市场',sourceCommit=commit,plugins=items)
+ for listing in sorted((ROOT/'listings').glob('*.json')):
+  item=json.loads(listing.read_text())
+  assert item['distribution']=='private' and item['id'] not in CATEGORY
+  assert not any(item.get(k) for k in ('package','sha256','bytes'))
+  items.append(item)
+ catalog=dict(schemaVersion=1,title='Aide 官方插件市场',sourceCommit=commit,plugins=[p for p in items if p.get('distribution')!='private'],privateListings=[p for p in items if p.get('distribution')=='private'])
  (ROOT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
- print(json.dumps(dict(plugins=len(items),sourceCommit=commit,bytes=sum(x['bytes'] for x in items))))
+ print(json.dumps(dict(plugins=len(items),sourceCommit=commit,bytes=sum(x.get('bytes',0) for x in items))))
 if __name__=='__main__':main()

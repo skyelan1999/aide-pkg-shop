@@ -36,3 +36,13 @@ GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及
 ## 回退
 
 回退目录提交即可停止推荐新版本；客户端不会自动卸载已安装插件。已安装插件按 Aide 的升级备份和恢复说明处理。不要原地覆盖已发版 ZIP。
+
+## 私有付费条目
+
+`listings/*.json` 是人工审阅的展示元数据，由生成器合并进目录的 `privateListings` 扩展数组，原 `plugins` 只保留免费包，让旧版 Aide 仍能刷新原目录。`distribution=private` 的条目不得包含 `package/sha256/bytes` 等公开包字段，也不得在本仓库 `packages/<id>/` 存包；验证器拒绝这些情况。Pages 只复制公开包，并在重建前清理生成目录里的旧包副本。PjPlan 目前仅展示“付费筹备中”，没有价格、购买入口或真实签发密钥。
+
+私有条目使用 `commerce.status=coming_soon|available`、`model=perpetual-major`、`priceLabel`、可选 HTTPS `purchaseURL` 和发布者 Ed25519 `publicKeys`（key ID → 标准 Base64 的 32 字节公钥）。开放授权安装至少需要一把公钥。Aide 通过 `private-plugin-v1` 能力识别，旧宿主不会尝试当免费包下载安装。不要把私钥、订单、客户许可证或私有存储永久链接写进公开目录。
+
+目前交付路径是：购买者给出 Aide 安装授权码 → 发布者在私有环境确认权益、签发许可证 → 私下交付 ZIP 和许可证 → Aide 详情中核验安装。官网只展示商品或跳转购买，不接收客户安装包，不处理支付或自动发货。在线授权服务与短效下载地址是后续接口，不是已上线能力。
+
+公开市场免费包的 MIT 许可不自动适用于商业条目；历史已公开内容和第三方权利不被新商业条款追溯改变。
