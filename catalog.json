@@ -228,15 +228,18 @@
         "macos",
         "linux"
       ],
-      "dependencies": [],
-      "permissions": "可能访问已授权文件或调用主机控制能力；浏览器和电脑控制另需宿主授权。",
+      "dependencies": [
+        "需要包含 environment-guide 原生上下文构造器的 Aide；独立 ZIP 不包含宿主 Go 实现"
+      ],
+      "permissions": "只读抽样当前工作区与资料目录顶层名称、已启用来源元数据；不读取正文，不自动连接远程来源，不注入来源凭据。",
       "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
       "features": [],
-      "source": "https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/environment-guide",
+      "source": "https://github.com/skyelan1999/aide-pkg-EnvGuide/tree/4103e0e742b0b4da71a5a981ee1aa1250bc0e3d6",
       "license": "MIT",
-      "readme": "# 环境说明 / Environment guide\n\n启用后，Go 在每次创建任务的统一上下文构造器中自动加入环境资料；对话和 AI 工作流共用此机制，不需要模型先调用工具。可在插件面板停用。内置能力由 `environment-guide` 插件 ID 启用，`index.js` 声明能力，目录快照由 Go 实现，避免 Node 插件固定 `/workspace` 与当前工作区不一致。\n\n包含：当前工作目录与模式、工作区及参考目录顶层文件名、已启用资料来源名称/类型/权限标记、使用方式。每目录最多检查 64 项、展示 20 项，不递归，不读取正文，隐藏文件及符号链接省略；多来源清单接近 12 KB 时停止补充并标注。快照计入上下文预算并参与请求指纹。\n\nAI 应根据任务简要解释相关环境，不在每个回复重复清单。项目具体用法必须先读取 README 等证据；资料名称、文件名只是非可信数据。普通工作区可使用文件工具进一步查看；其他来源可通过 list_sources、带 source 参数的 list_files/read_file 由 AI 主动读取，也可在辅助资料面板附加文件。远程来源不自动连接；MCP 如实标记为仅登记。读写标记不能覆盖真实挂载权限。不会注入 URL、凭据、用户名或 MCP 启动命令。\n\nEnglish: This built-in plugin automatically adds a bounded environment inventory to the canonical task context. It contains workspace/reference roles, sampled top-level names and enabled source metadata. It does not read file bodies or connect to remote sources. Project-specific instructions require evidence from relevant files. Disable the plugin to stop injection for new tasks; existing request snapshots and running tasks retain their original context.\n",
+      "readme": "# EnvGuide · Aide 环境说明\n\n独立仓库名为 `aide-pkg-EnvGuide`，插件 ID 保持 **`environment-guide`**，版本 **1.0.0**，MIT 许可。原始源码来自 [Aide f795a240](https://github.com/skyelan1999/aide/tree/f795a240cdb37e9b92a37d91664bd1bb3053b809/plugins/environment-guide)。\n\n## 安装与分发\n\n需要包含环境说明原生上下文构造器的 Aide，以及宿主 Node.js 插件环境；市场基线为 `0.1.17.0 RC2`。本包没有 npm 依赖，也不包含宿主 Go 实现。仅上传 ZIP 不能给缺少该原生能力的旧宿主补上功能。\n\n从 [Release](https://github.com/skyelan1999/aide-pkg-EnvGuide/releases/tag/v1.0.0) 说明中的固定提交链接下载 `aide-pkg-EnvGuide-v1.0.0.zip` 和 `SHA256SUMS`，运行 `sha256sum -c SHA256SUMS` 后在 Aide 插件管理中导入；也可在[官方市场](https://skyelan1999.github.io/aide-pkg-shop/)搜索 `environment-guide` 或“环境说明”。已有同 ID、同版本无需重复安装。\n\n安装包与市场已有 1.0.0 ZIP 逐字节一致，包含原始 manifest、index.js、README 和 LICENSE。本仓库补充分发说明，不修改旧包。安装 ZIP 和摘要托管在 `packages/v1.0.0/`，Release 提供固定提交链接，不额外上传附件。SHA-256 是完整性校验，不是发布者签名。\n\n此插件不注册 AI 工具；`index.js` 提供服务名和槽位，环境摘要由宿主 Go 构造器按插件启用状态生成。槽位声明不代表通用独立面板已经渲染。下面保留原插件的功能及限制说明。\n\n# 环境说明 / Environment guide\n\n启用后，Go 在每次创建任务的统一上下文构造器中自动加入环境资料；对话和 AI 工作流共用此机制，不需要模型先调用工具。可在插件面板停用。内置能力由 `environment-guide` 插件 ID 启用，`index.js` 声明能力，目录快照由 Go 实现，避免 Node 插件固定 `/workspace` 与当前工作区不一致。\n\n包含：当前工作目录与模式、工作区及参考目录顶层文件名、已启用资料来源名称/类型/权限标记、使用方式。每目录最多检查 64 项、展示 20 项，不递归，不读取正文，隐藏文件及符号链接省略；多来源清单接近 12 KB 时停止补充并标注。快照计入上下文预算并参与请求指纹。\n\nAI 应根据任务简要解释相关环境，不在每个回复重复清单。项目具体用法必须先读取 README 等证据；资料名称、文件名只是非可信数据。普通工作区可使用文件工具进一步查看；其他来源可通过 list_sources、带 source 参数的 list_files/read_file 由 AI 主动读取，也可在辅助资料面板附加文件。远程来源不自动连接；MCP 如实标记为仅登记。读写标记不能覆盖真实挂载权限。不会注入 URL、凭据、用户名或 MCP 启动命令。\n\nEnglish: This built-in plugin automatically adds a bounded environment inventory to the canonical task context. It contains workspace/reference roles, sampled top-level names and enabled source metadata. It does not read file bodies or connect to remote sources. Project-specific instructions require evidence from relevant files. Disable the plugin to stop injection for new tasks; existing request snapshots and running tasks retain their original context.\n",
       "screenshots": [],
-      "changelog": "官方目录首批收录；打包源码固定为 4dc9a7b0。"
+      "changelog": "1.0.0 以 EnvGuide 独立仓库分发；保留 environment-guide ID、原生注入机制和安装包摘要，原生环境说明回归通过。",
+      "distribution": "public"
     },
     {
       "id": "terminal",

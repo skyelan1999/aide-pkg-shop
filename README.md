@@ -67,6 +67,8 @@ Terminal 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-terminal`，保留已有
 
 Workflow 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-workflow`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `workflow-start`、`workflow-status`、服务名和面板槽位，没有可执行的工作流编排、进度查询或独立界面实现。Release 说明提供仓库固定提交的安装文件链接。
 
+EnvGuide 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-EnvGuide`，插件 ID 保持 `environment-guide`，保留已有安装包字节与摘要。环境摘要由 Aide 原生上下文构造器按插件启用状态注入；独立 ZIP 不包含 Go 实现。原生回归验证了启停、请求注入、预算记账，以及正文、隐藏文件和来源凭据排除。Release 提供固定提交的安装文件链接。
+
 StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
