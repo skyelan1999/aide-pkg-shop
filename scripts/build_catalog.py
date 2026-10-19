@@ -7,7 +7,7 @@ GROUPS = {
  'creation': ['office','sqlite','propeller-aero','plugin-authoring'],
  'workspace': ['archive-tools','markdown-history','environment-guide','browser-control','computer-control'],
  'communication': ['comm-serial','comm-ssh','comm-tcp','comm-udp'],
- 'planning': ['workflow'],
+ 'planning': [],
  'utilities': ['current-time','lunar-calendar'],
 }
 CATEGORY = {p:g for g,ps in GROUPS.items() for p in ps}
