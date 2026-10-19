@@ -18,6 +18,22 @@ PERMISSIONS = {
  'planning':'注册任务协调工具；真实任务执行和管理操作沿用 Aide 权限。',
  'utilities':'读取日期、时间或本地算法数据；以详情和源码为准。',
 }
+def load_listings(directory=ROOT/'listings'):
+ items=[];seen=set(CATEGORY)
+ for listing in sorted(directory.glob('*.json')):
+  item=json.loads(listing.read_text())
+  assert item['id'] not in seen, 'duplicate listing id'
+  seen.add(item['id'])
+  assert item.get('distribution') in ('private','public')
+  if item['distribution']=='private':
+   assert not any(item.get(k) for k in ('package','sha256','bytes'))
+  else:
+   assert item['kind']=='plugin' and not item.get('commerce')
+   name=item['package']
+   assert name.startswith('packages/'+item['id']+'/') and '..' not in Path(name).parts and '\\' not in name
+   assert re.fullmatch('[a-f0-9]{64}',item['sha256']) and 0<item['bytes']<=24*1024*1024
+  items.append(item)
+ return items
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--aide',type=Path,required=True);ap.add_argument('--ref',required=True);o=ap.parse_args()
  def git(*args):return subprocess.check_output(['git','-C',str(o.aide),*args])
@@ -53,11 +69,7 @@ def main():
    readme=files.get('README.md',b'').decode('utf-8',errors='replace')[:16000]
    item=dict(id=ident,kind='plugin',name=manifest['name'],description=manifest.get('description',''),version=manifest['version'],author='Aide',category=category,icon=category,package=package,sha256=digest,bytes=len(raw),minAideVersion='0.1.17.0 RC2',platforms=['windows','macos','linux'],dependencies=dependencies,permissions=PERMISSIONS[category],trustNotice='Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。',features=['skill-library-v1'] if ident=='skill' else ['plugin-authoring-v1'] if ident=='plugin-authoring' else [],source='https://github.com/skyelan1999/aide/tree/'+commit+'/'+prefix.rstrip('/'),license='MIT',readme=readme,screenshots=[],changelog='官方目录首批收录；打包源码固定为 '+commit[:8]+'。')
    items.append(item)
- for listing in sorted((ROOT/'listings').glob('*.json')):
-  item=json.loads(listing.read_text())
-  assert item['distribution']=='private' and item['id'] not in CATEGORY
-  assert not any(item.get(k) for k in ('package','sha256','bytes'))
-  items.append(item)
+ items.extend(load_listings())
  catalog=dict(schemaVersion=1,title='Aide 官方插件市场',sourceCommit=commit,plugins=[p for p in items if p.get('distribution')!='private'],privateListings=[p for p in items if p.get('distribution')=='private'])
  (ROOT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
  print(json.dumps(dict(plugins=len(items),sourceCommit=commit,bytes=sum(x.get('bytes',0) for x in items))))
