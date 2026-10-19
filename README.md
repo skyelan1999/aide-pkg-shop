@@ -69,6 +69,8 @@ Workflow 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-workflow`，保留已有
 
 EnvGuide 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-EnvGuide`，插件 ID 保持 `environment-guide`，保留已有安装包字节与摘要。环境摘要由 Aide 原生上下文构造器按插件启用状态注入；独立 ZIP 不包含 Go 实现。原生回归验证了启停、请求注入、预算记账，以及正文、隐藏文件和来源凭据排除。Release 提供固定提交的安装文件链接。
 
+SQLite 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-sqlite`，保留已有安装包、测试和摘要。需要 Node 的 `node:sqlite`，验证环境为 Node 24。查询默认只读，但事务、脚本默认可写，导出会写文件，不是仅生成提案。既有回归 33/33 通过，实际 ZIP 经 Aide 宿主验证了六个数据库工具和事务回滚；仅使用新建样本库。Release 提供固定提交安装文件链接。
+
 StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
