@@ -4,7 +4,7 @@ import argparse, hashlib, io, json, re, subprocess, tempfile, zipfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = {
- 'creation': ['office','sqlite','propeller-aero','skill','plugin-authoring'],
+ 'creation': ['office','sqlite','propeller-aero','plugin-authoring'],
  'workspace': ['archive-tools','markdown-history','environment-guide','terminal','browser-control','computer-control'],
  'communication': ['comm-serial','comm-ssh','comm-tcp','comm-udp'],
  'planning': ['goal','plan','todo','feedback','subagent','workflow'],
