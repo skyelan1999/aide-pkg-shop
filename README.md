@@ -55,6 +55,8 @@ Skill Library 1.1.0 独立分发于 `skyelan1999/aide-pkg-skill`，保留已有�
 
 Goal 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-goal`，保留已有市场安装包的版本、字节内容与 SHA-256。它是目标能力预设，仅声明 `goal-create`、`goal-status`、服务名和面板槽位；当前没有目标管理 handler、存储或独立界面。独立收录不会给已安装的同版本插件强制提供升级。
 
+Plan 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-plan`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `plan-make`、`plan-review`、服务名和面板槽位，没有可执行的计划生成、审查或独立界面实现。
+
 StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
