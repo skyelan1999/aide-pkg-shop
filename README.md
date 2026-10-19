@@ -53,6 +53,8 @@ GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及
 
 Skill Library 1.1.0 独立分发于 `skyelan1999/aide-pkg-skill`，保留已有市场安装包的版本、字节内容与 SHA-256。插件需要包含 `skill_library` 原生执行器的 Aide 构建；公开 Skill 的准备和只读引用登记仍遵守管理权限、用户确认与引用锁，不自动执行下载的脚本。
 
+Goal 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-goal`，保留已有市场安装包的版本、字节内容与 SHA-256。它是目标能力预设，仅声明 `goal-create`、`goal-status`、服务名和面板槽位；当前没有目标管理 handler、存储或独立界面。独立收录不会给已安装的同版本插件强制提供升级。
+
 StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
