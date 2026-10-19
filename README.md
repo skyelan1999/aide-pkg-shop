@@ -51,7 +51,7 @@ GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及
 
 独立仓库的公开插件以 `listings/<id>.json` 登记，使用 `distribution=public`，包含与内置包相同的 package/sha256/bytes 及详情字段。生成器会将它们合并进 plugins；验证器校验包路径、ZIP、清单身份、版本、字节数和摘要。私有条目的分发限制保持不变。
 
-StarLink 0.1.1 是纯 AI 工具插件，没有独立界面。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
+StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
 python3 scripts/test_private_catalog.py
