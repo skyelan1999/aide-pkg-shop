@@ -61,6 +61,8 @@ Todo 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-todo`，保留已有市场�
 
 Feedback 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-feedback`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `feedback-capture`、`feedback-summary`、服务名和面板槽位，没有可执行的反馈采集、汇总或独立界面实现。Release 说明提供仓库固定提交的安装 ZIP 与摘要下载链接。
 
+Subagent 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-subagent`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `subagent-spawn`、`subagent-report`、服务名和面板槽位，没有可执行的子代理调度、结果回收或独立界面实现。Release 说明提供仓库固定提交的安装 ZIP 与摘要下载链接。
+
 StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
