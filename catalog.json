@@ -22,16 +22,17 @@
         "linux"
       ],
       "dependencies": [
-        "Aide Office Python 运行环境"
+        "Aide 原生 Office 工作区执行器与 Python Office 环境；ZIP 不包含执行器或 Python 依赖"
       ],
       "permissions": "可向 Aide 提交文件、命令或引用管理提案；相关操作沿用现有授权。",
       "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
       "features": [],
-      "source": "https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/office",
+      "source": "https://github.com/skyelan1999/aide-pkg-office/tree/1d56ad23c7d028afe65882a534b44a9270ff406f",
       "license": "MIT",
-      "readme": "# Office 1.1.0 文档检索\n\n保留 Office 创建和批注工具，新增只读 `office_document_search`。\n\n参数：`query`（1–200字符）、`mode`（`original` 原文逐字搜索或 `rag` 本地TF-IDF片段排序）、可选 `source`（已启用来源ID：本地、Skill、SFTP、HTTP、FTP/FTPS、SMB；MCP仅检索已发现工具说明）、`path`（相对文件路径）。返回最多8个真实片段，含文件ID、片段ID、SHA-256、页／段落／表格行／工作表行／幻灯片定位和范围诊断。工具不调用生成模型、不运行宏、无OCR；主Agent可依据结果继续回答并引用。\n\n插件须在支持本工具的新版Aide中更新并启用；旧版本原生执行器无法执行新工具。星图与内置 `document_search` 共用提取及检索服务。详细范围见 `docs/architecture/knowledge-map.md`。本次没有自动更新已安装的用户插件。\n",
+      "readme": "# Office · Aide Office 文档\n\nAide `office` 1.1.0 独立分发，MIT 许可。安装 ZIP 与已有市场包保持逐字节一致。\n\n注册 `office_create`、`office_comments`、`office_comment_edit`、`office_document_search` 四项工具。支持通过宿主生成 DOCX/XLSX/PPTX、读取或按锚点修改 DOCX 批注，以及原文/RAG 片段检索；相关文件创建、编辑与来源权限沿用 Aide 现有审批通道。RAG 使用本地检索，不承诺 OCR 或整份文档已读。\n\n必须配合 Aide 原生 Office 工作区执行器及宿主 Python Office 环境（python-docx、openpyxl、python-pptx 等）；Node 入口负责协议注册，不能单独执行 Office 操作。安装 ZIP 不包含宿主执行器或 Python 依赖。市场兼容基线为 0.1.17.0 RC2。Linux 为本次验证环境，Windows/macOS 和实际 SSH 未实测。\n\n从 [v1.1.0 Release](https://github.com/skyelan1999/aide-pkg-office/releases/tag/v1.1.0) 的固定提交链接下载 ZIP 与 SHA256SUMS，校验后导入 Aide；也可通过[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)安装。相同 ID/版本无需重复安装。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n安装包位于 packages/v1.1.0/，保留原 LICENSE、入口、manifest、测试与包内说明；外部 README 不重新写入原 ZIP。Release 使用仓库固定提交链接，没有另行上传二进制附件。\n\n验证结果见 docs/release-verification.json。SHA-256 是完整性校验而非签名，Node 插件机制不是权限沙箱。\n",
       "screenshots": [],
-      "changelog": "官方目录首批收录；打包源码固定为 4dc9a7b0。"
+      "changelog": "Office 1.1.0 独立分发；原运行代码和市场 ZIP 字节保持一致。",
+      "distribution": "public"
     },
     {
       "id": "sqlite",
@@ -64,34 +65,6 @@
       "screenshots": [],
       "changelog": "1.0.0 独立仓库分发；保留原代码、测试及 ZIP 摘要。33/33 回归通过，实际安装包经宿主验证数据库读写、回滚、结构查询和 CSV 导出。",
       "distribution": "public"
-    },
-    {
-      "id": "propeller-aero",
-      "kind": "plugin",
-      "name": "桨叶建模与气动 / Propeller CAD & BEMT",
-      "description": "官方尺寸约束重建、封闭桨叶 STL、气动 CSV 与图表；纯 Python 标准库，可离线复现，假设透明，文件经现有提案审批。",
-      "version": "1.0.0",
-      "author": "Aide",
-      "category": "creation",
-      "icon": "creation",
-      "package": "packages/propeller-aero/1.0.0-9e7009de4506.zip",
-      "sha256": "9e7009de45061c11791a6e7707cf551da8f967a3bdd8bae95e9d4423a257bc7b",
-      "bytes": 16179,
-      "minAideVersion": "0.1.17.0 RC2",
-      "platforms": [
-        "windows",
-        "macos",
-        "linux"
-      ],
-      "dependencies": [],
-      "permissions": "可向 Aide 提交文件、命令或引用管理提案；相关操作沿用现有授权。",
-      "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
-      "features": [],
-      "source": "https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/propeller-aero",
-      "license": "MIT",
-      "readme": "# 桨叶建模与气动插件 v1.0.0\n\n两个可执行工具：`propeller_analyze`（只读计算）与 `propeller_reconstruct`（生成文件提案）。\n通过 Aide 插件面板上传 ZIP 后启用。运行时仅需 Node 与 Python 3，Python 只使用标准库，无下载依赖或联网动作。\n\n默认官方基线：DJI Avata 360 3340S，直径约 83.1 mm、名义螺距 101.6 mm、照片四叶。材料及重量为参考资料，不参与强度或刚度计算。\n弦长、翼型、后掠、7 mm 气动切除半径都是假设；桨毂与安装接口不建模。气动方法为轴向 BEMT，不是 CFD；轴功率不是电池功率，不输出绝对噪声或续航改善。\n\n示例输入：\n```json\n{\"diameter_mm\":83.1,\"pitch_mm\":101.6,\"blades\":4,\"mass_g\":455,\"rotors\":4,\"altitude_m\":0,\"axial_speed_ms\":0}\n```\n建模再加 `output_dir`，例如 `avatar360_prop_concept/new_3340s`。结果是待应用文件提案，不能宣称已落盘。\n\n本地直接重现：`python3 -I worker.py --output NEW_DIRECTORY`。目录必须不存在。输入单位写在工具 JSON schema 与 report.md 中。\n输出包含镜像 STL、几何/气动/敏感性 CSV、SVG 图表、离线旋转查看器、图标与网格闭合记录。\n\n修复旧概念脚本的三叶/127 mm 错误基线、弦长未正确旋转、端点重复积分与缺少诱导速度收敛记录。旧脚本保留作历史资料；新工具执行同一计算引擎。\n",
-      "screenshots": [],
-      "changelog": "官方目录首批收录；打包源码固定为 4dc9a7b0。"
     },
     {
       "id": "skill",
