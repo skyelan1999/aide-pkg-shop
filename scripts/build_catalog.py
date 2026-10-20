@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = {
  'creation': ['office','propeller-aero'],
- 'workspace': ['archive-tools','markdown-history','computer-control'],
+ 'workspace': ['archive-tools','markdown-history'],
  'communication': ['comm-serial','comm-ssh','comm-tcp','comm-udp'],
  'planning': [],
  'utilities': [],
