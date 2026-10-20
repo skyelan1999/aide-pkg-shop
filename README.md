@@ -63,7 +63,7 @@ Feedback 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-feedback`，保留已有
 
 Subagent 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-subagent`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `subagent-spawn`、`subagent-report`、服务名和面板槽位，没有可执行的子代理调度、结果回收或独立界面实现。Release 说明提供仓库固定提交的安装 ZIP 与摘要下载链接。
 
-Terminal 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-terminal`，保留已有市场包的版本、字节内容与 SHA-256。`terminal-run` 只生成待用户手动运行的命令提案；`terminal-history` 只读列举目录，不提供命令历史或交互式终端。实际宿主调用验证了提案、目录列举和路径越界拒绝，测试没有执行提案命令。Release 说明提供仓库固定提交的安装文件链接。
+Terminal 1.1.1 预发布收录于 `skyelan1999/aide-pkg-terminal`，市场ZIP与Release固定提交归档逐字节一致（SHA-256 `f70d53d819444dd5b16f5a87f99f70e500241e464dfdd1d05976a1feecd319cf`）。提供常驻本地PTY/SSH、专业工作台、会话管理和轮转日志；Linux实测，Windows原生PTY未实现。条目要求 `terminal-workbench-v1` 能力，旧宿主会显示不兼容；需要 [Aide PR #7](https://github.com/skyelan1999/aide/pull/7) 的桥接续期与后台分离，公开0.1.17.3 RC1仍不能完整使用。旧1.0.0包保留；更新插件会结束现有连接，工作区日志保留。
 
 Workflow 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-workflow`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `workflow-start`、`workflow-status`、服务名和面板槽位，没有可执行的工作流编排、进度查询或独立界面实现。Release 说明提供仓库固定提交的安装文件链接。
 
