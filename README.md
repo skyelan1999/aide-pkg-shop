@@ -88,3 +88,5 @@ PluginAuthoring（插件工坊）1.0.0 已通过[独立仓库](https://github.co
 Browser Control 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-BrowserControl)分发，保留原市场安装包；需要宿主浏览器桥接、允许域名配置及操作确认，PDF 另需系统 Python 依赖。
 
 Computer Control 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-ComputerControl)分发，保留原安装包。桌面桥接支持 macOS，需系统屏幕录制/辅助功能授权；本次实机操作未验证。
+
+Markdown History 1.0.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-MarkdownHistory)分发，保留原市场包；依赖 Aide 原生历史执行器，历史数据仍保存在服务数据目录。

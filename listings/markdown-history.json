@@ -1,0 +1,31 @@
+{
+  "id": "markdown-history",
+  "kind": "plugin",
+  "name": "Markdown 历史版本",
+  "description": "原文编辑、保存去重与图片／附件／draw.io 资源快照。历史保存在 Aide 服务数据目录，按工作区和来源隔离。",
+  "version": "1.0.0",
+  "author": "Aide",
+  "category": "workspace",
+  "icon": "workspace",
+  "package": "packages/markdown-history/1.0.0-064b9a593932.zip",
+  "sha256": "064b9a593932ebd657a5db4e668e451a9cbe22524c2b1d7f5d6b6cbefd737edd",
+  "bytes": 1990,
+  "minAideVersion": "0.1.17.0 RC2",
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "dependencies": [
+    "需要 Aide 原生 markdown_history 执行器及服务端 Markdown 历史/保存功能；ZIP 不包含宿主执行器或历史数据"
+  ],
+  "permissions": "读取已授权 Markdown 的历史正文与资源快照；列出历史可能观察变化并写入服务端历史记录。原文修改和恢复仍遵循 Aide 现有写入权限与审批。",
+  "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
+  "features": [],
+  "source": "https://github.com/skyelan1999/aide-pkg-MarkdownHistory/tree/251a214346c08ee7e80e64f37bc93d08b40786fd",
+  "license": "MIT",
+  "readme": "# Markdown History · Aide Markdown 历史版本\n\nAide `markdown-history` 插件的独立分发仓库，版本 **1.0.0**，MIT 许可。运行代码及安装 ZIP 与[原市场来源](https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/markdown-history)保持一致。\n\n## 能力\n\n注册 `markdown_history` 工具，用于查询状态、列出指定 Markdown 的保存版本、读取历史正文，或读取指定版本的引用资源快照。\n\n```json\n{}\n{\"path\":\"notes.md\"}\n{\"path\":\"notes.md\",\"revision\":\"000001\"}\n{\"path\":\"notes.md\",\"revision\":\"000001\",\"asset\":\"image.svg\"}\n```\n\n可传 `source` 指定 Aide 引用来源；省略时使用当前工作区。资源读取返回该版本的快照（base64），不会用当前资源冒充旧版本。工具声明为只读，但宿主列出当前文件历史时会观察实际正文/资源变化，并可能写入新的服务端历史记录。\n\n**需要 Aide 原生 `markdown_history` 执行器和保存/历史功能。** Node 入口只注册工具协议；直接调用其 handler 会明确报错。单独导入 ZIP 不能给缺少执行器的旧宿主补充能力。\n\n## 保存、资源与恢复\n\n启用后通过 Aide 既有编辑/保存流程修改原 Markdown；实际正文或被追踪资源发生变化时才产生版本，相同内容去重。`trackEmbedded` 默认 true，开启后追踪文档引用的本地相对路径图片、附件与 draw.io 等资源；外部 URL 不作为本地资源快照。关闭该设置可停止资源追踪。\n\n```json\n{\"trackEmbedded\":true}\n```\n\n未保存编辑不算历史。shell/外部编辑不经过 Aide 保存钩子，不能宣称每次外部写入都已记录；后续列出历史时宿主会尝试观察当前文件。资源不可用时会记录相应状态，不保证恢复完整。\n\n历史保存在 **Aide 服务数据目录的 `markdown-history/`** 下，按工作区/来源身份隔离，不在工作区旁生成备份副本，也不打包进插件 ZIP。仅备份工作区源码不会自动备份服务端历史；需要保留 Aide 数据目录，或使用宿主支持的完整历史备份导出功能。\n\n历史工具自身不写回原文。恢复操作通过 Aide 既有历史界面/API 和权限流程执行，仍受只读来源、工作区状态及冲突检查约束；恢复前应检查正文与资源变更预览。历史对象读取会验证摘要；损坏对象不会被当成有效历史。版本列表最多展示最近 200 项，不代表其余历史已删除。\n\n工作区可以是本地或宿主支持的远程来源，实际读取能力沿用 Aide 的来源/SSH 配置；插件不接收密码或私钥。本次未进行真实远程 SSH 端到端测试。\n\n## 安装与校验\n\n市场版本基线为 `0.1.17.0 RC2`，同时需要上述原生执行器。平台声明 Windows、macOS、Linux；本次验证 Linux，Windows/macOS 未实测。\n\n从 [v1.0.0 Release](https://github.com/skyelan1999/aide-pkg-MarkdownHistory/releases/tag/v1.0.0) 的固定提交链接下载 ZIP 和 SHA256SUMS，校验后通过 Aide 插件管理导入，或在[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)搜索 `markdown-history`。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n包位于 `packages/v1.0.0/`，保留原 LICENSE、index.js、manifest.json，未重新打包；已安装相同 ID/版本无需重复安装。Release 提供仓库固定提交链接，没有另行上传二进制附件。宿主应用启动沿用 `start.command`。\n\n## 验证\n\n发布验证覆盖原生历史去重、资源版本读取、恢复冲突与只读来源、工作区锁定、写入失败契约、损坏/复用对象校验，以及恢复界面的可写状态和过期上下文逻辑。另检查原生插件宿主注册及 handler 的执行器限制。精确命令和结果见 `docs/release-verification.json`。\n\n本次仅独立分发与市场元数据更新，无宿主代码、镜像或产品 UI 变更；真实浏览器界面验收不适用。SHA-256 用于完整性校验，不是发布者签名；Node 插件在宿主执行，插件机制不是权限沙箱。\n",
+  "screenshots": [],
+  "changelog": "# Changelog\n\n## 1.0.0\n\n- 独立分发现有 Markdown History，保留原版本、MIT 许可、运行代码及市场 ZIP。\n- 补充原生执行器、正文/资源去重、服务端历史存储和恢复权限说明。\n- 记录 Linux 原生与界面逻辑回归及未验证的平台/真实 SSH 范围。\n",
+  "distribution": "public"
+}
