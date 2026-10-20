@@ -8,7 +8,7 @@ GROUPS = {
  'workspace': ['archive-tools','markdown-history','browser-control','computer-control'],
  'communication': ['comm-serial','comm-ssh','comm-tcp','comm-udp'],
  'planning': [],
- 'utilities': ['current-time','lunar-calendar'],
+ 'utilities': ['lunar-calendar'],
 }
 CATEGORY = {p:g for g,ps in GROUPS.items() for p in ps}
 PERMISSIONS = {
