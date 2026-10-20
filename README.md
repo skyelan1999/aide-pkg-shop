@@ -82,3 +82,5 @@ python3 scripts/test_private_catalog.py
 python3 scripts/test_public_catalog.py
 python3 scripts/verify_catalog.py
 ```
+
+PluginAuthoring（插件工坊）1.0.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-PluginAuthoring)分发；保留原安装包与 `plugin-authoring-v1` 兼容要求，管理操作需要 Aide 原生执行器和人工确认。

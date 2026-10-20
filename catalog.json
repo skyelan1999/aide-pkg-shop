@@ -152,11 +152,12 @@
       "features": [
         "plugin-authoring-v1"
       ],
-      "source": "https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/plugin-authoring",
+      "source": "https://github.com/skyelan1999/aide-pkg-PluginAuthoring/tree/e44b69f0f8a11c9cd9c0eab43e6b1ed0afc6afb6",
       "license": "MIT",
-      "readme": "",
+      "readme": "# PluginAuthoring · Aide 插件工坊\n\nAide `plugin-authoring` 插件的独立分发仓库，版本 **1.0.0**，MIT 许可。运行代码与原有市场安装包保持一致，来源为 [Aide 4dc9a7b0](https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/plugin-authoring)。\n\n## 能力与使用\n\n- `manage_plugins`：`guide` 获取真实插件协议，`list` / `inspect` 查询插件；`prepare` 根据 manifest 和完整文本 files 生成经过语法检查的 ZIP 与待确认安装/升级提案；`enable` / `disable` / `remove` 提交管理提案。\n- `manage_references`：`list` 查询引用，`upsert` / `remove` 提交引用变更提案。支持 local、skill、link、sftp 类型；不接收密码或私钥，sftp 仅支持协议声明的 `auth: none`。\n\n这两个工具必须由 **Aide 原生 manage_plugins / manage_references 执行器**处理。Node 入口负责注册协议，直接调用其 handler 会明确报错，不能单独作为 Node 插件执行管理操作。市场要求宿主声明 `plugin-authoring-v1` 能力；仅导入 ZIP 不会为旧宿主补充执行器。\n\n在 Aide 设置中为对应角色开启插件/引用管理权限，再通过对话请求操作。管理权限默认关闭；修改先形成提案，由用户确认后应用。准备插件不会执行生成代码或直接安装。升级保留已有设置和禁用状态；权限撤销或工作区/源码状态变化会使旧提案失效。引用管理保留可见/可写锁，不自动解锁；已有引用文档的读写仍使用原有文件工具和授权。\n\n## 安装\n\n市场兼容版本基线为 `0.1.17.0 RC2`，同时必须具备上述原生执行器与功能标记。平台声明 Windows、macOS、Linux；本次实际验证 Linux，Windows/macOS 未实测。\n\n从 [v1.0.0 Release](https://github.com/skyelan1999/aide-pkg-PluginAuthoring/releases/tag/v1.0.0) 说明中的固定提交链接下载 ZIP 和 SHA256SUMS，校验后通过 Aide 插件管理导入，也可在[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)搜索 `plugin-authoring`。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n安装包位于 `packages/v1.0.0/`。保留原 ZIP 的 LICENSE、index.js、manifest.json，未重新打包；已安装同版本的用户无需重复安装。Release 使用仓库固定提交下载链接，没有另行上传二进制附件。\n\n## 验证\n\n发布验证包括包摘要与源码一致性、Aide 原生插件宿主注册，以及原生管理执行器的权限、提案确认、升级状态保留、过期提案、引用锁和非法代码/路径回归。结果见 `docs/release-verification.json`。无独立 UI 或工作台变更。\n\nSHA-256 用于完整性校验，不是发布者签名。可信 Node 插件在宿主中执行，插件机制不是权限沙箱。\n",
       "screenshots": [],
-      "changelog": "官方目录首批收录；打包源码固定为 4dc9a7b0。"
+      "changelog": "# Changelog\n\n## 1.0.0\n\n- 独立分发 Aide 插件工坊，保留原版本、MIT 许可、运行代码和市场 ZIP。\n- 补充原生执行器、角色权限、人工确认、引用锁和校验说明。\n",
+      "distribution": "public"
     },
     {
       "id": "archive-tools",
