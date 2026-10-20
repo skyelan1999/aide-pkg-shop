@@ -73,6 +73,8 @@ SQLite 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-sqlite`，保留已有安�
 
 Current Time 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-CurrentTime`，保留既有安装 ZIP 和摘要（SHA-256 `8ccc60d7464971c4ab1ca5c22c1e8ac912e4bfe2f3fb765241aadc5820d4f1ad`）。`get_current_datetime`、`get_week_number` 均可执行，支持 IANA 时区与 ISO-8601 周历；只读 Aide 插件运行环境时钟，即使使用 SSH 工作区也不读取设备时钟。原始行为、真实宿主调用及 Aide/小秘权限回归通过；Linux 实测，Windows/macOS 未实测。Release 提供固定提交的安装 ZIP 与摘要链接。
 
+LunarCalendar 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-LunarCalendar`，保留既有安装 ZIP 和摘要（SHA-256 `38e7fd998add27495c7c9d0bbd5d48ca53ed212af6032edad5e3f33b2a18c5a4`）。`get_lunar_date` 可执行，离线查询农历日期、闰月、干支年和生肖，默认按 Asia/Shanghai 确定今天，依赖 Node Intl/ICU 中国农历数据。原始测试、8次真实宿主调用及 Aide/小秘回归通过；Linux 实测，Windows/macOS 未实测。Release 提供固定提交安装包和摘要链接。
+
 StarLink 当前版本是纯 AI 常驻查询插件，没有独立界面；检索复用增量快照。市场分发包与 StarLink GitHub Release 安装包为同一份字节内容。插件仓库当前未声明开源许可证，因此目录展示 UNLICENSED，不将市场网站的 MIT 许可证套用到该插件。
 
 ```sh
