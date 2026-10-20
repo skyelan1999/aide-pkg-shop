@@ -94,3 +94,5 @@ Markdown History 1.0.0 已通过[独立仓库](https://github.com/skyelan1999/ai
 Archive Tools 1.0.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-ArchiveTools)分发，原市场 ZIP 保持一致；依赖 Aide 原生归档执行器，部分格式需要 Python 标准库。
 
 Office 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-office)分发。Propeller Aero 已按维护者要求从公开目录下架。
+
+串口、SSH、TCP、UDP 的35项通信工具已整合到 Terminal 1.3.1。旧条目 `comm-serial`、`comm-ssh`、`comm-tcp`、`comm-udp` 已从市场下架，新安装请使用 Terminal。

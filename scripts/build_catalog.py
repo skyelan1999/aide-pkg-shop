@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GROUPS = {
  'creation': [],
  'workspace': [],
- 'communication': ['comm-serial','comm-ssh','comm-tcp','comm-udp'],
+ 'communication': [],
  'planning': [],
  'utilities': [],
 }
