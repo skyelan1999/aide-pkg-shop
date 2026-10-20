@@ -90,3 +90,5 @@ Browser Control 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aid
 Computer Control 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-ComputerControl)分发，保留原安装包。桌面桥接支持 macOS，需系统屏幕录制/辅助功能授权；本次实机操作未验证。
 
 Markdown History 1.0.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-MarkdownHistory)分发，保留原市场包；依赖 Aide 原生历史执行器，历史数据仍保存在服务数据目录。
+
+Archive Tools 1.0.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-ArchiveTools)分发，原市场 ZIP 保持一致；依赖 Aide 原生归档执行器，部分格式需要 Python 标准库。
