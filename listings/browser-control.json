@@ -1,0 +1,31 @@
+{
+  "id": "browser-control",
+  "kind": "plugin",
+  "name": "浏览器控制",
+  "description": "独立无头 Chromium 读取实际网页正文、链接与控件，支持导航、点击、输入、滚动；可切换 Safari",
+  "version": "1.1.0",
+  "author": "Aide",
+  "category": "workspace",
+  "icon": "workspace",
+  "package": "packages/browser-control/1.1.0-9e67c3194f59.zip",
+  "sha256": "9e67c3194f59eb2ce27ea2c7d4384d04d652198605be6494f68e9a6e9641c7e2",
+  "bytes": 5465,
+  "minAideVersion": "0.1.17.0 RC2",
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "dependencies": [
+    "Aide 浏览器运行环境；Safari 模式需要宿主桥接"
+  ],
+  "permissions": "可能访问已授权文件或调用主机控制能力；浏览器和电脑控制另需宿主授权。",
+  "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
+  "features": [],
+  "source": "https://github.com/skyelan1999/aide-pkg-BrowserControl/tree/e0f62b3bb67795dbeeb06818e529af1cb08ec125",
+  "license": "MIT",
+  "readme": "# Browser Control · Aide 浏览器控制\n\nAide `browser-control` 插件的独立分发仓库，版本 **1.1.0**，MIT 许可。运行代码及 ZIP 与[原市场来源](https://github.com/skyelan1999/aide/tree/4dc9a7b0b01fef6ac3550b0b0fcf97db42d45f94/plugins/browser-control)保持一致。\n\n## 能力\n\n提供七个工具：`browser_status` 检查桥接；`browser_read` 读取网页正文、链接或 PDF；`browser_snapshot` 读取当前页面；`browser_navigate` 导航；`browser_click` 点击；`browser_fill` 输入；`browser_scroll` 滚动。\n\n默认 `engine: headless` 使用独立 Chromium。只读读取使用临时上下文并在完成后关闭；导航、点击、输入、快照和滚动使用持续交互上下文。不会复用用户 Safari 登录状态。`engine: safari` 使用 macOS Safari 桥接；`browser_read` 和 `browser_scroll` 只支持 headless。不提供下载/上传工具。\n\n## 宿主依赖与配置\n\nZIP **不包含**浏览器、Playwright、Python 或桥接服务。市场兼容版本基线为 `0.1.17.0 RC2`；宿主还需配置相应浏览器运行环境。\n\n- Headless：Aide 的 `scripts/headless-browser-bridge.js`、锁定 Playwright 运行时和 Chromium，桥接端口 17779。\n- Safari：macOS Safari WebDriver 和 Aide `scripts/safari-bridge.js`，端口 17777；需要操作系统允许远程自动化。Linux/Windows 不能运行 Safari 模式。\n- 由 Aide 启动器配置 `AIDE_BROWSER_BRIDGE_TOKEN` 并向插件进程提供，至少 32 字符；不要在对话或仓库中粘贴凭据。\n- PDF 文本提取需要 Python 3 和 `pypdf[crypto]`（Aide Dockerfile 当前锁定 6.19.0）。插件 PDF 子进程使用 `/usr/local/bin:/usr/bin:/bin` 查找 Python，仅激活虚拟环境可能不足以满足此依赖。\n\n宿主的安装/启动流程见 [Aide 文档](https://github.com/skyelan1999/aide/blob/main/docs/plugins/computer-browser-control.md)，实际应用启动遵循 `start.command`。本仓库只分发插件，不自动安装或启动宿主服务。\n\n在插件设置中配置，例如：\n\n```json\n{\"engine\":\"headless\",\"allowedHosts\":[\"example.com\",\"*.example.com\"]}\n```\n\n空允许列表拒绝网页读取/导航；通配子域规则不包含根域。只接受不含用户名密码的 HTTP/HTTPS URL。桥接地址限定为相应端口上的 localhost、127.0.0.1 或 host.docker.internal。SSH 工作区不会自动将浏览器迁移到远程设备；浏览器操作发生在 Aide 所配置桥接所在环境。\n\n导航、点击、输入沿用 Aide 逐次确认流程；允许域名不替代操作确认。网页/PDF 内容作为不可信资料处理。PDF 上限 32 MiB、单次最多 200 页及约 30000 字符，可传 `fromPage` 并按返回 `nextPage` 继续；不承诺扫描图片 OCR。\n\n## 安装与校验\n\n从 [v1.1.0 Release](https://github.com/skyelan1999/aide-pkg-BrowserControl/releases/tag/v1.1.0) 的固定提交链接下载 ZIP 和 SHA256SUMS，校验后通过 Aide 插件管理导入，或在[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)搜索 `browser-control`。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\nZIP 位于 `packages/v1.1.0/`，原 LICENSE、index.js、manifest.json 字节不变，未重新打包；同 ID 同版本用户无需重复安装。Release 提供仓库固定提交链接，没有另行上传二进制附件。原 manifest 默认停用；市场安装会注册并启用，请检查设置。\n\n## 验证与限制\n\n精确命令、结果及环境限制见 `docs/release-verification.json`。发布涉及独立分发和市场元数据，无宿主代码、镜像或产品 UI 变更。Linux 为本次测试环境；Windows/macOS 和 Safari 实机未验证。浏览器/PDF 依赖未配置时，安装 ZIP 本身不代表相关能力可用。\n\nSHA-256 是完整性校验，不是发布者签名。Node 插件在宿主执行，插件机制不是权限沙箱。\n",
+  "screenshots": [],
+  "changelog": "# Changelog\n\n## 1.1.0\n\n- 独立分发现有 Browser Control，保留原运行代码、版本、MIT 许可及市场 ZIP。\n- 补充七项工具、Chromium/Safari 桥接、站点范围、操作确认和 PDF 依赖说明。\n- 记录实际测试结果与未验证的平台/环境限制。\n",
+  "distribution": "public"
+}
