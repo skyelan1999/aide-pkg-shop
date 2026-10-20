@@ -63,7 +63,7 @@ Feedback 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-feedback`，保留已有
 
 Subagent 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-subagent`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `subagent-spawn`、`subagent-report`、服务名和面板槽位，没有可执行的子代理调度、结果回收或独立界面实现。Release 说明提供仓库固定提交的安装 ZIP 与摘要下载链接。
 
-Terminal 1.1.2 预发布收录于 `skyelan1999/aide-pkg-terminal`，市场ZIP与Release固定提交归档逐字节一致（SHA-256 `b693388208ead34aab7d3192b6c210424f5fd5f55f2e79f0df67b073638da1de`）。提供常驻本地PTY/SSH、专业工作台、会话管理和轮转日志；Linux实测，Windows原生PTY未实现。条目要求 `terminal-workbench-v1` 能力，旧宿主会显示不兼容；需要 [Aide main](https://github.com/skyelan1999/aide/tree/main) 的桥接续期与后台分离；main 已移除插件新标签页入口，单独升级插件不会替换宿主界面，公开0.1.17.3 RC1仍不能完整使用。旧1.0.0包保留；更新插件会结束现有连接，工作区日志保留。
+Terminal 1.2.0 预发布收录于 `skyelan1999/aide-pkg-terminal`，市场ZIP与Release固定提交归档逐字节一致（SHA-256 `38a4cf3a964b6e5b8a44a04c3ebfee3045f6c46742c9c40c54ba6137693315f1`）。提供本地/SSH工作区Shell、常驻设备SSH、密码/加密私钥认证、引用私钥选择、会话管理和轮转日志；Linux实测，Windows原生PTY未实现。条目要求 `terminal-workbench-v1` 和 `terminal-ssh-workspace-v1` 能力，旧宿主会显示不兼容；需要 [Aide main](https://github.com/skyelan1999/aide/tree/main) 的桥接续期与后台分离；main 已移除插件新标签页入口，单独升级插件不会替换宿主界面，公开0.1.17.3 RC1仍不能完整使用。旧1.0.0包保留；更新插件会结束现有连接，工作区日志保留。
 
 Workflow 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-workflow`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `workflow-start`、`workflow-status`、服务名和面板槽位，没有可执行的工作流编排、进度查询或独立界面实现。Release 说明提供仓库固定提交的安装文件链接。
 
