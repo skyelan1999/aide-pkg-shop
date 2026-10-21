@@ -96,3 +96,9 @@ Archive Tools 1.0.0 已通过[独立仓库](https://github.com/skyelan1999/aide-
 Office 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-office)分发。Propeller Aero 已按维护者要求从公开目录下架。
 
 串口、SSH、TCP、UDP 的35项通信工具已整合到 Terminal 1.3.1。旧条目 `comm-serial`、`comm-ssh`、`comm-tcp`、`comm-udp` 已从市场下架，新安装请使用 Terminal。
+
+## 插件能力路由
+
+每次构建目录会为所有上架插件生成 `routing` 元数据及独立 `routing.json`，包含关键词、扩展名和精简能力摘要。上架可在 listing 中显式提供 `routing:{keywords:[...],extensions:[...],summary:"..."}`；没有提供时由 ID、名称及已有场景映射生成。修改 listing 后重新运行 `build_catalog.py` 构建目录和索引；`python3 scripts/routing.py` 可为现有目录补齐索引。`verify_catalog.py` 拒绝过期索引，Pages 同时发布索引。信息仅是匹配数据，不携带脚本或执行授权。
+
+支持插件路由接口的新 Aide 会默认下载验证后的目录，在本地匹配需求，只将相关插件工具交给模型。缺少插件时 `route_plugins` 可推荐；宿主用户开启自动安装后，才允许安装匹配且尚未安装的官方公开兼容插件。不购买私有包、不升级或启用用户停用的插件，也不改变工具执行权限。旧宿主可照常浏览安装，不能仅更新商店获得宿主路由功能。

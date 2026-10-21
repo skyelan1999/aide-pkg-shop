@@ -3,6 +3,8 @@
 import base64, hashlib, io, json, shutil, stat, subprocess, zipfile
 from urllib.parse import urlsplit
 from pathlib import Path
+from routing import build_index,metadata
+from build_catalog import load_listings
 ROOT=Path(__file__).resolve().parents[1]
 def validate_private(p):
  assert p.get('distribution')=='private'
@@ -17,7 +19,13 @@ def validate_private(p):
 
 def main():
  d=json.loads((ROOT/'catalog.json').read_text());assert d['schemaVersion']==1
+ assert all(p.get('routing') is not None for p in d['plugins']+d.get('privateListings',[])), 'routing metadata missing; run python3 scripts/routing.py'
+ assert json.loads((ROOT/'routing.json').read_text())==build_index(d), 'routing index stale; run python3 scripts/routing.py'
  items=d['plugins']+d.get('privateListings',[])
+ catalog_by_id={p['id']:p for p in items}
+ for listing in load_listings():
+  expected=dict(listing,routing=metadata(listing))
+  assert catalog_by_id.get(listing['id'])==expected, 'listing/catalog/routing mismatch; rebuild catalog: '+listing['id']
  assert all(p.get('distribution','public')=='public' for p in d['plugins'])
  assert all(p.get('distribution')=='private' for p in d.get('privateListings',[]))
  assert 0<len(items)<=200;seen=set();total=0
@@ -47,7 +55,7 @@ def main():
  out=ROOT/'public';out.mkdir(exist_ok=True)
  # Generated output only: remove stale package copies before publishing a new catalog.
  if (out/'packages').exists():shutil.rmtree(out/'packages')
- for filename in ['index.html','market.css','market.js','favicon.svg','catalog.json']:
+ for filename in ['index.html','market.css','market.js','favicon.svg','catalog.json','routing.json']:
   shutil.copyfile(ROOT/filename,out/filename)
  for p in items:
   if p.get('distribution')=='private':continue

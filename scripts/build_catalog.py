@@ -2,6 +2,7 @@
 """Build deterministic official packages from an explicit Aide Git commit; no user registry/cache."""
 import argparse, hashlib, io, json, re, subprocess, tempfile, zipfile
 from pathlib import Path
+from routing import write as write_routing
 ROOT = Path(__file__).resolve().parents[1]
 GROUPS = {
  'creation': [],
@@ -71,6 +72,7 @@ def main():
    items.append(item)
  items.extend(load_listings())
  catalog=dict(schemaVersion=1,title='Aide 官方插件市场',sourceCommit=commit,plugins=[p for p in items if p.get('distribution')!='private'],privateListings=[p for p in items if p.get('distribution')=='private'])
+ write_routing(catalog)
  (ROOT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
  print(json.dumps(dict(plugins=len(items),sourceCommit=commit,bytes=sum(x.get('bytes',0) for x in items))))
 if __name__=='__main__':main()

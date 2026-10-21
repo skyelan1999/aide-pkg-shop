@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "2985453d014f85ee08420112947405f8c360aac8",
+  "plugins": [
+    {
+      "id": "almanac",
+      "name": "黄历",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "almanac",
+          "黄历",
+          "农历",
+          "阴历",
+          "宜忌",
+          "节气",
+          "万年历"
+        ],
+        "extensions": [],
+        "summary": "独立公历、农历与黄历工作台：月历、节气、节日、每日宜忌及 Aide 只读日/月查询，离线运行。"
+      }
+    },
+    {
+      "id": "archive-tools",
+      "name": "压缩文件",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "archive-tools",
+          "压缩文件",
+          "压缩",
+          "解压",
+          "zip",
+          "tar",
+          "archive"
+        ],
+        "extensions": [
+          ".zip",
+          ".tar",
+          ".gz"
+        ],
+        "summary": "在当前工作区创建和安全解压 ZIP、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 归档。"
+      }
+    },
+    {
+      "id": "browser-control",
+      "name": "浏览器控制",
+      "version": "1.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "browser-control",
+          "浏览器控制",
+          "浏览器",
+          "网页",
+          "browser",
+          "网页自动化"
+        ],
+        "extensions": [],
+        "summary": "独立无头 Chromium 读取实际网页正文、链接与控件，支持导航、点击、输入、滚动；可切换 Safari"
+      }
+    },
+    {
+      "id": "computer-control",
+      "name": "电脑控制",
+      "version": "1.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "computer-control",
+          "电脑控制",
+          "桌面控制",
+          "鼠标",
+          "键盘"
+        ],
+        "extensions": [],
+        "summary": "读取允许应用窗口的截图和辅助功能控件；独立 Aide Computer Bridge 提供权限入口，点击、输入和按键仍需 Aide 确认"
+      }
+    },
+    {
+      "id": "current-time",
+      "name": "当前日期时间",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "current-time",
+          "当前日期时间",
+          "当前时间",
+          "现在几点",
+          "时区",
+          "clock",
+          "time"
+        ],
+        "extensions": [],
+        "summary": "查询运行环境的当前日期、时间和时区；可指定 IANA 时区"
+      }
+    },
+    {
+      "id": "environment-guide",
+      "name": "环境说明 / Environment guide",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "environment-guide",
+          "环境说明 / environment guide",
+          "环境指南",
+          "环境配置",
+          "环境激活"
+        ],
+        "extensions": [],
+        "summary": "自动向AI提供当前工作目录、顶层文件、辅助资料来源和使用方式；不读取文件正文或自动连接远程来源。"
+      }
+    },
+    {
+      "id": "feedback",
+      "name": "反馈",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "feedback",
+          "反馈"
+        ],
+        "extensions": [],
+        "summary": "DSH feedback 能力预设：注册反馈工具与面板声明；当前未实现反馈采集或汇总 handler。"
+      }
+    },
+    {
+      "id": "goal",
+      "name": "目标",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "goal",
+          "目标"
+        ],
+        "extensions": [],
+        "summary": "DSH goal 能力预设：注册目标工具与面板声明；当前未实现目标管理 handler。"
+      }
+    },
+    {
+      "id": "lunar-calendar",
+      "name": "农历日历",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "lunar-calendar",
+          "农历日历",
+          "农历",
+          "阴历",
+          "节气"
+        ],
+        "extensions": [],
+        "summary": "查询今天或指定公历日期对应的中国农历日期、闰月、干支和生肖"
+      }
+    },
+    {
+      "id": "markdown-history",
+      "name": "Markdown 历史版本",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "markdown-history",
+          "markdown 历史版本",
+          "markdown历史",
+          "版本历史",
+          "历史版本"
+        ],
+        "extensions": [],
+        "summary": "原文编辑、保存去重与图片／附件／draw.io 资源快照。历史保存在 Aide 服务数据目录，按工作区和来源隔离。"
+      }
+    },
+    {
+      "id": "office",
+      "name": "Office 文档",
+      "version": "1.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "office",
+          "office 文档",
+          "word",
+          "excel",
+          "powerpoint",
+          "docx",
+          "xlsx",
+          "pptx",
+          "办公文档"
+        ],
+        "extensions": [
+          ".docx",
+          ".xlsx",
+          ".pptx"
+        ],
+        "summary": "生成 DOCX/XLSX/PPTX，读取与按锚点修改 DOCX 批注，并查看和编辑 XLSX，并提供原文搜索／RAG文档检索"
+      }
+    },
+    {
+      "id": "plan",
+      "name": "计划",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "plan",
+          "计划"
+        ],
+        "extensions": [],
+        "summary": "DSH plan 能力预设：注册计划工具与面板声明；当前未实现计划生成或审查 handler。"
+      }
+    },
+    {
+      "id": "plugin-authoring",
+      "name": "插件工坊",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "plugin-authoring",
+          "插件工坊",
+          "插件开发",
+          "编写插件",
+          "安装插件"
+        ],
+        "extensions": [],
+        "summary": "按 aide 插件协议制作、检查和打包插件；管理插件与引用的变更先形成待确认提案。"
+      }
+    },
+    {
+      "id": "skill",
+      "name": "技能库 / Skill Library",
+      "version": "1.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "skill",
+          "技能库 / skill library",
+          "技能"
+        ],
+        "extensions": [],
+        "summary": "按任务寻找公开 GitHub Skill，校验缓存并准备为只读引用；保留原有引用权限和管理确认。"
+      }
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite 数据库",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "sqlite",
+          "sqlite 数据库",
+          "数据库",
+          "sql"
+        ],
+        "extensions": [
+          ".sqlite",
+          ".db"
+        ],
+        "summary": "基于 node:sqlite 的数据库工具：参数化查询、事务、脚本、结构与 CSV/备份导出；查询默认只读，事务和脚本默认可写。"
+      }
+    },
+    {
+      "id": "starlink",
+      "name": "StarLink · 星图查询",
+      "version": "0.1.4",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "starlink",
+          "starlink · 星图查询"
+        ],
+        "extensions": [],
+        "summary": "供 Aide AI 调用的只读星图查询：摘要、标题/函数声明搜索、源行号与关系路径；无独立界面。"
+      }
+    },
+    {
+      "id": "subagent",
+      "name": "子代理",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "subagent",
+          "子代理"
+        ],
+        "extensions": [],
+        "summary": "DSH subagent 能力预设：注册子代理工具与面板声明；当前未实现子代理调度或结果回收 handler。"
+      }
+    },
+    {
+      "id": "terminal",
+      "name": "设备终端工作台",
+      "version": "1.5.1",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "terminal",
+          "设备终端工作台",
+          "终端",
+          "ssh",
+          "tcp",
+          "udp",
+          "串口",
+          "serial",
+          "设备调试",
+          "中继"
+        ],
+        "extensions": [],
+        "summary": "1.5.1 预发布 · 移除RDP/VNC，恢复原Shell/SSH、TCP/UDP/串口工作台；保留加密中继、日志、可见性及重新连接。"
+      }
+    },
+    {
+      "id": "todo",
+      "name": "任务清单",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "todo",
+          "任务清单",
+          "待办"
+        ],
+        "extensions": [],
+        "summary": "DSH todo 能力预设：注册任务清单工具与面板声明；当前未实现任务查询或状态更新 handler。"
+      }
+    },
+    {
+      "id": "workflow",
+      "name": "工作流",
+      "version": "1.0.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "workflow",
+          "工作流"
+        ],
+        "extensions": [],
+        "summary": "DSH workflow 能力预设：注册工作流工具与面板声明；当前未实现工作流执行或进度查询 handler。"
+      }
+    },
+    {
+      "id": "pjplan",
+      "name": "PjPlan 项目文档 · 商业版筹备",
+      "version": "3.1.0",
+      "distribution": "private",
+      "routing": {
+        "keywords": [
+          "pjplan",
+          "pjplan 项目文档 · 商业版筹备"
+        ],
+        "extensions": [],
+        "summary": "按真实产品和模块编号规划项目文档命名、修订与 Office 生成参数。后续商业版私有交付，当前仅展示，不开放销售。"
+      }
+    }
+  ]
+}
