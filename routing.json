@@ -5,7 +5,7 @@
     {
       "id": "almanac",
       "name": "黄历",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -18,7 +18,7 @@
           "万年历"
         ],
         "extensions": [],
-        "summary": "独立公历、农历与黄历工作台：月历、节气、节日、每日宜忌及 Aide 只读日/月查询，离线运行。"
+        "summary": "公历、农历与传统黄历：月历、节气、节日、每日宜忌及 Aide 只读查询"
       }
     },
     {
@@ -82,7 +82,7 @@
     {
       "id": "current-time",
       "name": "当前日期时间",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -146,7 +146,7 @@
     {
       "id": "lunar-calendar",
       "name": "农历日历",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -157,7 +157,7 @@
           "节气"
         ],
         "extensions": [],
-        "summary": "查询今天或指定公历日期对应的中国农历日期、闰月、干支和生肖"
+        "summary": "官方历表离线农历换算与月历工作台，1901–2099年、闰月、干支生肖及来源信息"
       }
     },
     {
