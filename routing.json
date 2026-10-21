@@ -359,6 +359,34 @@
         "extensions": [],
         "summary": "按真实产品和模块编号规划项目文档命名、修订与 Office 生成参数。后续商业版私有交付，当前仅展示，不开放销售。"
       }
+    },
+    {
+      "id": "compare",
+      "name": "Compare · 商业筹备中",
+      "version": "0.3.3",
+      "distribution": "private",
+      "routing": {
+        "keywords": [
+          "compare",
+          "compare · 商业筹备中"
+        ],
+        "extensions": [],
+        "summary": "本地文件、目录、Git、图片与文档比较，提供可复核报告。闭源二进制商业版筹备中，当前仅展示。"
+      }
+    },
+    {
+      "id": "professional-project",
+      "name": "ProfessionalProject · 商业筹备中",
+      "version": "0.4.9",
+      "distribution": "private",
+      "routing": {
+        "keywords": [
+          "professional-project",
+          "professionalproject · 商业筹备中"
+        ],
+        "extensions": [],
+        "summary": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。闭源二进制商业版筹备中，当前仅展示。"
+      }
     }
   ]
 }

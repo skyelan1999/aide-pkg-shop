@@ -1,0 +1,43 @@
+{
+  "id": "compare",
+  "kind": "plugin",
+  "name": "Compare · 商业筹备中",
+  "description": "本地文件、目录、Git、图片与文档比较，提供可复核报告。闭源二进制商业版筹备中，当前仅展示。",
+  "version": "0.3.3",
+  "author": "skyelan1999",
+  "category": "utilities",
+  "icon": "utilities",
+  "distribution": "private",
+  "commerce": {
+    "status": "coming_soon",
+    "model": "perpetual-major",
+    "priceLabel": "价格待公布",
+    "publicKeys": {}
+  },
+  "minAideVersion": "0.1.17.3 RC1",
+  "platforms": [
+    "linux"
+  ],
+  "dependencies": [
+    "Linux ARM64 / AMD64 Aide 执行环境",
+    "Git；PDF 文本提取需要 Python 3 与 pypdf"
+  ],
+  "features": [
+    "private-plugin-v1"
+  ],
+  "permissions": "只读访问 Aide 已授权的工作区与引用；导出文件沿用宿主保存流程。",
+  "trustNotice": "仅登记商业筹备状态；未开放销售、授权安装或下载。安装包、核心源码和客户许可证不上传公开市场。",
+  "license": "Proprietary；商业许可条款待公布",
+  "readme": "商业版采用闭源编译核心，计划支持 Linux ARM64 和 AMD64。版本号标识当前技术基线，不代表已正式发售。市场仅展示元数据，不托管安装包，不提供购买或下载入口。正式交付方式、价格与授权条款确定后另行公布。",
+  "screenshots": [],
+  "changelog": "登记为商业筹备中；未上传任何安装包或下载链接。",
+  "source": "https://github.com/skyelan1999/aide-pkg-Compare",
+  "routing": {
+    "keywords": [
+      "compare",
+      "compare · 商业筹备中"
+    ],
+    "extensions": [],
+    "summary": "本地文件、目录、Git、图片与文档比较，提供可复核报告。闭源二进制商业版筹备中，当前仅展示。"
+  }
+}
