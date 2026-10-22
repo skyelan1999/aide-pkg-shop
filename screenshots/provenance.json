@@ -1,0 +1,68 @@
+{
+  "description": "Unmodified public workbench screenshots mirrored for compatibility with existing Aide market URL validation. No installation packages are included.",
+  "sources": [
+    {
+      "id": "almanac",
+      "source": "https://github.com/skyelan1999/aide-pkg-almanac/tree/c42b56e8a384e113d5f3533e182cc04e0bb09996",
+      "commit": "c42b56e8a384e113d5f3533e182cc04e0bb09996",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-almanac/blob/c42b56e8a384e113d5f3533e182cc04e0bb09996/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/almanac/comfort-light-1440.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-almanac/c42b56e8a384e113d5f3533e182cc04e0bb09996/docs/evidence/comfort-light-1440.png",
+          "sha256": "3577b230a0df1e78319a2c29c5061361657613fa6ad894a3f0f3207a35167218",
+          "bytes": 122907
+        },
+        {
+          "path": "screenshots/almanac/comfort-dark-390.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-almanac/c42b56e8a384e113d5f3533e182cc04e0bb09996/docs/evidence/comfort-dark-390.png",
+          "sha256": "0c6a8c2a5b926b25c75acf6390d20bdbb959f57ec764a444fd19d8c393d12582",
+          "bytes": 54632
+        }
+      ]
+    },
+    {
+      "id": "current-time",
+      "source": "https://github.com/skyelan1999/aide-pkg-CurrentTime/tree/1f8098ff1ba6384e917df5b5b417978f01780c22",
+      "commit": "1f8098ff1ba6384e917df5b5b417978f01780c22",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CurrentTime/blob/1f8098ff1ba6384e917df5b5b417978f01780c22/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/current-time/comfort-light-1440.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CurrentTime/1f8098ff1ba6384e917df5b5b417978f01780c22/docs/evidence/comfort-light-1440.png",
+          "sha256": "bd16daad2d24e3243a5801518aa5dbe8d06a3d5c58f8608809a1290102012d52",
+          "bytes": 108487
+        },
+        {
+          "path": "screenshots/current-time/comfort-dark-390.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CurrentTime/1f8098ff1ba6384e917df5b5b417978f01780c22/docs/evidence/comfort-dark-390.png",
+          "sha256": "0832c2417e31eb93ea0ad9e66922b61db76944e27fdbfea929e729758d926466",
+          "bytes": 58288
+        }
+      ]
+    },
+    {
+      "id": "lunar-calendar",
+      "source": "https://github.com/skyelan1999/aide-pkg-LunarCalendar/tree/983384b311ee26c51a7ac352ef0169c61e49d589",
+      "commit": "983384b311ee26c51a7ac352ef0169c61e49d589",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-LunarCalendar/blob/983384b311ee26c51a7ac352ef0169c61e49d589/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/lunar-calendar/comfort-light-1440.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-LunarCalendar/983384b311ee26c51a7ac352ef0169c61e49d589/docs/evidence/comfort-light-1440.png",
+          "sha256": "5073a531056a716261d863b40277693ea29f05c94b2bfc0e2e581d2817842b34",
+          "bytes": 94192
+        },
+        {
+          "path": "screenshots/lunar-calendar/comfort-dark-390.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-LunarCalendar/983384b311ee26c51a7ac352ef0169c61e49d589/docs/evidence/comfort-dark-390.png",
+          "sha256": "cf16bf478c192118502098cf1bdf1726cf835e3bf322adcc9bbd20a568a06650",
+          "bytes": 52827
+        }
+      ]
+    }
+  ]
+}
