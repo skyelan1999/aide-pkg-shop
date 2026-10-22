@@ -102,3 +102,7 @@ Office 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-off
 每次构建目录会为所有上架插件生成 `routing` 元数据及独立 `routing.json`，包含关键词、扩展名和精简能力摘要。上架可在 listing 中显式提供 `routing:{keywords:[...],extensions:[...],summary:"..."}`；没有提供时由 ID、名称及已有场景映射生成。修改 listing 后重新运行 `build_catalog.py` 构建目录和索引；`python3 scripts/routing.py` 可为现有目录补齐索引。`verify_catalog.py` 拒绝过期索引，Pages 同时发布索引。信息仅是匹配数据，不携带脚本或执行授权。
 
 支持插件路由接口的新 Aide 会默认下载验证后的目录，在本地匹配需求，只将相关插件工具交给模型。缺少插件时 `route_plugins` 可推荐；宿主用户开启自动安装后，才允许安装匹配且尚未安装的官方公开兼容插件。不购买私有包、不升级或启用用户停用的插件，也不改变工具执行权限。旧宿主可照常浏览安装，不能仅更新商店获得宿主路由功能。
+
+## 截图地址兼容性
+
+市场截图使用本仓库的固定 commit 原始文件地址，以兼容已发布 Aide 的截图域与仓库限制。公开插件截图的未修改副本保存在 `screenshots/<plugin-id>/`，来源 commit、原始地址、SHA-256 和许可证见 `screenshots/provenance.json` 与各目录的 `LICENSE`。更新截图时先提交图片，再以该 commit 更新 listing；随后重建目录并运行 `python3 scripts/test_public_catalog.py`、`python3 scripts/verify_catalog.py`。商业插件仍仅展示筹备元数据，不上传安装包。
