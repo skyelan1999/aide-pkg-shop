@@ -373,6 +373,24 @@
       }
     },
     {
+      "id": "tts-tools",
+      "name": "TTS Tools · 语音文件生成",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "TTS",
+          "MP3",
+          "WAV",
+          "speech generation",
+          "voiceover",
+          "Qwen Audio"
+        ],
+        "extensions": [],
+        "summary": "将明确文案合成为可下载的 MP3/WAV，独立选择模型与音色，不改变助理默认朗读。"
+      }
+    },
+    {
       "id": "workflow",
       "name": "工作流",
       "version": "1.0.0",

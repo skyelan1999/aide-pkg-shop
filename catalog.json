@@ -920,6 +920,51 @@
       }
     },
     {
+      "id": "tts-tools",
+      "kind": "plugin",
+      "name": "TTS Tools · 语音文件生成",
+      "description": "将明确文案合成为可下载的 MP3/WAV，独立选择模型与音色，不改变助理默认朗读。",
+      "version": "0.1.0",
+      "author": "skyelan1999",
+      "category": "creation",
+      "icon": "workspace",
+      "package": "packages/tts-tools/0.1.0-a42b4cbab8aa.zip",
+      "sha256": "a42b4cbab8aaf9929d307133e202c8eea14c8f4fa460d4259fd04876e350b515",
+      "bytes": 2964,
+      "minAideVersion": "0.1.17.5 RC4",
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "dependencies": [
+        "Requires Aide 0.1.17.5 RC4 or an equivalent TTS Tools host bridge.",
+        "Requires a configured supported Qwen TTS model and provider key in Aide.",
+        "Auto model selection requires optional AutoAiModelRouter; explicit model selection works independently."
+      ],
+      "permissions": "插件不保存或读取 API Key；相关提供商请求和凭证由 Aide 主程序管理。",
+      "trustNotice": "公开 MIT 插件；摘要用于包完整性核对，不代表发布者签名或权限沙箱。",
+      "features": [],
+      "source": "https://github.com/skyelan1999/aide-pkg-TTSTools/tree/a5774b4af5ea9d1eedc6f2c8b1f3ce74d2acc42b",
+      "license": "MIT",
+      "readme": "# TTS Tools · 语音文件生成\n\n为 Aide 的 AI 对话提供 `tts_voices`、`tts_generate` 工具。默认 TTS 保持用于助理朗读；本插件专门生成可下载的 MP3/WAV 音频文件，不改变默认提供商、音色或朗读配置。\n\n需要 Aide 0.1.17.5 RC4 或具有 TTS Tools 桥接的宿主。选择已配置的非实时 Qwen-Audio-TTS 3.0/3.1 flash/plus 模型，使用模型提供商保险库中的 API Key。插件不接触密钥、不自行联网。未指定模型时需要启用支持 speech 输出评分的 AutoAiModelRouter 0.1.2；显式指定模型时不需要路由插件。账户开通、地域与配额仍以实际调用为准。\n\n示例：`请使用 tts_generate 把“你好，测试成功。”生成 MP3。` 文案最长 600 字；可指定模型、官方系统音色 ID、mp3/wav。文件保存在 `generated/speech/`。同一任务只生成一份音频；提交状态不明确时不自动重新收费生成。当前不支持声音复刻、实时麦克风或批量音频。read-only 沙箱不执行生成写入。旧宿主明确报版本不支持，不伪造音频或把文字文件改名为 MP3。\n\n官方协议：https://help.aliyun.com/zh/model-studio/qwen-audio-tts-http-api\n\nMIT License，见 LICENSE。\n",
+      "screenshots": [],
+      "changelog": "Initial independent MP3/WAV generation tools; preserves assistant read-aloud settings.",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "TTS",
+          "MP3",
+          "WAV",
+          "speech generation",
+          "voiceover",
+          "Qwen Audio"
+        ],
+        "extensions": [],
+        "summary": "将明确文案合成为可下载的 MP3/WAV，独立选择模型与音色，不改变助理默认朗读。"
+      }
+    },
+    {
       "id": "workflow",
       "kind": "plugin",
       "name": "工作流",
