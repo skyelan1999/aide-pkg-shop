@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "ba57cb6a977971c6e532900de396b142916d00a5",
+  "sourceCommit": "b0d3a5c0098f76952c54af27d1f449670abc3823",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -65,7 +65,7 @@
     {
       "id": "auto-ai-model-router",
       "name": "AutoAiModelRouter",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -74,10 +74,14 @@
           "自动选模",
           "路由",
           "模型",
-          "能力"
+          "能力",
+          "image generation",
+          "video generation",
+          "speech generation",
+          "MP3"
         ],
         "extensions": [],
-        "summary": "离线模型能力档案，新增千问 3.5–3.8 主流文本及视觉模型。"
+        "summary": "按文本角色及图片、视频、语音输出能力，为已配置模型提供离线评分与原生适配路由。"
       }
     },
     {
