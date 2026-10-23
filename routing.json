@@ -1,7 +1,25 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "2985453d014f85ee08420112947405f8c360aac8",
+  "sourceCommit": "ba57cb6a977971c6e532900de396b142916d00a5",
   "plugins": [
+    {
+      "id": "ali-bailian-supporter",
+      "name": "ALiBaiLianSupporter",
+      "version": "0.1.2",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "百炼",
+          "千问",
+          "计价",
+          "RAM",
+          "余额",
+          "workspace"
+        ],
+        "extensions": [],
+        "summary": "北京官方刊例价、业务空间匹配及只读 RAM 费用账户查询声明。"
+      }
+    },
     {
       "id": "almanac",
       "name": "黄历",
@@ -42,6 +60,24 @@
           ".gz"
         ],
         "summary": "在当前工作区创建和安全解压 ZIP、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 归档。"
+      }
+    },
+    {
+      "id": "auto-ai-model-router",
+      "name": "AutoAiModelRouter",
+      "version": "0.1.1",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "千问",
+          "Qwen",
+          "自动选模",
+          "路由",
+          "模型",
+          "能力"
+        ],
+        "extensions": [],
+        "summary": "离线模型能力档案，新增千问 3.5–3.8 主流文本及视觉模型。"
       }
     },
     {
