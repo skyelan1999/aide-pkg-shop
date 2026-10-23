@@ -10,24 +10,25 @@
   "package": "packages/auto-ai-model-router/0.1.2-8418518ccc48.zip",
   "sha256": "8418518ccc48fd154d3b579293513bb439ec2d4150ec282ed8fee8ae93ab2060",
   "bytes": 7866,
-  "minAideVersion": "0.1.17.5 RC4",
+  "minAideVersion": "0.1.17.5 RC5",
   "platforms": [
     "windows",
     "macos",
     "linux"
   ],
   "dependencies": [
-    "Requires Aide 0.1.17.5 RC4 or an equivalent media-routing host.",
+    "Requires Aide 0.1.17.5 RC5 or an equivalent media-routing host.",
     "Configured models and vault keys are managed by Aide; account activation is verified by actual calls.",
     "Speech file generation requires the separately installed optional TTS Tools plugin; assistant default TTS is independent.",
-    "Ratings are maintainer heuristics, not measured rankings or a guarantee of multiple vendors participating."
+    "Ratings are maintainer heuristics, not measured rankings or a guarantee of multiple vendors participating.",
+    "RC5 is the first published core host for these adapters; the earlier RC4 tag was not released."
   ],
   "permissions": "插件不保存或读取 API Key；相关提供商请求和凭证由 Aide 主程序管理。",
   "trustNotice": "公开 MIT 插件；摘要用于包完整性核对，不代表发布者签名或权限沙箱。",
   "features": [],
   "source": "https://github.com/skyelan1999/aide-pkg-AutoAiModelRouter/tree/9e7878109d80f317f526109f406cc65e85886352",
   "license": "MIT",
-  "readme": "# AutoAiModelRouter 0.1.2\n\n 媒体输出路由（需要 Aide 0.1.17.5 RC4 或同等宿主实现）\n\n图片、视频、语音使用独立 `output` 能力和同名权重（1–5），不从图片输入能力推断生成能力。当前档案覆盖 Qwen Image 3.0/2.1、Wan2.7 文生视频与 Qwen-Audio-TTS 3.0/3.1。评分是维护者基于能力和速度的启发式，不是跨厂商官方排名。只筛选用户已配置的精确模型及有密钥的提供商；档案中存在模型不代表账户已开通。\n\n宿主负责接口、凭证、任务恢复和文件保存；插件仍只提供离线档案。原生生成不进入多轮文本规划；视频保留远端任务 ID 后轮询。语音文案请明确给出，例如 `生成 MP3，内容：你好，测试成功。`，生成文件可下载。现有朗读设置的旧 Qwen-TTS WAV 接口保持独立。新版本不可用时可以保留已安装的 0.1.1，已有发布附件不会覆盖。\n\n\nSpeech file generation requires optional TTS Tools. Earlier releases remain immutable.\n\n[Source](https://github.com/skyelan1999/aide-pkg-AutoAiModelRouter/tree/9e7878109d80f317f526109f406cc65e85886352)",
+  "readme": "# AutoAiModelRouter 0.1.2\n\n 媒体输出路由（需要 Aide 0.1.17.5 RC5 或同等宿主实现）\n\n图片、视频、语音使用独立 `output` 能力和同名权重（1–5），不从图片输入能力推断生成能力。当前档案覆盖 Qwen Image 3.0/2.1、Wan2.7 文生视频与 Qwen-Audio-TTS 3.0/3.1。评分是维护者基于能力和速度的启发式，不是跨厂商官方排名。只筛选用户已配置的精确模型及有密钥的提供商；档案中存在模型不代表账户已开通。\n\n宿主负责接口、凭证、任务恢复和文件保存；插件仍只提供离线档案。原生生成不进入多轮文本规划；视频保留远端任务 ID 后轮询。语音文案请明确给出，例如 `生成 MP3，内容：你好，测试成功。`，生成文件可下载。现有朗读设置的旧 Qwen-TTS WAV 接口保持独立。新版本不可用时可以保留已安装的 0.1.1，已有发布附件不会覆盖。\n\n\nSpeech file generation requires optional TTS Tools. Earlier releases remain immutable.\n\n[Source](https://github.com/skyelan1999/aide-pkg-AutoAiModelRouter/tree/9e7878109d80f317f526109f406cc65e85886352)",
   "screenshots": [],
   "changelog": "Adds independent image/video/speech output scores and native single-shot host dispatch.",
   "distribution": "public",
