@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Aide 官方插件市场",
-  "sourceCommit": "ba57cb6a977971c6e532900de396b142916d00a5",
+  "sourceCommit": "b0d3a5c0098f76952c54af27d1f449670abc3823",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -149,14 +149,14 @@
       "id": "auto-ai-model-router",
       "kind": "plugin",
       "name": "AutoAiModelRouter",
-      "description": "离线模型能力档案，新增千问 3.5–3.8 主流文本及视觉模型。",
-      "version": "0.1.1",
+      "description": "按文本角色及图片、视频、语音输出能力，为已配置模型提供离线评分与原生适配路由。",
+      "version": "0.1.2",
       "author": "skyelan1999",
       "category": "workspace",
       "icon": "workspace",
-      "package": "packages/auto-ai-model-router/0.1.1-483d3d640d72.zip",
-      "sha256": "483d3d640d72e5c607ac853988d5c59f12aa1fcc6c4092e4cf6c23f4e33b7895",
-      "bytes": 6883,
+      "package": "packages/auto-ai-model-router/0.1.2-8418518ccc48.zip",
+      "sha256": "8418518ccc48fd154d3b579293513bb439ec2d4150ec282ed8fee8ae93ab2060",
+      "bytes": 7866,
       "minAideVersion": "0.1.17.5 RC4",
       "platforms": [
         "windows",
@@ -164,19 +164,19 @@
         "linux"
       ],
       "dependencies": [
-        "按独立子任务与阶段选择已配置模型，模型 API Key 由 Aide 管理。",
-        "权重是维护者路由启发式，不是实测排行榜。",
-        "图像生成、Realtime、ASR 和 TTS 专有协议不进入普通任务路由。",
-        "需要 Aide 0.1.17.5 RC4 或包含相同宿主适配的更新构建。"
+        "Requires Aide 0.1.17.5 RC4 or an equivalent media-routing host.",
+        "Configured models and vault keys are managed by Aide; account activation is verified by actual calls.",
+        "Speech file generation requires the separately installed optional TTS Tools plugin; assistant default TTS is independent.",
+        "Ratings are maintainer heuristics, not measured rankings or a guarantee of multiple vendors participating."
       ],
       "permissions": "插件不保存或读取 API Key；相关提供商请求和凭证由 Aide 主程序管理。",
       "trustNotice": "公开 MIT 插件；摘要用于包完整性核对，不代表发布者签名或权限沙箱。",
       "features": [],
-      "source": "https://github.com/skyelan1999/aide-pkg-AutoAiModelRouter/tree/2feef5a3c17cdb02e342016ec29971c232c0672d",
+      "source": "https://github.com/skyelan1999/aide-pkg-AutoAiModelRouter/tree/9e7878109d80f317f526109f406cc65e85886352",
       "license": "MIT",
-      "readme": "# AutoAiModelRouter\n\nMIT 开源 Aide 模型自动选型插件。安装并启用后，在普通会话/AI工作流的模型列表顶部显示 **Auto**。选中后按编排角色与独立子任务，从你已经配置的模型与 API 地址中选择适配者。\n\n## 使用\n\n1. Aide 宿主必须含 `modelRouter` protocol 1 扩展。**已公开的 v0.1.17.5-RC3 及更早发行包尚不含此扩展**。宿主源码 [0dd0f05d](https://github.com/skyelan1999/aide/commit/0dd0f05d346ec4d243150d833f91182177f212c9) 已实现并验收 protocol 1；使用该提交或后续包含它的宿主源码/候选版本。旧宿主即使导入插件也不会出现 Auto；不会伪造接入成功。\n2. 在 Aide 模型设置配置模型、厂商兼容地址及密钥。宿主当前支持 **OpenAI-compatible Chat Completions**；Anthropic/Gemini 可使用兼容网关，不表示已实现它们的原生 Messages/generateContent 协议。\n3. `npm run pack` 生成 `dist/aide-pkg-auto-ai-model-router-v0.1.0.zip`，从插件面板上传 ZIP 并启用。\n4. 打开模型列表，在最上方选择 Auto。左侧的参数策略“自动路由”与此独立；选择普通模型即可退出 Auto。选择按会话保存，不改变其他会话。\n5. 1X 不额外拆并发，按规划、执行、审核等请求边界选型；2/3/4/5/10X 沿用宿主独立子分析机制，每个分路可分配不同模型/地址/密钥，由主任务统一核验并回答。倍率表示并发上限，不保证线性加速。小秘仍使用其独立模型设置，不显示 Auto。\n\n## 离线能力档案\n\n`capabilities.json` 是 2026-10-22 核对的固定快照。支持 DeepSeek Flash 系列官方 API 名称及兼容别名、Claude Sonnet 4.6、GPT-5.4、Gemini 3.1 Pro Preview。每个条目含官方来源 URL、核对日期、支持能力和上下文上限；**适配权重是维护者启发式，不是官方统一分数，也不代表跨厂商评测可以直接比较**。只保存事实摘要，不分发官方报告全文、图表或模型权重。\n\n运行不抓取来源、不探测远端模型、不上传能力目录，也不联网更新。实际模型调用仍使用你设置的 API。API 别名可能在官方服务端变化，快照不会自动感知变化；更新档案需安装新插件版本。自部署同名模型并不保证等同官方 API 的当前服务版本。\n\n精确匹配实际 API 模型 ID，忽略大小写和明确的厂商命名空间（openai/anthropic/google/deepseek）；不凭显示名或模糊子串猜测。未知型号保留手动回退模型，并记录原因。自定义部署名称可在插件设置显式映射，例如：\n\n```json\n{\"preference\":\"quality\",\"aliases\":{\"my-sonnet-deployment\":\"claude-sonnet-4-6\"}}\n```\n\n`quality` 优先任务适配，`balanced` 兼顾快档，`fast` 优先快档。速度权重属于相对档位，不是实时延迟测量；不预置会过时的价格或保证最低成本。\n\n模型必须已经配置、提供商可解析、凭据可读取且满足本次窗口/图片/工具/结构化输出要求。宿主明确标记不支持的能力优先于档案；图片还要求宿主模型设置确认支持。实际可用窗口取宿主配置与档案上限的较小者，未配置窗口按宿主默认65536。没有候选保留原模型；API失败不静默轮试其他模型。Auto 的已知请求样式会适配输出上限和推理字段：GPT推理模型使用 max_completion_tokens，不发送 DeepSeek thinking 或不兼容的采样/stop；通用兼容网关保守省略厂商推理扩展，具体推理强度取网关默认。手动模型调用保持宿主既有行为。\n\n禁用、卸载、档案损坏或多个路由扩展冲突会停止自动选型；当前已在发送的请求按宿主取消规则处理。插件不管理密钥、不修改 API 地址、不扩大工具/审批权限。多路分析不执行工具；主任务写入仍走原审批。路由记录仅含模型、提供商标识、角色和原因，最多64条，不存密钥。\n\n## 开发与验收\n\n`npm test` 检查包声明、离线档案的出处/别名唯一性与可加载入口。宿主配套 Go 测试验证跨两个独立 HTTP 地址真实重叠、各自认证、逐阶段选择、能力约束和停用回退；模拟 API 不是厂商付费调用验收。浏览器验收与实际运行/发布状态见配套 Aide 任务 `auto-ai-model-router-20261022`。\n\n源码 MIT；官方名称、能力声明及链接归各自提供商，不表示其背书本插件。\n\n## 发行状态\n\n`v0.1.0` 为 MIT 源码插件的预发布，明确依赖上述尚未进入公开 Aide 发行包的宿主扩展。插件与宿主源码推送、插件 ZIP 发行、Aide 完整包发行和生产部署为独立状态；安装 ZIP 不会自动升级宿主。\n\n### 0.1.1\nAdds eight sourced Qwen 3.5–3.8 mainstream text/vision profiles. Image, Realtime, embedding and speech-only models stay outside generic task routing. Weights are maintainer heuristics, not measured benchmark scores. DashScope reasoning fields are applied by the Aide host after routing.\n\n\n当前选型使用静态角色权重和默认模型优先项，不保证多模型同时参与；尚未依据实际成功率、实时延迟或失败动态重评分。",
+      "readme": "# AutoAiModelRouter 0.1.2\n\n 媒体输出路由（需要 Aide 0.1.17.5 RC4 或同等宿主实现）\n\n图片、视频、语音使用独立 `output` 能力和同名权重（1–5），不从图片输入能力推断生成能力。当前档案覆盖 Qwen Image 3.0/2.1、Wan2.7 文生视频与 Qwen-Audio-TTS 3.0/3.1。评分是维护者基于能力和速度的启发式，不是跨厂商官方排名。只筛选用户已配置的精确模型及有密钥的提供商；档案中存在模型不代表账户已开通。\n\n宿主负责接口、凭证、任务恢复和文件保存；插件仍只提供离线档案。原生生成不进入多轮文本规划；视频保留远端任务 ID 后轮询。语音文案请明确给出，例如 `生成 MP3，内容：你好，测试成功。`，生成文件可下载。现有朗读设置的旧 Qwen-TTS WAV 接口保持独立。新版本不可用时可以保留已安装的 0.1.1，已有发布附件不会覆盖。\n\n\nSpeech file generation requires optional TTS Tools. Earlier releases remain immutable.\n\n[Source](https://github.com/skyelan1999/aide-pkg-AutoAiModelRouter/tree/9e7878109d80f317f526109f406cc65e85886352)",
       "screenshots": [],
-      "changelog": "新增八个千问文本/视觉模型能力档案；保留既有路由协议和 MIT 许可。",
+      "changelog": "Adds independent image/video/speech output scores and native single-shot host dispatch.",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -185,10 +185,14 @@
           "自动选模",
           "路由",
           "模型",
-          "能力"
+          "能力",
+          "image generation",
+          "video generation",
+          "speech generation",
+          "MP3"
         ],
         "extensions": [],
-        "summary": "离线模型能力档案，新增千问 3.5–3.8 主流文本及视觉模型。"
+        "summary": "按文本角色及图片、视频、语音输出能力，为已配置模型提供离线评分与原生适配路由。"
       }
     },
     {
