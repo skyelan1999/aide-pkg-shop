@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "b0d3a5c0098f76952c54af27d1f449670abc3823",
+  "sourceCommit": "4fc95878f3bff27735f7b1c3c5ff5d22b5d0dbb3",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -319,6 +319,29 @@
         ],
         "extensions": [],
         "summary": "供 Aide AI 调用的只读星图查询：摘要、标题/函数声明搜索、源行号与关系路径；无独立界面。"
+      }
+    },
+    {
+      "id": "step-viewer",
+      "name": "STEP Viewer",
+      "version": "0.1.1",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "STEP",
+          "STP",
+          "CAD",
+          "三维",
+          "装配",
+          "爆炸图",
+          "测量",
+          "OpenCascade"
+        ],
+        "extensions": [
+          ".stp",
+          ".step"
+        ],
+        "summary": "STEP/STP 本地只读预览、装配爆炸图与测量，CAD 引擎按需下载。"
       }
     },
     {
