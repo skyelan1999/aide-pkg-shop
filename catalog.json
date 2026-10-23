@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Aide 官方插件市场",
-  "sourceCommit": "4fc95878f3bff27735f7b1c3c5ff5d22b5d0dbb3",
+  "sourceCommit": "62daea203c58d761c0894ff4b56b817fbb881efa",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -1016,6 +1016,73 @@
         ],
         "extensions": [],
         "summary": "将明确文案合成为可下载的 MP3/WAV，独立选择模型与音色，不改变助理默认朗读。"
+      }
+    },
+    {
+      "id": "video-preview",
+      "kind": "plugin",
+      "name": "Video Preview · 视频预览",
+      "description": "优先剪辑工程的轨道与素材索引，视频、字幕、截帧和本地 FFmpeg 兼容预览。",
+      "version": "0.1.0",
+      "author": "skyelan1999",
+      "category": "creation",
+      "icon": "workspace",
+      "package": "packages/video-preview/0.1.0-652e923f0a61.zip",
+      "sha256": "652e923f0a6158681974486b91dfafe2723b8ce18de325de208be9bee31ce396",
+      "bytes": 45079,
+      "minAideVersion": "0.1.17.5 RC6",
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "dependencies": [
+        "Requires Aide 0.1.17.5 RC6 with Blob media CSP and bound-document protocol1.",
+        "Optional precompiled Linux ARM64/AMD64 FFmpeg engine downloads explicitly; approximately8MB, no local compilation.",
+        "FFmpeg engine GPL-2.0-or-later; complete corresponding source and original licenses accompany its release."
+      ],
+      "permissions": "读取当前绑定工程及用户点击的相对素材；可选引擎仅在明确安装时联网下载。视频在本地生成兼容副本，不修改原文件。",
+      "trustNotice": "MIT包装器；独立FFmpeg/x264引擎遵循GPL-2.0-or-later。Node插件在宿主执行，摘要不是权限沙箱。",
+      "features": [],
+      "source": "https://github.com/skyelan1999/aide-pkg-VideoPreview/tree/3935bcde407a85be372909f9fabca697b2da151c",
+      "license": "MIT wrapper; optional engine GPL-2.0-or-later",
+      "readme": "# Video Preview · 视频预览\n\nPublic, independent, read-only Aide plugin focused on **editing project files first**, with browser-native video playback alongside the project index. MIT wrapper; see [third-party notices](THIRD_PARTY_NOTICES.md). No codec engine is bundled in the plugin or default Aide image. An explicitly installed, precompiled FFmpeg engine is available separately.\n\n## Project support in 0.1.0\n\n| Format | Implemented boundary |\n|---|---|\n| `.otio` | Track/clip index, source ranges, external-media references; basic sequential cuts/gaps. No transition/effect compositing. |\n| `.fcpxml` | Asset references, projects, raw lane/offset/duration index. Nested/retimed structures are not flattened. |\n| Final Cut 7 / Premiere `.xml`, `.xmeml` | `xmeml` clip timing and external-file index. |\n| Jianying/CapCut `.json` draft | Unencrypted materials/tracks/segments, microsecond target ranges. Ordinary JSON is rejected and returned to the native viewer. |\n| `.kdenlive`, `.mlt` | MLT producer resources, playlist entries and blanks, profile rate. Not tractor compositing. |\n| `.prproj` | XML or gzip XML media/sequence index only; private object/tick timeline is not guessed. Export FCP XML/OTIO for a useful timing index. |\n| `.drp` | ZIP directory inspection only; proprietary Resolve timelines are not decoded. |\n| `.aep`, `.veg` | Recognized handoff/error guidance; no binary project decoder. Export an interchange format from the editor. |\n\nProject inspection is not a rendered edit. Color grading, titles, masks, effects, plugins, nested timelines and speed ramps require the original editor/exported proxy. This version does not produce a composited movie from a project.\n\n## Video tools\n\nMP4/MOV/WebM and other registered extensions are offered to browser-native decoding. Support depends on actual container + codecs and browser/OS; registration does not guarantee playback. Playback/seek, 0.25–3x speed, A/B looping, approximate frame stepping with configurable reference fps, PNG frame export through the host’s top Save button, rotate/fit, local SRT/WebVTT and subtitle offset, and browser-available PiP/fullscreen. The current iframe/host may deny PiP/fullscreen. Screenshots capture the decoded original frame, not CSS rotation or subtitle overlays.\n\nSame-directory descendant media references can be read through Aide's bound document bridge on explicit click. Absolute paths, network URLs, parent paths and Windows paths are displayed but not followed. “关联本地视频” allows manual read-only browser selection. No automatic filesystem scan, network asset fetch, original-file editing or content upload. Missing/unreachable files are reported after a requested read; untested references remain **unverified**.\n\nLimits: 16 MiB project input/decompressed XML, 2 MiB JSON bridge output, 128 MiB Aide-bound video (bounded in-memory blob), 512 MiB manually selected local video, 2 MiB subtitle, 12-second parser timeout. Archives are indexed, never extracted. Size checks are not a complete snapshot guarantee; reopen a project if it changes during reading. Completed parses are removed immediately; uploads older than 5 minutes are reclaimed on the next tool invocation.\n\n## Optional compatibility engine\n\nClick **安装兼容引擎** to download the matching Linux ARM64/AMD64 engine (about 8 MB, checksum verified). Aide Docker on macOS/Windows uses the same Linux engine; no local compilation is needed. Then select **生成兼容预览** for a local H.264/AAC MP4 copy. FFmpeg 9.0.2 with x264 supports common legacy containers/codecs, but damaged, encrypted/DRM and unusual profiles can still fail. The copy is limited to 720p, the first 5 minutes, 80 MiB and a 10-minute processing deadline; HDR/color fidelity is not preserved. Inputs are read only and never uploaded remotely. Only one conversion runs at once; loss of the UI connection cancels after 40 seconds. Cancel is explicit. Network protocols and playlist demuxers are disabled in the engine.\n\nEngine license is **GPL-2.0-or-later**, separate from the MIT wrapper. Original licenses, exact upstream sources, build scripts and actual ARM64/AMD64 configurations accompany the binaries on the [same Release](https://github.com/skyelan1999/aide-pkg-VideoPreview/releases/tag/v0.1.0). See [third-party notices](THIRD_PARTY_NOTICES.md). Engine cache is outside the core image at `~/.cache/aide-video-preview`; uninstalling the plugin does not remove that cache. Temporary source copies are reclaimed by the worker; completed proxies are bounded and reclaimed on subsequent conversions.\n\n## Install and build\n\nInstall the ZIP under Aide Plugins → Upload, enable, then open a supported file. **Requires Aide 0.1.17.5 RC6** (or a compatible host with bound-document protocol 1 and Blob media CSP); [host PR #47](https://github.com/skyelan1999/aide/pull/47) adds the required sandbox media support. Python 3 and Node are provided by Aide. Release/market availability is recorded in the release notes, separately from local tests. `scripts/package.py` builds the reproducible lightweight plugin ZIP, excluding engine binaries, source archives, tests and caches. A normal user does not compile anything.\n\n`python3 -m unittest discover -s tests -p '*test.py'`; `node --test tests/*.test.cjs`; `python3 scripts/package.py`.\n\nFormat references: [OTIO](https://opentimelineio.readthedocs.io/en/latest/), [FCPXML](https://developer.apple.com/documentation/professional-video-applications/fcpxml-reference), [MLT XML](https://www.mltframework.org/docs/mltxml/). These are independent adapters, not copied vendor SDKs. Packaged tests use synthetic fixtures. Additional public OTIO examples were tested locally without redistributing the samples; provenance is recorded in docs/verification.md.\n",
+      "screenshots": [],
+      "changelog": "First public project-first video preview with explicit optional FFmpeg engine, exact corresponding source, Safari playback/subtitles and verified PNG/index downloads.",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "视频",
+          "剪辑工程",
+          "字幕",
+          "截帧",
+          "FCPXML",
+          "OTIO",
+          "Premiere",
+          "剪映",
+          "CapCut",
+          "Kdenlive",
+          "FFmpeg"
+        ],
+        "extensions": [
+          ".prproj",
+          ".fcpxml",
+          ".otio",
+          ".drp",
+          ".kdenlive",
+          ".mlt",
+          ".xmeml",
+          ".mp4",
+          ".mov",
+          ".webm",
+          ".mkv",
+          ".m4v",
+          ".avi",
+          ".ts",
+          ".json",
+          ".xml"
+        ],
+        "summary": "只读剪辑工程索引、素材播放、字幕、截帧和可选本地兼容转码；不合成原生特效。"
       }
     },
     {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "4fc95878f3bff27735f7b1c3c5ff5d22b5d0dbb3",
+  "sourceCommit": "62daea203c58d761c0894ff4b56b817fbb881efa",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -411,6 +411,46 @@
         ],
         "extensions": [],
         "summary": "将明确文案合成为可下载的 MP3/WAV，独立选择模型与音色，不改变助理默认朗读。"
+      }
+    },
+    {
+      "id": "video-preview",
+      "name": "Video Preview · 视频预览",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "视频",
+          "剪辑工程",
+          "字幕",
+          "截帧",
+          "FCPXML",
+          "OTIO",
+          "Premiere",
+          "剪映",
+          "CapCut",
+          "Kdenlive",
+          "FFmpeg"
+        ],
+        "extensions": [
+          ".prproj",
+          ".fcpxml",
+          ".otio",
+          ".drp",
+          ".kdenlive",
+          ".mlt",
+          ".xmeml",
+          ".mp4",
+          ".mov",
+          ".webm",
+          ".mkv",
+          ".m4v",
+          ".avi",
+          ".ts",
+          ".json",
+          ".xml"
+        ],
+        "summary": "只读剪辑工程索引、素材播放、字幕、截帧和可选本地兼容转码；不合成原生特效。"
       }
     },
     {
