@@ -3,7 +3,7 @@
   "kind": "plugin",
   "name": "ProfessionalProject · 商业筹备中",
   "description": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。闭源二进制商业版筹备中，当前仅展示。",
-  "version": "0.4.10",
+  "version": "0.4.12",
   "author": "skyelan1999",
   "category": "planning",
   "icon": "planning",
@@ -14,7 +14,7 @@
     "priceLabel": "价格待公布",
     "publicKeys": {}
   },
-  "minAideVersion": "0.1.17.3 RC1",
+  "minAideVersion": "0.1.17.5 RC8",
   "platforms": [
     "linux"
   ],
@@ -29,7 +29,7 @@
   "license": "Proprietary；商业许可条款待公布",
   "readme": "商业版采用闭源编译核心，计划支持 Linux ARM64 和 AMD64。版本号标识当前技术基线，不代表已正式发售。市场仅展示元数据，不托管安装包，不提供购买或下载入口。正式交付方式、价格与授权条款确定后另行公布。",
   "screenshots": [],
-  "changelog": "0.4.10：部门组织图缩放与项目记忆；人员基本信息与完整组织 PDF 导出；操作记录前后值；库存位置逐级筛选及物料搜索；手机采集服务恢复、失效状态清理与重复启动保护。",
+  "changelog": "0.4.12：新增阶段与里程碑、整屏甘特图预览、当前日期线、delay/done 状态及随 PP 保存的 risk/mark 标注；库存支持分级筛选和搜索。市场仍仅展示商业筹备元数据，不提供安装包或下载。",
   "source": "https://github.com/skyelan1999/aide-pkg-ProfessionalProject",
   "routing": {
     "keywords": [
