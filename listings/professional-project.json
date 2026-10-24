@@ -3,7 +3,7 @@
   "kind": "plugin",
   "name": "ProfessionalProject · 商业筹备中",
   "description": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。闭源二进制商业版筹备中，当前仅展示。",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "author": "skyelan1999",
   "category": "planning",
   "icon": "planning",
@@ -14,7 +14,7 @@
     "priceLabel": "价格待公布",
     "publicKeys": {}
   },
-  "minAideVersion": "0.1.17.5 RC8",
+  "minAideVersion": "0.1.17.5 RC10",
   "platforms": [
     "linux"
   ],
@@ -29,7 +29,7 @@
   "license": "Proprietary；商业许可条款待公布",
   "readme": "商业版采用闭源编译核心，计划支持 Linux ARM64 和 AMD64。版本号标识当前技术基线，不代表已正式发售。市场仅展示元数据，不托管安装包，不提供购买或下载入口。正式交付方式、价格与授权条款确定后另行公布。",
   "screenshots": [],
-  "changelog": "0.4.14：普通与全屏甘特图均支持直接编辑开始/完成日期，先预览原排程引擎结果再应用；新增时间轴前后翻页、自定义日期范围和恢复计划范围。浏览范围不写入 PP，保留依赖、工作日历与已交接工时费用历史保护。市场仍仅展示商业筹备元数据，不提供安装包或下载。",
+  "changelog": "0.4.15：risk/mark 支持编辑并保存修改原因、时间与前后内容历史；新增指定日期及周一至周日邮件简报、当前项目关联 Aide 会话消息汇总、快速复制和 EML 导出；甘特图操作与日期导航合并为单行图标栏。消息汇总需配套新版 Aide；市场仍仅展示商业筹备元数据，不提供安装包或下载。",
   "source": "https://github.com/skyelan1999/aide-pkg-ProfessionalProject",
   "routing": {
     "keywords": [

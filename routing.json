@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "47c9e4486001549534b9c36e0fe0d5d5d8447114",
+  "sourceCommit": "c6d4334d95b350765c9288dacd03d82d5d360480",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -498,7 +498,7 @@
     {
       "id": "professional-project",
       "name": "ProfessionalProject · 商业筹备中",
-      "version": "0.4.14",
+      "version": "0.4.15",
       "distribution": "private",
       "routing": {
         "keywords": [
