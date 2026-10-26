@@ -139,6 +139,25 @@
       }
     },
     {
+      "id": "deepseek-supporter",
+      "name": "DeepSeekSupporter",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "DeepSeek",
+          "DeepSeekSupporter",
+          "deepseek support",
+          "计价",
+          "峰谷",
+          "缓存",
+          "余额"
+        ],
+        "extensions": [],
+        "summary": "DeepSeek 离线价格和峰谷日历、只读余额协议；不提供聊天或生成模型。"
+      }
+    },
+    {
       "id": "environment-guide",
       "name": "环境说明 / Environment guide",
       "version": "1.0.0",
