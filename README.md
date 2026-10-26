@@ -106,3 +106,6 @@ Office 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-off
 ## 截图地址兼容性
 
 市场截图使用本仓库的固定 commit 原始文件地址，以兼容已发布 Aide 的截图域与仓库限制。公开插件截图的未修改副本保存在 `screenshots/<plugin-id>/`，来源 commit、原始地址、SHA-256 和许可证见 `screenshots/provenance.json` 与各目录的 `LICENSE`。更新截图时先提交图片，再以该 commit 更新 listing；随后重建目录并运行 `python3 scripts/test_public_catalog.py`、`python3 scripts/verify_catalog.py`。商业插件仍仅展示筹备元数据，不上传安装包。
+
+
+DeepSeekSupporter 0.1.0 已独立登记，MIT 许可。Release 与市场使用同一份通用 ZIP；离线价格快照为 2026-10-22，宿主保管凭证。仅声明官方 HTTPS 端点、四个精确模型名／别名、峰谷计价与只读余额协议，不注册生成工具，也未执行真实账户或付费调用。
