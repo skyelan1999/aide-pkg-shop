@@ -111,10 +111,10 @@
     },
     {
       "id": "codex-bridge-0.2.0",
-      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/e7f712114541e07555015d2c8b5ea828187abc26",
-      "commit": "e7f712114541e07555015d2c8b5ea828187abc26",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/e4c74525fe16332e357b40a44ba1ca6494e75259",
+      "commit": "e4c74525fe16332e357b40a44ba1ca6494e75259",
       "license": "MIT",
-      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/e7f712114541e07555015d2c8b5ea828187abc26/LICENSE",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/e4c74525fe16332e357b40a44ba1ca6494e75259/LICENSE",
       "images": [
         {
           "path": "screenshots/codex-bridge/manager-0.2.0.png",
