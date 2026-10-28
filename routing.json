@@ -295,7 +295,7 @@
     {
       "id": "rviz",
       "name": "RViz Workbench",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "distribution": "public",
       "routing": {
         "keywords": [
