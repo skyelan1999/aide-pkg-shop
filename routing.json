@@ -410,7 +410,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.5.1",
+      "version": "1.5.2",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -426,7 +426,7 @@
           "中继"
         ],
         "extensions": [],
-        "summary": "1.5.1 预发布 · 移除RDP/VNC，恢复原Shell/SSH、TCP/UDP/串口工作台；保留加密中继、日志、可见性及重新连接。"
+        "summary": "1.5.2 预发布 · 改善 SSH 等终端输入调度，保留 Shell/SSH、TCP/UDP/串口、中继、日志及重新连接。"
       }
     },
     {
