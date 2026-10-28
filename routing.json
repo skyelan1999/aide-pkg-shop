@@ -293,6 +293,36 @@
       }
     },
     {
+      "id": "rviz",
+      "name": "RViz Workbench",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "rviz",
+          "ros",
+          "ros1",
+          "ros2",
+          "ros 1",
+          "ros 2",
+          "机器人",
+          "robotics",
+          "话题订阅",
+          "pointcloud2",
+          "激光雷达",
+          "tf",
+          "urdf",
+          "ssh",
+          "地图",
+          "点云"
+        ],
+        "extensions": [
+          ".urdf"
+        ],
+        "summary": "ROS 1/2 只读三维话题预览：TF、LaserScan、PointCloud2、地图、轨迹与项目 URDF。预览版，SSH 使用后端预配置 alias。"
+      }
+    },
+    {
       "id": "skill",
       "name": "技能库 / Skill Library",
       "version": "1.1.0",
