@@ -558,6 +558,29 @@
       }
     },
     {
+      "id": "codex-bridge",
+      "name": "Codex Bridge · Codex 模型桥接",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "codex",
+          "codex bridge",
+          "chatgpt",
+          "openai",
+          "模型桥接",
+          "codex桥接",
+          "app-server",
+          "sse",
+          "工具交接",
+          "model provider",
+          "local bridge"
+        ],
+        "extensions": [],
+        "summary": "连接宿主机 Codex 的本地模型提供商桥接，三端安装和双语配置指南；文本、SSE、工具交接及有界并发。"
+      }
+    },
+    {
       "id": "compare",
       "name": "Compare · 商业筹备中",
       "version": "0.3.3",
