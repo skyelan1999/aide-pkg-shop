@@ -1302,6 +1302,59 @@
         ],
         "summary": "Read-only background document page/crop images for visual review; separate Docker renderer and plugin-tool-images-v1 host required. Office uses conversion print layout."
       }
+    },
+    {
+      "id": "codex-bridge",
+      "kind": "plugin",
+      "name": "Codex Bridge · Codex 模型桥接",
+      "description": "预览版：将宿主机 Codex 接入 Aide 模型提供商；三端安装、中英文引导、SSE、工具交接和有界并发，无需 PowerShell。",
+      "version": "0.1.0",
+      "author": "skyelan1999",
+      "category": "communication",
+      "icon": "communication",
+      "package": "packages/codex-bridge/0.1.0-2faf9f0b64a9.zip",
+      "sha256": "2faf9f0b64a95dcf6a60715cdcc7c9e3c209767c488f786bfcddd124770445f4",
+      "bytes": 23671,
+      "minAideVersion": "0.1.17.5 RC12",
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "dependencies": [
+        "Aide 后端 Node.js 18+；宿主机另行安装 Node.js 18+、Codex CLI，并在该宿主机登录自己的 Codex 账号。",
+        "ZIP 导入仅安装 Aide 插件；需单独运行宿主安装器和 start 入口，另行配置 Aide OpenAI-compatible Chat Completions 提供商。",
+        "默认仅监听 127.0.0.1；Docker 访问需手工配置地址、必要监听和防火墙，Linux 另需 host-gateway 映射。插件不会更改网络。",
+        "三端 CI (Windows Server 2022 / macOS 15 / Ubuntu 22.04 × Node 18/24) 通过。Mac ARM64 真实 Codex 推理/工具往返通过；Windows/Linux 真实账号推理、各 Windows 版本和用户设备仍待实机验证。"
+      ],
+      "permissions": "Read-only plugin diagnostics connect to a configured local bridge; optional diagnostic key is stored in password settings. The separately started host bridge runs Codex under the logged-in OS account, sends selected Aide text history to its configured provider, and hands function calls back to Aide for tools/approval. No automatic provider changes, host install, login-token copying or desktop chat takeover.",
+      "trustNotice": "Public MIT preview. No Codex/Node binaries or credentials are bundled. Hashes verify bytes, not a publisher signature or permission sandbox. Codex child configuration restrictions are not OS credential isolation. Text-only; no image/audio support. Ten slots share account quota and do not guarantee speed.",
+      "features": [],
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/4c7aa197a1b0dd6164b7632a5250b740353245c0",
+      "license": "MIT",
+      "readme": "# Codex Bridge · Codex 模型桥接\n\nAn independent Aide plugin and optional local host service. Connect an installed, signed-in Codex CLI to Aide's **OpenAI-compatible Chat Completions** provider. No Aide core changes, Codex binaries, account tokens or user chat histories are bundled.\n\n独立插件 + 宿主机服务，把本机 Codex 接入 Aide 模型提供商。支持 Windows、macOS、Linux 的安装与启动入口；无需 PowerShell。插件自己的版本为 **0.1.0**，不随 Aide RC 号命名。\n\n## Architecture / 编排\n\n```mermaid\nflowchart LR\n  UI[Aide chat / workflow] --> P[Aide model provider]\n  P -->|Bearer + Chat Completions JSON/SSE| B[Local bridge: bounded FIFO queue]\n  W[Plugin workbench] -->|Health / model catalog| B\n  B -->|One isolated child per request| C[Codex app-server stdio]\n  C --> M[User's configured Codex model account]\n  C -->|Dynamic function request| B\n  B -->|tool_calls| P\n  P --> A[Aide tools and approval]\n  A -->|Tool result in next request history| P\n```\n\nAide owns tools, approval and conversation history. The adapter reconstructs the supplied text history into a fresh ephemeral Codex thread for each request; this is **not** native multi-role replay or a continuation of a desktop Codex chat. The first dynamic-tool call is handed back to Aide, then that child is closed. The next HTTP request carries Aide's updated history. Hidden Codex reasoning and pending tool state are not preserved.\n\n## Quick start / 安装配置\n\n1. Install **Node.js 18+** and the official Codex CLI on the host where Codex runs. Run `codex login` there. Keep the login under that OS user. The plugin does not read or copy login-token files.\n2. Extract the plugin ZIP. Install the host component:\n\n| Platform | Install | Default location | Start from installed location |\n| --- | --- | --- | --- |\n| Windows | `install.cmd` | `%LOCALAPPDATA%\\aide-codex-bridge` | `start.cmd` |\n| macOS | `sh install.command` | `~/Library/Application Support/aide-codex-bridge` | `sh start.command` |\n| Linux | `sh install.sh` | `$XDG_DATA_HOME/aide-codex-bridge` or `~/.local/share/aide-codex-bridge` | `sh start.sh` |\n\nCommand-line alternative on all three: `node manage.cjs install \"target directory\"`. No administrator install, scheduled task or automatic startup service is added. Node and Codex are prerequisites, not silently downloaded. On Windows, native `.exe` and the official npm `codex.cmd` installation are supported: the resolver launches its adjacent `@openai/codex/bin/codex.js` through Node, never by evaluating a `.cmd` file in a shell.\n\n3. In the installed directory run `node manage.cjs doctor`. Edit `config.json` as needed. Then start the bridge and keep its terminal open. Ctrl+C stops the bridge. Reinstalling updates component files while preserving `config.json` and `data/bridge.key`; unrelated nonempty directories are refused.\n4. Import the **same ZIP** into Aide → Plugins → Upload, and enable **Codex Bridge**. Open the plugin workbench for bilingual guidance and connection checks. Import alone does not install/start the host service or change any provider.\n5. Run `node manage.cjs key` **locally** and copy the generated bridge key into Aide's model-provider API Key field. It is a local bridge key, not an OpenAI Platform API key. Never paste it into chat or Git. The optional plugin diagnostic key permits authenticated catalog checks only; the provider key must still be set separately.\n\n| Aide provider field | Value |\n| --- | --- |\n| Type | OpenAI compatible / Chat Completions |\n| Base URL (native Aide on same host) | `http://127.0.0.1:8787/v1` |\n| Base URL (Docker Desktop Aide) | `http://host.docker.internal:8787/v1` |\n| API Key | Locally generated bridge key |\n| Model | An ID from the authenticated catalog; test actual access with a short request |\n\n中文：解压安装包 → 宿主机登录 Codex → 安装并启动桥接 → 在 Aide 导入同一 ZIP → 打开工作台检查连接 → 单独配置 Aide 模型提供商的地址、密钥与模型。不会继承 Codex 桌面正在进行的聊天。\n\n### Docker and network access\n\nDefault binding is **127.0.0.1**, for native same-host Aide. Docker reachability depends on the host and Docker network. If necessary, deliberately change `host` to `0.0.0.0` in the bridge `config.json`, then use `host.docker.internal`. This exposes the listener on IPv4 interfaces: restrict host firewall access to the required local/Docker network; do not forward it to the Internet. No firewall or Docker-network configuration is changed by this plugin. Linux Docker additionally needs an explicit `host.docker.internal:host-gateway` mapping. A remote Aide backend can use an administrator-configured SSH tunnel; remote host management is outside this plugin.\n\nDefault proxy is empty (inherits process environment). Set `proxy` in `config.json` only if Codex needs a host-specific HTTP(S)/SOCKS proxy. This affects the Codex child, not OS settings. Do not assume a particular proxy port. It is not a general HTTP proxy server.\n\n### Host commands\n\n```sh\nnode manage.cjs doctor\nnode manage.cjs start\nnode manage.cjs key\n```\n\n`key` intentionally displays the local key in your terminal. Do not capture that command in shared logs. Generated files live outside Git and ZIP allowlists. On POSIX, generated key mode is 0600; Windows access relies on your user-profile ACLs. Stop the host service before upgrading/removing it. Removing the plugin from Aide does not stop a separately running host process.\n\n## Capabilities and limits\n\n- `GET /health`: minimal unauthenticated service identity/version; not a login or inference check.\n- `GET /v1/models`: Bearer-authenticated Codex catalog; catalog presence is **not an entitlement check**.\n- `POST /v1/chat/completions`: Bearer-authenticated JSON/SSE, function tools, `response_format=text/json_object/json_schema`, `reasoning_effort`.\n- Defaults: 10 active requests, 40 queued, FIFO, 45-second queue deadline, 180-second active deadline, 8 MiB HTTP body, 4 MiB answer cap. Client disconnects stop corresponding children; capacity errors before text output retry at most twice, with 3/6-second delay. No retries after partial output or tool handoff. Ten slots share the same account quota, not a tenfold-speed promise.\n- `off` reasoning maps to the minimum effort advertised by the selected model; `auto` uses its default. Sampling/output-token parameters are accepted for compatibility but not mapped; no fabricated token usage is returned.\n- Only text content, `n=1`, and tool choice `auto/none` are accepted. Images/audio, legacy `functions`, forced tool choice and multiple simultaneous tool handoffs are unsupported and fail explicitly.\n- Children use a temporary working directory, read-only sandbox, disabled shell/web search/plugin suggestions and disabled configured MCP servers. Unsupported interaction requests fail rather than being auto-approved. These are Codex configuration restrictions, **not a separate credential sandbox**: the Codex child necessarily runs under the logged-in OS account and may use its local Codex configuration. This plugin neither imports that account's credentials into Aide nor promises isolation from a compromised host.\n- No persistent bridge document/chat cache or desktop-thread takeover. Normal Aide and Codex diagnostic/retention rules still apply. Selected prompts are sent by Codex to its configured provider; a local HTTP bridge is not offline inference.\n\n## Development and acceptance\n\nNo npm dependencies are required. Build and test:\n\n```sh\nnode scripts/build.cjs\npython scripts/package-codex-bridge.py --out dist\nnode --test scripts/*.test.cjs\n```\n\nThe deterministic 15-file plugin ZIP uses an explicit allowlist. It contains host launchers/runtime but no binaries, local config, auth, keys or test evidence. Run the generated ZIP through Aide's normal plugin validation before distributing.\n\n```sh\n# Real host catalog only, no inference\nnode scripts/live-acceptance.cjs\n# Explicit synthetic JSON + SSE inference; uses the logged-in Codex account quota\nnode scripts/live-acceptance.cjs --infer --tools\n```\n\nSee [architecture](docs/ARCHITECTURE.md), [acceptance record](docs/ACCEPTANCE.md) and [source provenance](docs/PROVENANCE.md). Cross-platform CI exercises native Node child processes, install/update, Unicode/space paths, queue/cancellation and npm-shim resolution. It does not prove live Codex inference on every OS/CPU or Windows version.\n\nOfficial protocol reference: [Codex app-server](https://learn.chatgpt.com/docs/app-server). This integration uses an evolving protocol; changing Codex versions requires revalidation. Wrapper/runtime are MIT, based on the supplied MIT reference bundle. Codex itself and model/account access are not redistributed by this repository.\n",
+      "screenshots": [
+        "https://raw.githubusercontent.com/skyelan1999/aide-pkg-shop/668cfb59cb7850aa6cc08aef84b737048bb79af2/screenshots/codex-bridge/workbench.png"
+      ],
+      "changelog": "0.1.0 preview: independent host adapter, three-platform install/update, bilingual workbench, authenticated catalog, JSON/SSE, tool handoff and bounded queue. 30 tests × six CI jobs passed; Mac live JSON/SSE and tool replay passed. No Aide core change required.",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "codex",
+          "codex bridge",
+          "chatgpt",
+          "openai",
+          "模型桥接",
+          "codex桥接",
+          "app-server",
+          "sse",
+          "工具交接",
+          "model provider",
+          "local bridge"
+        ],
+        "extensions": [],
+        "summary": "连接宿主机 Codex 的本地模型提供商桥接，三端安装和双语配置指南；文本、SSE、工具交接及有界并发。"
+      }
     }
   ],
   "privateListings": [

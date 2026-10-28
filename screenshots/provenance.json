@@ -78,6 +78,21 @@
           "bytes": 64952
         }
       ]
+    },
+    {
+      "id": "codex-bridge",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/4c7aa197a1b0dd6164b7632a5250b740353245c0",
+      "commit": "4c7aa197a1b0dd6164b7632a5250b740353245c0",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/4c7aa197a1b0dd6164b7632a5250b740353245c0/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/workbench.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/4c7aa197a1b0dd6164b7632a5250b740353245c0/docs/evidence/workbench.png",
+          "sha256": "c5f4cc0ad5173985fdb2926b2393b472437098148eb756648dd2447e7f4f4554",
+          "bytes": 57970
+        }
+      ]
     }
   ]
 }
