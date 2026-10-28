@@ -30,7 +30,7 @@
   "license": "Proprietary；商业许可条款待公布",
   "readme": "商业版采用闭源编译核心，计划支持 Linux ARM64 和 AMD64。版本号标识当前技术基线，不代表已正式发售。市场仅展示元数据，不托管安装包，不提供购买或下载入口。正式交付方式、价格与授权条款确定后另行公布。",
   "screenshots": [],
-  "changelog": "登记为商业筹备中；未上传任何安装包或下载链接。",
+  "changelog": "0.3.3 已补充私有预发布；市场仍为商业筹备展示，不开放销售、安装或下载，不托管商业安装包、核心源码或客户许可证。",
   "source": "https://github.com/skyelan1999/aide-pkg-Compare",
   "routing": {
     "keywords": [
