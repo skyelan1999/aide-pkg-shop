@@ -63,6 +63,21 @@
           "bytes": 52827
         }
       ]
+    },
+    {
+      "id": "file-preview",
+      "source": "https://github.com/skyelan1999/aide-pkg-FilePreview/tree/d945229598d455d069b1dc377a7fa0ed4c0e6fcf",
+      "commit": "d945229598d455d069b1dc377a7fa0ed4c0e6fcf",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-FilePreview/blob/d945229598d455d069b1dc377a7fa0ed4c0e6fcf/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/file-preview/workbench.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-FilePreview/d945229598d455d069b1dc377a7fa0ed4c0e6fcf/docs/evidence/workbench.png",
+          "sha256": "cd82f383104920cfbdbdbf21dfa93ae39ec147f0781da0234bd94a6c3fcf1066",
+          "bytes": 64952
+        }
+      ]
     }
   ]
 }
