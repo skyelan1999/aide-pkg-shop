@@ -560,7 +560,7 @@
     {
       "id": "codex-bridge",
       "name": "Codex Bridge · Codex 模型桥接",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -577,7 +577,7 @@
           "local bridge"
         ],
         "extensions": [],
-        "summary": "连接宿主机 Codex 的本地模型提供商桥接，三端安装和双语配置指南；文本、SSE、工具交接及有界并发。"
+        "summary": "本机 Codex 模型桥接与三端原生管理器：图形安装配对后在插件内启动、停止、诊断、修复和卸载；文本、SSE 与工具交接。"
       }
     },
     {

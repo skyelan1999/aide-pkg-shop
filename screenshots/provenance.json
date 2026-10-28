@@ -108,6 +108,21 @@
           "bytes": 60842
         }
       ]
+    },
+    {
+      "id": "codex-bridge-0.2.0",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/e7f712114541e07555015d2c8b5ea828187abc26",
+      "commit": "e7f712114541e07555015d2c8b5ea828187abc26",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/e7f712114541e07555015d2c8b5ea828187abc26/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/manager-0.2.0.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-shop/6cfcee935aabb26f3e280a52a676f1b2e98a35c1/screenshots/codex-bridge/manager-0.2.0.png",
+          "sha256": "eb6b88d05f23bc999b5f9e65636e72a883ea69859764c987ff2f4300a9a91c11",
+          "bytes": 57656
+        }
+      ]
     }
   ]
 }
