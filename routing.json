@@ -517,6 +517,47 @@
       }
     },
     {
+      "id": "file-preview",
+      "name": "File Preview · 文件预览",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "file preview",
+          "visual review",
+          "layout review",
+          "render pdf",
+          "pdf pages",
+          "docx preview",
+          "ppt preview",
+          "xlsx preview",
+          "文件预览",
+          "后台预览",
+          "视觉复查",
+          "排版检查"
+        ],
+        "extensions": [
+          ".pdf",
+          ".docx",
+          ".pptx",
+          ".xlsx",
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".gif",
+          ".bmp",
+          ".tiff",
+          ".md",
+          ".html",
+          ".htm",
+          ".svg",
+          ".txt"
+        ],
+        "summary": "Read-only background document page/crop images for visual review; separate Docker renderer and plugin-tool-images-v1 host required. Office uses conversion print layout."
+      }
+    },
+    {
       "id": "compare",
       "name": "Compare · 商业筹备中",
       "version": "0.3.3",
