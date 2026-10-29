@@ -81,19 +81,18 @@
     },
     {
       "id": "codex-bridge",
-      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/7980943d0582f6160bee699be486fbfdbd0eb218",
-      "commit": "7980943d0582f6160bee699be486fbfdbd0eb218",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/fd6683e78643ea7bba2b717e5331e6c842a937a7",
+      "commit": "fd6683e78643ea7bba2b717e5331e6c842a937a7",
       "license": "MIT",
-      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/7980943d0582f6160bee699be486fbfdbd0eb218/LICENSE",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/fd6683e78643ea7bba2b717e5331e6c842a937a7/LICENSE",
       "images": [
         {
-          "path": "screenshots/codex-bridge/five-actions-0.3.1.png",
-          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/7980943d0582f6160bee699be486fbfdbd0eb218/docs/evidence/five-actions-0.3.1.png",
-          "sha256": "7f8f1343580cc4e5623f2e4aa9223849119d063088479142fd6cc29ad3b58828",
-          "bytes": 24731
+          "path": "screenshots/codex-bridge/install-feedback-0.3.3.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/fd6683e78643ea7bba2b717e5331e6c842a937a7/docs/evidence/install-feedback-0.3.3.png",
+          "sha256": "51f1c3286aef67771886d33b60f71ca41774a39cabd312f88e92b06a22233932",
+          "bytes": 27244
         }
-      ],
-      "acceptance": "Rendered native manager with synthetic empty installation. Final inline-confirmation interaction was blocked by a prior test browser dialog; no real Windows desktop/account acceptance claimed."
+      ]
     }
   ],
   "archivedSources": [
@@ -169,6 +168,22 @@
           "bytes": 45888
         }
       ]
+    },
+    {
+      "id": "codex-bridge",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/7980943d0582f6160bee699be486fbfdbd0eb218",
+      "commit": "7980943d0582f6160bee699be486fbfdbd0eb218",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/7980943d0582f6160bee699be486fbfdbd0eb218/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/five-actions-0.3.1.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/7980943d0582f6160bee699be486fbfdbd0eb218/docs/evidence/five-actions-0.3.1.png",
+          "sha256": "7f8f1343580cc4e5623f2e4aa9223849119d063088479142fd6cc29ad3b58828",
+          "bytes": 24731
+        }
+      ],
+      "acceptance": "Rendered native manager with synthetic empty installation. Final inline-confirmation interaction was blocked by a prior test browser dialog; no real Windows desktop/account acceptance claimed."
     }
   ]
 }
