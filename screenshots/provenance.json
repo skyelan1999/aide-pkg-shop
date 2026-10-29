@@ -78,21 +78,6 @@
           "bytes": 64952
         }
       ]
-    },
-    {
-      "id": "codex-bridge",
-      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/fd6683e78643ea7bba2b717e5331e6c842a937a7",
-      "commit": "fd6683e78643ea7bba2b717e5331e6c842a937a7",
-      "license": "MIT",
-      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/fd6683e78643ea7bba2b717e5331e6c842a937a7/LICENSE",
-      "images": [
-        {
-          "path": "screenshots/codex-bridge/install-feedback-0.3.3.jpg",
-          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/fd6683e78643ea7bba2b717e5331e6c842a937a7/docs/evidence/install-feedback-0.3.3.png",
-          "sha256": "51f1c3286aef67771886d33b60f71ca41774a39cabd312f88e92b06a22233932",
-          "bytes": 27244
-        }
-      ]
     }
   ],
   "archivedSources": [
@@ -184,6 +169,21 @@
         }
       ],
       "acceptance": "Rendered native manager with synthetic empty installation. Final inline-confirmation interaction was blocked by a prior test browser dialog; no real Windows desktop/account acceptance claimed."
+    },
+    {
+      "id": "codex-bridge",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/fd6683e78643ea7bba2b717e5331e6c842a937a7",
+      "commit": "fd6683e78643ea7bba2b717e5331e6c842a937a7",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/fd6683e78643ea7bba2b717e5331e6c842a937a7/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/install-feedback-0.3.3.jpg",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/fd6683e78643ea7bba2b717e5331e6c842a937a7/docs/evidence/install-feedback-0.3.3.png",
+          "sha256": "51f1c3286aef67771886d33b60f71ca41774a39cabd312f88e92b06a22233932",
+          "bytes": 27244
+        }
+      ]
     }
   ]
 }
