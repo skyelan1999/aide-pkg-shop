@@ -81,6 +81,36 @@
     },
     {
       "id": "codex-bridge",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/95ef575c89b132c3b6783c801f7ca094ae853bf2",
+      "commit": "95ef575c89b132c3b6783c801f7ca094ae853bf2",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/95ef575c89b132c3b6783c801f7ca094ae853bf2/LICENSE",
+      "note": "Quota percentages are synthetic acceptance data, not a real user account. Previous screenshots remain historical archivedSources.",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/guided-workbench-0.3.0.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/95ef575c89b132c3b6783c801f7ca094ae853bf2/docs/evidence/guided-workbench-0.3.0.png",
+          "sha256": "07f5a9c623c4c1e78ec71ad7d8ffac12e4c3d4348e8c38d5f558861ce60efb57",
+          "bytes": 46040
+        },
+        {
+          "path": "screenshots/codex-bridge/quota-settings-0.3.0.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/95ef575c89b132c3b6783c801f7ca094ae853bf2/docs/evidence/quota-settings-0.3.0.png",
+          "sha256": "30c5ed28938d5821f021624c4f37f164d061bbfd265f534fb8aaba38fe284dbb",
+          "bytes": 37864
+        },
+        {
+          "path": "screenshots/codex-bridge/quota-settings-0.3.0-en.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/95ef575c89b132c3b6783c801f7ca094ae853bf2/docs/evidence/quota-settings-0.3.0-en.png",
+          "sha256": "159c9703d98079569fe8451ed3738ccd3f3dddd256e2421a0613bd2c45bed499",
+          "bytes": 45888
+        }
+      ]
+    }
+  ],
+  "archivedSources": [
+    {
+      "id": "codex-bridge",
       "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/a95cd5360f0e10190846898067c8871b37c32f8c",
       "commit": "a95cd5360f0e10190846898067c8871b37c32f8c",
       "license": "MIT",
