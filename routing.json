@@ -560,7 +560,7 @@
     {
       "id": "codex-bridge",
       "name": "Codex Bridge · Codex 模型桥接",
-      "version": "0.3.0",
+      "version": "0.3.2",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -582,7 +582,7 @@
           "连接码"
         ],
         "extensions": [],
-        "summary": "本机Codex模型桥接与三端原生管理器：一次性连接码、插件内安装/启动/停止/诊断/卸载，账户额度百分比与重置时间；文本、SSE与工具交接。"
+        "summary": "Codex本机模型桥接：三端完整宿主包，安装/启动/停止/卸载/生成密钥五个操作，可选插件配对、账户额度百分比与重置时间；文本、SSE与工具交接。"
       }
     },
     {
