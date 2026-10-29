@@ -560,7 +560,7 @@
     {
       "id": "codex-bridge",
       "name": "Codex Bridge · Codex 模型桥接",
-      "version": "0.3.2",
+      "version": "0.3.3",
       "distribution": "public",
       "routing": {
         "keywords": [
