@@ -373,7 +373,7 @@
     {
       "id": "step-viewer",
       "name": "STEP Viewer",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -465,7 +465,7 @@
     {
       "id": "video-preview",
       "name": "Video Preview · 视频预览",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "distribution": "public",
       "routing": {
         "keywords": [
