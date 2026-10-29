@@ -560,7 +560,7 @@
     {
       "id": "codex-bridge",
       "name": "Codex Bridge · Codex 模型桥接",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -574,10 +574,15 @@
           "sse",
           "工具交接",
           "model provider",
-          "local bridge"
+          "local bridge",
+          "codex quota",
+          "remaining percentage",
+          "账户额度",
+          "剩余额度",
+          "连接码"
         ],
         "extensions": [],
-        "summary": "本机 Codex 模型桥接与三端原生管理器：图形安装配对后在插件内启动、停止、诊断、修复和卸载；文本、SSE 与工具交接。"
+        "summary": "本机Codex模型桥接与三端原生管理器：一次性连接码、插件内安装/启动/停止/诊断/卸载，账户额度百分比与重置时间；文本、SSE与工具交接。"
       }
     },
     {

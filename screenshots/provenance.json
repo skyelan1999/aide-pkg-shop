@@ -80,36 +80,6 @@
       ]
     },
     {
-      "id": "codex-bridge-0.1.2",
-      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/7cf62841e032f0f861ebce26b1529a770d2360ae",
-      "commit": "7cf62841e032f0f861ebce26b1529a770d2360ae",
-      "license": "MIT",
-      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/7cf62841e032f0f861ebce26b1529a770d2360ae/LICENSE",
-      "images": [
-        {
-          "path": "screenshots/codex-bridge/workbench-0.1.2.png",
-          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-shop/5d8de7a2d57c7948d40893b64891da6b4da56599/screenshots/codex-bridge/workbench-0.1.2.png",
-          "sha256": "525bcc676b407fff277f021aa38d5eabdc44a3fb3bce51f243073925ff92fd1b",
-          "bytes": 60842
-        }
-      ]
-    },
-    {
-      "id": "codex-bridge-0.2.0",
-      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/e4c74525fe16332e357b40a44ba1ca6494e75259",
-      "commit": "e4c74525fe16332e357b40a44ba1ca6494e75259",
-      "license": "MIT",
-      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/e4c74525fe16332e357b40a44ba1ca6494e75259/LICENSE",
-      "images": [
-        {
-          "path": "screenshots/codex-bridge/manager-0.2.0.png",
-          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-shop/6cfcee935aabb26f3e280a52a676f1b2e98a35c1/screenshots/codex-bridge/manager-0.2.0.png",
-          "sha256": "eb6b88d05f23bc999b5f9e65636e72a883ea69859764c987ff2f4300a9a91c11",
-          "bytes": 57656
-        }
-      ]
-    },
-    {
       "id": "codex-bridge",
       "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/95ef575c89b132c3b6783c801f7ca094ae853bf2",
       "commit": "95ef575c89b132c3b6783c801f7ca094ae853bf2",
@@ -151,6 +121,36 @@
           "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-CodexBridge/a95cd5360f0e10190846898067c8871b37c32f8c/docs/evidence/workbench-0.1.1.png",
           "sha256": "dc40c48a9e677a69eb2c9caf4d2a62112d359104f76cd6f36b395a250ca94a05",
           "bytes": 65342
+        }
+      ]
+    },
+    {
+      "id": "codex-bridge-0.1.2",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/7cf62841e032f0f861ebce26b1529a770d2360ae",
+      "commit": "7cf62841e032f0f861ebce26b1529a770d2360ae",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/7cf62841e032f0f861ebce26b1529a770d2360ae/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/workbench-0.1.2.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-shop/5d8de7a2d57c7948d40893b64891da6b4da56599/screenshots/codex-bridge/workbench-0.1.2.png",
+          "sha256": "525bcc676b407fff277f021aa38d5eabdc44a3fb3bce51f243073925ff92fd1b",
+          "bytes": 60842
+        }
+      ]
+    },
+    {
+      "id": "codex-bridge-0.2.0",
+      "source": "https://github.com/skyelan1999/aide-pkg-CodexBridge/tree/e4c74525fe16332e357b40a44ba1ca6494e75259",
+      "commit": "e4c74525fe16332e357b40a44ba1ca6494e75259",
+      "license": "MIT",
+      "licenseSource": "https://github.com/skyelan1999/aide-pkg-CodexBridge/blob/e4c74525fe16332e357b40a44ba1ca6494e75259/LICENSE",
+      "images": [
+        {
+          "path": "screenshots/codex-bridge/manager-0.2.0.png",
+          "sourceURL": "https://raw.githubusercontent.com/skyelan1999/aide-pkg-shop/6cfcee935aabb26f3e280a52a676f1b2e98a35c1/screenshots/codex-bridge/manager-0.2.0.png",
+          "sha256": "eb6b88d05f23bc999b5f9e65636e72a883ea69859764c987ff2f4300a9a91c11",
+          "bytes": 57656
         }
       ]
     }
