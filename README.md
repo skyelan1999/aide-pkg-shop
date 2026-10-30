@@ -112,4 +112,4 @@ DeepSeekSupporter 0.1.0 已独立登记，MIT 许可。Release 与市场使用�
 
 Codex Bridge 0.3.0 预发布：插件与三端宿主管理器使用同一版本，一次性连接码完成配对；插件工作台支持宿主维护和只读账户额度百分比/重置时间。未知数据不伪造为100%，额度截图为合成数据；真实账户接口可用性与三端CI分开记录。升级时插件和宿主管理器需同时更新，详见[Release](https://github.com/skyelan1999/aide-pkg-CodexBridge/releases/tag/v0.3.0)。
 
-OpenAISupporter 0.1.0 已通过[公开仓库](https://github.com/skyelan1999/aide-pkg-OpenAISupporter)独立分发，MIT 许可。需要包含 USD 计价支持的 Aide 0.1.17.6 RC1；四个旗舰模型使用 2026-10-30 Standard 美元价格，包含缓存命中和长上下文阶梯，不提供余额接口。Release 与市场使用同一份通用 ZIP，实际安装包已通过宿主安装、启停、USD/CNY 分开汇总和 race 检查；未调用真实账户或付费模型。
+OpenAISupporter 0.1.0 已通过[公开仓库](https://github.com/skyelan1999/aide-pkg-OpenAISupporter)独立分发，MIT 许可。已发布 Aide RC1 不支持 USD，市场兼容门槛暂设为尚未发行的 0.1.17.6 RC2；目前需包含 40b6e96 的 main 源码构建手动导入。四个旗舰模型使用 2026-10-30 Standard 美元价格，包含缓存命中和长上下文阶梯，不提供余额接口。Release 与市场使用同一份通用 ZIP，实际安装包已通过宿主安装、启停、USD/CNY 分开汇总和 race 检查；未调用真实账户或付费模型。
