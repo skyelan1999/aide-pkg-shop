@@ -1362,6 +1362,52 @@
         "extensions": [],
         "summary": "本机Codex模型桥接：完整宿主包和五个原生操作，配置/密钥保留，可选插件控制与账号额度查询。"
       }
+    },
+    {
+      "id": "openai-supporter",
+      "kind": "plugin",
+      "name": "OpenAISupporter",
+      "description": "OpenAI 官方 USD 模型标准费率与缓存命中价格快照；不声明账户余额。",
+      "version": "0.1.0",
+      "author": "skyelan1999",
+      "category": "utilities",
+      "icon": "utilities",
+      "package": "packages/openai-supporter/0.1.0-e059f906c6c8.zip",
+      "sha256": "e059f906c6c8a583cfa53da01ebc0036ab2669fe074734c921aa36644983db10",
+      "bytes": 4130,
+      "minAideVersion": "0.1.17.5 RC13",
+      "platforms": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "dependencies": [
+        "需要支持 USD 分币种统计与 providerSupport protocol 1 的 Aide 0.1.17.5 RC13 或更新版本。",
+        "价格档案日期为 2026-10-30；只精确匹配已列模型与 OpenAI 官方端点。",
+        "数据型 JavaScript 插件，无需平台专用二进制。"
+      ],
+      "permissions": "插件不读取或保存 API Key；Aide 使用已配置的 OpenAI 提供商和凭证。插件不进行独立网络请求。",
+      "trustNotice": "公开 MIT 插件，并非 OpenAI 官方发布。SHA-256 用于包完整性核对，不是发布者签名；费用估算不替代账单。",
+      "features": [],
+      "source": "https://github.com/skyelan1999/aide-pkg-OpenAISupporter/tree/5b7b2f5140adf5e7b6dc0108b795a979e5edab41",
+      "license": "MIT",
+      "readme": "# OpenAISupporter\n\nAide 的 OpenAI provider 支持插件，MIT 许可；不是 OpenAI 官方发布。它通过 Aide `providerSupport` protocol 1 声明 OpenAI 官方端点和一个带核验日期的 USD 价格快照。插件只提供静态数据，不注册 AI 工具，也不会读取或保存 API Key；端点匹配、请求和用量记录由 Aide 主程序处理。\n\n当前版本只匹配 HTTPS `api.openai.com/v1`，并只按档案列出的精确模型 ID 计价。未知模型、代理地址和兼容服务继续使用 Aide 的手动费率。标准档位包括输入、输出和缓存命中输入价，单位为 USD/百万 tokens。Aide 会把 USD 与 CNY 分开显示，不做汇率换算。\n\n此快照核验于 2026-10-30。OpenAI 价格可能变化，更新通过插件包交付，不在运行时抓取。GPT-5.6 Sol 页面注明的促销价至少有效至 2026-11-21；后续版本必须重新核验。输出为估算，不等同于 OpenAI 账单。\n\nAide 当前协议只描述标准档位，不描述 Batch、Fast/Ultrafast、缓存写入费、区域处理附加费、图像/音频/视频计费或其他按次收费工具；这些场景不应把本插件估算当成最终账单。缓存用量细节缺失时 Aide 按未命中输入估算并标记估算。\n\nOpenAI API 没有可由普通模型 API Key 调用的 DeepSeek 风格余额端点。本插件不声明余额支持。组织 Usage/Costs API 是另一个需要组织管理员凭证的历史用量/费用接口，不是账户余额，当前不由本插件调用。不要把组织管理员密钥填入模型 API Key。\n\n## 打包\n\n```sh\npython3 scripts/package.py\n```\n\n包使用显式文件白名单、固定 ZIP 时间戳和权限。市场发布时 Release ZIP 与市场 ZIP 使用同一文件和 SHA-256。\n",
+      "screenshots": [],
+      "changelog": "首次发行：声明 OpenAI 标准 USD token 价格、缓存命中价格和精确模型匹配；不提供余额查询。",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "OpenAI",
+          "OpenAISupporter",
+          "OpenAI pricing",
+          "GPT 价格",
+          "USD 计价",
+          "缓存命中",
+          "token 成本"
+        ],
+        "extensions": [],
+        "summary": "OpenAI 官方端点精确模型的 USD 标准输入、输出与缓存命中费率；不提供余额查询，也不估算 Batch/Fast 等档位。"
+      }
     }
   ],
   "privateListings": [

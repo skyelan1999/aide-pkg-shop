@@ -588,6 +588,25 @@
       }
     },
     {
+      "id": "openai-supporter",
+      "name": "OpenAISupporter",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "OpenAI",
+          "OpenAISupporter",
+          "OpenAI pricing",
+          "GPT 价格",
+          "USD 计价",
+          "缓存命中",
+          "token 成本"
+        ],
+        "extensions": [],
+        "summary": "OpenAI 官方端点精确模型的 USD 标准输入、输出与缓存命中费率；不提供余额查询，也不估算 Batch/Fast 等档位。"
+      }
+    },
+    {
       "id": "compare",
       "name": "Compare · 商业筹备中",
       "version": "0.3.3",
