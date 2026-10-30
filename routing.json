@@ -586,6 +586,27 @@
       }
     },
     {
+      "id": "openai-supporter",
+      "name": "OpenAISupporter",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "OpenAI",
+          "OpenAISupporter",
+          "openai support",
+          "GPT",
+          "美元",
+          "USD",
+          "计价",
+          "缓存",
+          "长上下文"
+        ],
+        "extensions": [],
+        "summary": "OpenAI 官方端点四个精确模型的离线 USD Standard 价格、缓存命中和长上下文阶梯；不提供聊天或余额查询。"
+      }
+    },
+    {
       "id": "compare",
       "name": "Compare · 商业筹备中",
       "version": "0.3.3",
