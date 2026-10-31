@@ -579,10 +579,14 @@
           "remaining percentage",
           "账户额度",
           "剩余额度",
-          "连接码"
+          "连接码",
+          "reasoning effort",
+          "reasoning strength",
+          "推理强度",
+          "推理力度"
         ],
         "extensions": [],
-        "summary": "Codex 本机桥接：配套新版 Aide 在插件内安装、启动、停止、卸载、生成密钥，无需独立管理器；模型目录、只读账户额度，支持三端。"
+        "summary": "Codex 本机桥接：新版 Aide 插件内管理、模型目录、只读账户额度；兼容宿主可将推理强度按 Codex Bridge 格式透传，支持三端。"
       }
     },
     {
