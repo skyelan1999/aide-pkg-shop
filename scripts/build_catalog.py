@@ -33,6 +33,11 @@ def load_listings(directory=ROOT/'listings'):
    name=item['package']
    assert name.startswith('packages/'+item['id']+'/') and '..' not in Path(name).parts and '\\' not in name
    assert re.fullmatch('[a-f0-9]{64}',item['sha256']) and 0<item['bytes']<=24*1024*1024
+  c=item.get('sourceCompatibility')
+  if c is not None:
+   assert isinstance(c,dict) and re.fullmatch(r'[0-9]+(?:\.[0-9]+){1,3}(?:[ -][A-Za-z0-9.-]+)?',c.get('minAideVersion',''))
+   features=c.get('features',[]);assert isinstance(features,list) and 1<=len(features)<=16
+   assert all(isinstance(f,str) and re.fullmatch(r'[a-z0-9][a-z0-9-]{0,79}',f) for f in features) and len(features)==len(set(features))
   items.append(item)
  return items
 def main():

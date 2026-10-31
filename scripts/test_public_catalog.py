@@ -29,4 +29,9 @@ class PublicListingTest(unittest.TestCase):
   for field,value in [('distribution','private'),('id','office'),('package','packages/example/../../secret.zip'),('sha256','invalid'),('bytes',0),('commerce',{'status':'available'})]:
    item=self.listing();item[field]=value
    with self.assertRaises(AssertionError):self.load(item)
+ def test_source_compatibility_is_explicit_bounded_and_preserved(self):
+  valid=dict(minAideVersion='0.1.17.6 RC1',features=['provider-support-usd-v1'])
+  self.assertEqual(self.load(self.listing(sourceCompatibility=valid))[0]['sourceCompatibility'],valid)
+  for c in [dict(valid,features=[]),dict(valid,minAideVersion='bad'),dict(valid,features=['unknown space']),dict(valid,features=['x','x'])]:
+   with self.assertRaises(AssertionError):self.load(self.listing(sourceCompatibility=c))
 if __name__=='__main__':unittest.main()
