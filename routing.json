@@ -103,6 +103,34 @@
       }
     },
     {
+      "id": "codex-bridge",
+      "name": "Codex Bridge · Codex 模型桥接",
+      "version": "0.4.1",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "codex",
+          "codex bridge",
+          "chatgpt",
+          "openai",
+          "模型桥接",
+          "codex桥接",
+          "app-server",
+          "sse",
+          "工具交接",
+          "model provider",
+          "local bridge",
+          "codex quota",
+          "remaining percentage",
+          "账户额度",
+          "剩余额度",
+          "连接码"
+        ],
+        "extensions": [],
+        "summary": "Codex 本机桥接：配套新版 Aide 在插件内安装、启动、停止、卸载、生成密钥，无需独立管理器；模型目录、只读账户额度，支持三端。"
+      }
+    },
+    {
       "id": "computer-control",
       "name": "电脑控制",
       "version": "1.2.0",
@@ -189,6 +217,47 @@
       }
     },
     {
+      "id": "file-preview",
+      "name": "File Preview · 文件预览",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "file preview",
+          "visual review",
+          "layout review",
+          "render pdf",
+          "pdf pages",
+          "docx preview",
+          "ppt preview",
+          "xlsx preview",
+          "文件预览",
+          "后台预览",
+          "视觉复查",
+          "排版检查"
+        ],
+        "extensions": [
+          ".pdf",
+          ".docx",
+          ".pptx",
+          ".xlsx",
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".gif",
+          ".bmp",
+          ".tiff",
+          ".md",
+          ".html",
+          ".htm",
+          ".svg",
+          ".txt"
+        ],
+        "summary": "Read-only background document page/crop images for visual review; separate Docker renderer and plugin-tool-images-v1 host required. Office uses conversion print layout."
+      }
+    },
+    {
       "id": "goal",
       "name": "目标",
       "version": "1.0.0",
@@ -259,6 +328,27 @@
           ".pptx"
         ],
         "summary": "生成 DOCX/XLSX/PPTX，读取与按锚点修改 DOCX 批注，并查看和编辑 XLSX，并提供原文搜索／RAG文档检索"
+      }
+    },
+    {
+      "id": "openai-supporter",
+      "name": "OpenAISupporter",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "OpenAI",
+          "OpenAISupporter",
+          "openai support",
+          "GPT",
+          "美元",
+          "USD",
+          "计价",
+          "缓存",
+          "长上下文"
+        ],
+        "extensions": [],
+        "summary": "OpenAI 官方端点四个精确模型的离线 USD Standard 价格、缓存命中和长上下文阶梯；不提供聊天或余额查询。"
       }
     },
     {
@@ -340,7 +430,7 @@
     {
       "id": "sqlite",
       "name": "SQLite 数据库",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -353,7 +443,7 @@
           ".sqlite",
           ".db"
         ],
-        "summary": "基于 node:sqlite 的数据库工具：参数化查询、事务、脚本、结构与 CSV/备份导出；查询默认只读，事务和脚本默认可写。"
+        "summary": "SQLite 1.0.1：逐句危险写确认、实际 ATTACH 路径授权、CSV 原子导出；查询默认只读，事务/脚本默认可写。"
       }
     },
     {
@@ -410,7 +500,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.5.1",
+      "version": "1.5.3",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -426,7 +516,7 @@
           "中继"
         ],
         "extensions": [],
-        "summary": "1.5.1 预发布 · 移除RDP/VNC，恢复原Shell/SSH、TCP/UDP/串口工作台；保留加密中继、日志、可见性及重新连接。"
+        "summary": "1.5.3 预发布 · TCP代理双向背压、半关闭与输入优先调度；保留Shell/SSH/TCP/UDP/串口、中继、日志和手动重连。"
       }
     },
     {
@@ -514,96 +604,6 @@
         ],
         "extensions": [],
         "summary": "DSH workflow 能力预设：注册工作流工具与面板声明；当前未实现工作流执行或进度查询 handler。"
-      }
-    },
-    {
-      "id": "file-preview",
-      "name": "File Preview · 文件预览",
-      "version": "0.1.0",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "file preview",
-          "visual review",
-          "layout review",
-          "render pdf",
-          "pdf pages",
-          "docx preview",
-          "ppt preview",
-          "xlsx preview",
-          "文件预览",
-          "后台预览",
-          "视觉复查",
-          "排版检查"
-        ],
-        "extensions": [
-          ".pdf",
-          ".docx",
-          ".pptx",
-          ".xlsx",
-          ".png",
-          ".jpg",
-          ".jpeg",
-          ".webp",
-          ".gif",
-          ".bmp",
-          ".tiff",
-          ".md",
-          ".html",
-          ".htm",
-          ".svg",
-          ".txt"
-        ],
-        "summary": "Read-only background document page/crop images for visual review; separate Docker renderer and plugin-tool-images-v1 host required. Office uses conversion print layout."
-      }
-    },
-    {
-      "id": "codex-bridge",
-      "name": "Codex Bridge · Codex 模型桥接",
-      "version": "0.4.1",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "codex",
-          "codex bridge",
-          "chatgpt",
-          "openai",
-          "模型桥接",
-          "codex桥接",
-          "app-server",
-          "sse",
-          "工具交接",
-          "model provider",
-          "local bridge",
-          "codex quota",
-          "remaining percentage",
-          "账户额度",
-          "剩余额度",
-          "连接码"
-        ],
-        "extensions": [],
-        "summary": "Codex 本机桥接：配套新版 Aide 在插件内安装、启动、停止、卸载、生成密钥，无需独立管理器；模型目录、只读账户额度，支持三端。"
-      }
-    },
-    {
-      "id": "openai-supporter",
-      "name": "OpenAISupporter",
-      "version": "0.1.0",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "OpenAI",
-          "OpenAISupporter",
-          "openai support",
-          "GPT",
-          "美元",
-          "USD",
-          "计价",
-          "缓存",
-          "长上下文"
-        ],
-        "extensions": [],
-        "summary": "OpenAI 官方端点四个精确模型的离线 USD Standard 价格、缓存命中和长上下文阶梯；不提供聊天或余额查询。"
       }
     },
     {
