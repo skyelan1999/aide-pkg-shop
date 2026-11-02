@@ -500,23 +500,27 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.5.3",
+      "version": "1.6.0",
       "distribution": "public",
       "routing": {
         "keywords": [
           "terminal",
-          "设备终端工作台",
-          "终端",
+          "terminal workbench",
           "ssh",
           "tcp",
           "udp",
-          "串口",
           "serial",
-          "设备调试",
-          "中继"
+          "relay",
+          "telnet",
+          "x11",
+          "session copy",
+          "会话复制",
+          "中继",
+          "终端",
+          "串口"
         ],
         "extensions": [],
-        "summary": "1.5.3 预发布 · TCP代理双向背压、半关闭与输入优先调度；保留Shell/SSH/TCP/UDP/串口、中继、日志和手动重连。"
+        "summary": "Independent session copies, shared-relay copies, direct/relay Telnet and untrusted SSH X11; requires Aide 0.1.18.0 RC2."
       }
     },
     {
