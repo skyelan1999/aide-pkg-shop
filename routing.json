@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "c6d4334d95b350765c9288dacd03d82d5d360480",
+  "sourceCommit": "a8e6e69311767b3a352b96adfe80fb6765b9cccb",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -500,7 +500,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.6.0",
+      "version": "1.7.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -520,7 +520,7 @@
           "串口"
         ],
         "extensions": [],
-        "summary": "Independent session copies, shared-relay copies, direct/relay Telnet and untrusted SSH X11; requires Aide 0.1.18.0 RC2."
+        "summary": "Configurable sessions, bounded log reads by line or time, session copies, Telnet and untrusted SSH X11; requires Aide 0.1.18.0 RC2."
       }
     },
     {
