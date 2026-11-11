@@ -412,7 +412,7 @@
     {
       "id": "professional-resume",
       "name": "Professional Resume",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -426,12 +426,15 @@
           "风险评估",
           "resume",
           "CV",
-          "JD"
+          "JD",
+          "工作区简历",
+          "引用保存",
+          "另存为"
         ],
         "extensions": [
           ".pr"
         ],
-        "summary": "加密 .pr 简历资料库，按公司岗位与履历证据定制简历，调查企业及岗位背景。"
+        "summary": "加密 .pr 简历工作台，支持工作区和引用读取/保存、按公司岗位定制与有来源的风险核实。"
       }
     },
     {

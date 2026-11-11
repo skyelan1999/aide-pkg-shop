@@ -3,14 +3,14 @@
   "kind": "plugin",
   "distribution": "public",
   "name": "Professional Resume",
-  "description": "加密 .pr 简历资料库、多版本简历、企业与岗位调查、基于履历证据的岗位定制。",
-  "version": "0.1.0",
+  "description": "加密 .pr 简历资料库、工作区/引用读取保存与另存为、多版本岗位定制、企业与岗位调查。",
+  "version": "0.1.1",
   "author": "skyelan1999",
   "category": "creation",
   "icon": "creation",
-  "package": "packages/professional-resume/0.1.0-adba148c7d52.zip",
-  "sha256": "adba148c7d52b78ea58d74ac76a990afe27d0f3650303b62e9170e36c0648212",
-  "bytes": 44663,
+  "package": "packages/professional-resume/0.1.1-36e03a6d88bf.zip",
+  "sha256": "36e03a6d88bf9f84ce3404635e109c15ed047b107a1e078fb8dde2b125acb27c",
+  "bytes": 54871,
   "minAideVersion": "0.1.17.5 RC5",
   "platforms": [
     "macos",
@@ -19,18 +19,18 @@
   ],
   "features": [],
   "dependencies": [
-    "需要工作台工具桥和 .pr 文件处理器；测试宿主 Aide 0.1.18.0 RC3。",
+    "来源选择和另存为需配套 Aide fileAccess / files.select；旧宿主保留本机和已绑定文件能力，不伪装已支持新通道。",
     "生成任务复用 Aide 会话模型与联网工具；准备后需复制指令到 Aide 会话。",
     "使用浏览器 WebCrypto；单库明文15MiB，没有固定简历份数上限。",
     "Chrome / WebKit 在 macOS 与隔离 Linux Aide 验证；原生 Windows 未实测。"
   ],
-  "permissions": "密码仅在页面本地解密。用户选择的履历/JD会进入 Aide 会话和模型提供商；临时任务独立加密、工作区隔离，24小时失效。原文件保存走宿主人工确认，不自动投递。",
+  "permissions": "密码仅在页面本地解密。用户选择的履历/JD会进入 Aide 会话和模型提供商；临时任务独立加密、工作区隔离，24小时失效。原文件保存走宿主人工确认，不自动投递。 手动文件通道只读选定格式，保存沿用宿主人工确认与来源写锁；不会向模型传递文件密码。",
   "trustNotice": "Public / MIT；公开包不含个人 .pr、密码或任务。静态加密不保护已分享给模型的文本；结构校验不等于事实核实。",
-  "source": "https://github.com/skyelan1999/aide-pkg-ProfessionalResume/tree/9b0527707749efd02b96d6ebc08e45582c6d47c4",
+  "source": "https://github.com/skyelan1999/aide-pkg-ProfessionalResume/tree/e23693cfa6ccd3db0f502effde641ab454e49a77",
   "license": "MIT",
-  "readme": "# Professional Resume 0.1.0\n\n加密 .pr 职业资料库，保存多份个人档案、履历证据、公司与岗位、定制简历、正文历史和投递记录。\n\n填写档案与 JD，在岗位定制中明确选择资料并准备任务；复制指令到 Aide 会话，Aide 使用插件获取资料，调用现有联网能力调查企业与岗位，再回填定制简历。工作台取回、审阅、保存。准备任务不会自动调用模型。\n\n每条简历正文关联履历依据，保留个人贡献边界。企业报告区分事实、推断与未知，记录来源与查询日期；无法联网时标为待核实。\n\n.pr 使用 AES-256-GCM 和 PBKDF2-SHA-256。单库明文15MiB，无固定简历份数上限。密码不能找回，关闭前请保存。Word、Markdown、打印版HTML为明文导出；HTML可在系统浏览器打印为PDF。\n\n14项测试及真实Aide/Chrome/WebKit工具、文件与下载流程已验证。回填使用虚构样本，真实付费模型效果与企业调查准确性未实测。",
+  "readme": "# Professional Resume 0.1.1\n\n新增插件内工作区/引用文件选择、.pr读取、保存与另存为。支持已启用本地、Skill、SFTP和工作区SFTP来源；只读引用可以打开，保存时需选择可写位置。\n\n需要配套Aide握手提供files.select（workbench.fileAccess扩展）。单独安装插件不升级宿主；未包含新桥的既有RC3镜像继续保留本机打开/下载和已绑定文件保存，新按钮会说明需要更新。\n\n选择目标后只暂存已加密字节，点击宿主顶部保存才提交。现有目标固定SHA，版本变化拒绝覆盖；新文件不能覆盖后来出现的目标。错误密码、取消和导出不会丢失原库的保存基线。Word、Markdown、HTML可明文导出到可写来源，完成后恢复.pr绑定。\n\n.pr仍为原AES-256-GCM加密PRDB v1，15MiB容量与多简历/证据/JD/风险报告功能保持兼容。密码仅在页面使用，不提供找回。岗位任务仍需用户在Aide会话执行，联网调查依赖可用工具。\n\n插件18项测试、宿主28项相关Go案例和12项race案例、真实Chrome新/旧宿主流程通过。SFTP使用协议辅助进程验证；原生Windows、真实远程SSH网络和新来源选择的系统Safari全流程未实测。",
   "screenshots": [],
-  "changelog": "首次公开版本：加密 .pr、多档案/证据、公司/JD、Aide任务与结果校验、企业风险报告、多简历/历史/复制、Word/Markdown/打印版HTML、投递记录。",
+  "changelog": "0.1.1：工作区与引用浏览、PRDB v1读取/保存/另存为，三种简历导出可保存到可写引用；来源只读保护、SHA冲突拒绝、排他新建和绑定恢复。",
   "routing": {
     "keywords": [
       "Professional Resume",
@@ -43,11 +43,14 @@
       "风险评估",
       "resume",
       "CV",
-      "JD"
+      "JD",
+      "工作区简历",
+      "引用保存",
+      "另存为"
     ],
     "extensions": [
       ".pr"
     ],
-    "summary": "加密 .pr 简历资料库，按公司岗位与履历证据定制简历，调查企业及岗位背景。"
+    "summary": "加密 .pr 简历工作台，支持工作区和引用读取/保存、按公司岗位定制与有来源的风险核实。"
   }
 }
