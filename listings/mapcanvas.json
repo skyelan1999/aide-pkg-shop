@@ -2,14 +2,14 @@
   "id": "mapcanvas",
   "kind": "plugin",
   "name": "栅图 MapCanvas",
-  "description": "ROS栅格地图编辑：可收起路径、灰色画笔、AI预览/试画/编辑提案与使用指南。",
-  "version": "0.2.0",
+  "description": "ROS栅格地图编辑：沿用原图未知灰度、精致分组工具栏、可收起路径与AI预览编辑。",
+  "version": "0.2.1",
   "author": "skyelan1999",
   "category": "creation",
   "icon": "workspace",
-  "package": "packages/mapcanvas/0.2.0-27a1a87496c6.zip",
-  "sha256": "27a1a87496c6424c7909f7006039333f6e22743cce5fe4aadb1998695c9f4fca",
-  "bytes": 30934,
+  "package": "packages/mapcanvas/0.2.1-c69d77085ee5.zip",
+  "sha256": "c69d77085ee5d3a3d5cf9600d8bbfe1756249b9cd8cfe751e79433bd13457618",
+  "bytes": 35478,
   "minAideVersion": "0.1.18.0 RC3",
   "platforms": [
     "windows",
@@ -27,11 +27,11 @@
     "map-image-document-v1",
     "plugin-tool-images-v1"
   ],
-  "source": "https://github.com/skyelan1999/aide-pkg-MapCanvas/tree/9f62564437dfa031d87de4f10167bdbae36e714d",
+  "source": "https://github.com/skyelan1999/aide-pkg-MapCanvas/tree/e79a8558828a38745d9500887f53efa70c5f9df4",
   "license": "MIT",
-  "readme": "# 栅图 MapCanvas\n\nAide 公用 ROS 栅格地图编辑工作台。插件 ID：`mapcanvas`，当前版本：`0.2.0`，MIT。\n\n从 YAML + PGM/PNG 地图开始，浏览、缩放、平移、画墙或擦墙；支持灰色未知区域画笔、笔刷预览、撤销、重做及导出配套地图 ZIP。“浏览 / 上级”右侧可收起路径列表，保留当前目录与结果。可写来源的原图片通过 Aide 上方的“保存到原文件”按钮确认后保存。YAML 分辨率、原点、阈值和 posegraph 不随原图保存改动。\n\n## 安装前提\n\n需要包含 `map-image-document-v1` 和 `plugin-tool-images-v1` 能力的 Aide 主程序源码构建（宿主集成提交见本版 Release）。旧版 0.1.18.0 RC3 安装包本身不包含本次宿主增量；市场会通过能力要求拒绝不兼容的宿主。不要只看相同版本字符串判断能力已存在。\n\n本插件是 JavaScript + HTML，不需要在用户机器上运行 npm 或编译。ZIP 安装包不包含宿主程序，也不会自行修改 Aide。平台标签表示可安装的 Node/浏览器目标，不代表完成了全部操作系统的实机验收。\n\n## 使用\n\n1. 从 Aide 插件市场安装并启用 **栅图 MapCanvas**，打开工作台。原有 `ros-map-editor` 使用不同 ID，原插件不会被覆盖或卸载。\n2. 选择工作目录或已经授权可见的文件来源，点“浏览”选择 `.yaml`。图片栏默认根据 YAML 的 `image` 字段解析同来源路径；必要时手动指定。\n3. 点“导入”，选画墙、擦墙或手形。滚轮缩放，空格或中键临时平移；使用适应、1:1、撤销和重做检查编辑。\n4. 可写来源：点软盘准备原图草稿，再点 **Aide 宿主上方“保存到原文件”**；看到保存成功前不算落盘。外部文件被更改、来源撤销/只读、切换工作区或锁屏时拒绝旧草稿。\n5. 只读来源或本机文件选择器导入：使用“导出 ZIP”，再点宿主的“保存文件”下载。原来源不被覆盖。示例 `examples/map.yaml` 和 `examples/map.pgm` 可复制到测试目录熟悉操作。\n6. 保存超时或状态不明时先核对文件，不自动重复保存；“取消待保存”保留画布编辑。\n\n## Aide 预览与操作接口\n\n启用插件后，工具描述直接进入 Aide 的工具列表。调用 `mapcanvas_help` 获取完整 [AI 工具指南及提示词](AI-GUIDE.md)；工作台也有“AI工具指南”按钮。\n\n- `mapcanvas_preview`：从授权来源读取 YAML＋PGM/PNG，返回真实 PNG 视觉证据、像素坐标映射和图像/YAML摘要；可裁剪，也可带操作只读试画。\n- `mapcanvas_edit`：以两项摘要核对输入，执行画墙/擦墙/灰色的笔画或矩形，生成派生 PGM＋YAML 两条文件提案。复用 Aide 文件应用流程，收到实际回执后预览输出 YAML 复核。原图和未保存画布不会被工具直接替换。\n- `mapcanvas_sources` / `mapcanvas_browse` / `mapcanvas_read`：来源枚举、路径浏览及低层分块读取。新的预览/编辑使用 `sourceId`，低层接口保持 `source` 兼容。\n\n提示词示例：“使用 MapCanvas 预览 maps/map.yaml，把原图像素 x=10、y=5、宽4、高8的矩形标为灰色未知区域；先试画，再生成 exports/map-edited.pgm 和配套 YAML 的提案，应用后读回复核。”\n\n工具像素原点在左上，x向右、y向下；不把缩略图像素或米当作原图坐标。灰色值按 negate 和 free/occupied 阈值计算，支持16位PGM。AI PNG 输入要求非交错8位灰度；派生PGM为可读P2文本，后续GUI原图保存仍为P5。单次128操作、4096点、32百万估算像素工作量，P2文本最多24MiB。\n\n## 格式与边界\n\n- 标准单文档 ROS 地图 YAML，最多 64 KiB；支持 trinary。不是通用 YAML 编辑器。\n- PGM 支持 P2/P5，最大灰度 65535，限制 4,194,304 像素；拒绝畸形数字、像素溢出和不匹配的栅格长度。\n- PNG 支持 8 位不透明灰度图；图片最多 8 MiB、4,194,304 像素。浏览器解码后验证灰度和透明度。\n- 原图保存保留 PNG/PGM 格式和尺寸；PGM 写为 P5，不保留原 P2 排版或注释。PNG 不承诺保留非地图元数据。ZIP 另存为 YAML + PGM。\n- 不修改定位图、posegraph，不连接机器人、不发送导航目标或运动控制。\n- 来源读权限不等于写权限。文件读取与暂存通过 Aide 的可见来源 API；原图覆盖复用文档版本与原子替换通道，不扩大其他插件的来源权限。\n\n## 开发与验证\n\n`npm test` 运行实际页面解析/编码函数与入口工具测试；`npm run package` 构建固定文件白名单、固定时间戳的 ZIP 及 SHA256SUMS。发布包不含实例设置、用户地图、宿主补丁、测试数据缓存或凭据。\n\n本版由用户提供的 ROS 地图编辑器 0.4.7 有效源码整理、改名并修正 P2 像素整数溢出；保留原版本作独立插件。Aide 宿主增量在 `skyelan1999/aide`，插件源码在 `skyelan1999/aide-pkg-MapCanvas`，集中问题跟踪在 Aide 主仓库。具体安装、页面与保护用例的结果见 [验收记录](https://github.com/skyelan1999/aide-pkg-MapCanvas/blob/main/docs/ACCEPTANCE.md)。\n\n\n[Release](https://github.com/skyelan1999/aide-pkg-MapCanvas/releases/tag/v0.2.0) | [AI Guide](https://github.com/skyelan1999/aide-pkg-MapCanvas/blob/9f62564437dfa031d87de4f10167bdbae36e714d/AI-GUIDE.md) | [Acceptance](https://github.com/skyelan1999/aide-pkg-MapCanvas/blob/9f62564437dfa031d87de4f10167bdbae36e714d/docs/ACCEPTANCE.md)\n",
+  "readme": "# 栅图 MapCanvas\n\nAide 公用 ROS 栅格地图编辑工作台。插件 ID：`mapcanvas`，当前版本：`0.2.1`，MIT。\n\n从 YAML + PGM/PNG 地图开始，浏览、缩放、平移、画墙或擦墙；支持灰色未知区域画笔、笔刷预览、撤销、重做及导出配套地图 ZIP。“浏览 / 上级”右侧可收起路径列表，保留当前目录与结果。可写来源的原图片通过 Aide 上方的“保存到原文件”按钮确认后保存。YAML 分辨率、原点、阈值和 posegraph 不随原图保存改动。\n\n## 安装前提\n\n需要包含 `map-image-document-v1` 和 `plugin-tool-images-v1` 能力的 Aide 主程序源码构建（宿主集成提交见本版 Release）。旧版 0.1.18.0 RC3 安装包本身不包含本次宿主增量；市场会通过能力要求拒绝不兼容的宿主。不要只看相同版本字符串判断能力已存在。\n\n本插件是 JavaScript + HTML，不需要在用户机器上运行 npm 或编译。ZIP 安装包不包含宿主程序，也不会自行修改 Aide。平台标签表示可安装的 Node/浏览器目标，不代表完成了全部操作系统的实机验收。\n\n## 使用\n\n1. 从 Aide 插件市场安装并启用 **栅图 MapCanvas**，打开工作台。原有 `ros-map-editor` 使用不同 ID，原插件不会被覆盖或卸载。\n2. 选择工作目录或已经授权可见的文件来源，点“浏览”选择 `.yaml`。图片栏默认根据 YAML 的 `image` 字段解析同来源路径；必要时手动指定。\n3. 点“导入”，选画墙、擦墙或手形。滚轮缩放，空格或中键临时平移；使用适应、1:1、撤销和重做检查编辑。\n4. 可写来源：点软盘准备原图草稿，再点 **Aide 宿主上方“保存到原文件”**；看到保存成功前不算落盘。外部文件被更改、来源撤销/只读、切换工作区或锁屏时拒绝旧草稿。\n5. 只读来源或本机文件选择器导入：使用“导出 ZIP”，再点宿主的“保存文件”下载。原来源不被覆盖。示例 `examples/map.yaml` 和 `examples/map.pgm` 可复制到测试目录熟悉操作。\n6. 保存超时或状态不明时先核对文件，不自动重复保存；“取消待保存”保留画布编辑。\n\n## Aide 预览与操作接口\n\n启用插件后，工具描述直接进入 Aide 的工具列表。调用 `mapcanvas_help` 获取完整 [AI 工具指南及提示词](AI-GUIDE.md)；工作台也有“AI工具指南”按钮。\n\n- `mapcanvas_preview`：从授权来源读取 YAML＋PGM/PNG，返回真实 PNG 视觉证据、像素坐标映射和图像/YAML摘要；可裁剪，也可带操作只读试画。\n- `mapcanvas_edit`：以两项摘要核对输入，执行画墙/擦墙/灰色的笔画或矩形，生成派生 PGM＋YAML 两条文件提案。复用 Aide 文件应用流程，收到实际回执后预览输出 YAML 复核。原图和未保存画布不会被工具直接替换。\n- `mapcanvas_sources` / `mapcanvas_browse` / `mapcanvas_read`：来源枚举、路径浏览及低层分块读取。新的预览/编辑使用 `sourceId`，低层接口保持 `source` 兼容。\n\n提示词示例：“使用 MapCanvas 预览 maps/map.yaml，把原图像素 x=10、y=5、宽4、高8的矩形标为灰色未知区域；先试画，再生成 exports/map-edited.pgm 和配套 YAML 的提案，应用后读回复核。”\n\n工具像素原点在左上，x向右、y向下；不把缩略图像素或米当作原图坐标。灰色优先沿用原图中出现最多且符合未知阈值的像素值，导入后固定使用，支持16位PGM；没有有效未知像素时才回退计算。界面显示实际灰度和来源。原图与Nav2的8位转换都必须符合trinary未知范围；无法表达时禁用灰笔。AI PNG 输入要求非交错8位灰度；派生PGM为可读P2文本，后续GUI原图保存仍为P5。单次128操作、4096点、32百万估算像素工作量，P2文本最多24MiB。\n\n## 格式与边界\n\n- 标准单文档 ROS 地图 YAML，最多 64 KiB；支持 trinary。不是通用 YAML 编辑器。\n- PGM 支持 P2/P5，最大灰度 65535，限制 4,194,304 像素；拒绝畸形数字、像素溢出和不匹配的栅格长度。\n- PNG 支持 8 位不透明灰度图；图片最多 8 MiB、4,194,304 像素。浏览器解码后验证灰度和透明度。\n- 原图保存保留 PNG/PGM 格式和尺寸；PGM 写为 P5，不保留原 P2 排版或注释。PNG 不承诺保留非地图元数据。ZIP 另存为 YAML + PGM。\n- 不修改定位图、posegraph，不连接机器人、不发送导航目标或运动控制。\n- 来源读权限不等于写权限。文件读取与暂存通过 Aide 的可见来源 API；原图覆盖复用文档版本与原子替换通道，不扩大其他插件的来源权限。\n\n## 开发与验证\n\n`npm test` 运行实际页面解析/编码函数与入口工具测试；`npm run package` 构建固定文件白名单、固定时间戳的 ZIP 及 SHA256SUMS。发布包不含实例设置、用户地图、宿主补丁、测试数据缓存或凭据。\n\n本版由用户提供的 ROS 地图编辑器 0.4.7 有效源码整理、改名并修正 P2 像素整数溢出；保留原版本作独立插件。Aide 宿主增量在 `skyelan1999/aide`，插件源码在 `skyelan1999/aide-pkg-MapCanvas`，集中问题跟踪在 Aide 主仓库。具体安装、页面与保护用例的结果见 [验收记录](https://github.com/skyelan1999/aide-pkg-MapCanvas/blob/main/docs/ACCEPTANCE.md)。\n\n\n[Release](https://github.com/skyelan1999/aide-pkg-MapCanvas/releases/tag/v0.2.1) | [AI Guide](https://github.com/skyelan1999/aide-pkg-MapCanvas/blob/e79a8558828a38745d9500887f53efa70c5f9df4/AI-GUIDE.md) | [Acceptance](https://github.com/skyelan1999/aide-pkg-MapCanvas/blob/e79a8558828a38745d9500887f53efa70c5f9df4/docs/ACCEPTANCE.md)\n",
   "screenshots": [],
-  "changelog": "0.2.0: collapsible browse paths; gray/unknown brush honoring negate/thresholds/16-bit; executable help, PNG/crop/dry-run preview and paired PGM/YAML edit proposals with prompts. Current local Aide UI/API acceptance and14 Node tests passed.",
+  "changelog": "0.2.1: inherit original unknown gray with native/8-bit threshold validation; frozen GUI selection, shared AI selector, gray/source swatch, polished SVG tools, Aide light/dark theme and bounded controls under zoom.16 Node tests and current local UI/API acceptance passed.",
   "distribution": "public",
   "routing": {
     "keywords": [
@@ -52,6 +52,6 @@
       ".pgm",
       ".png"
     ],
-    "summary": "ROS栅格地图编辑：可收起路径、灰色画笔、AI预览/试画/编辑提案与使用指南。"
+    "summary": "ROS栅格地图编辑：沿用原图未知灰度、精致分组工具栏、可收起路径与AI预览编辑。"
   }
 }

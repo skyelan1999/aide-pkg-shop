@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "0966e0a0e704e4a4aed76a0e4df7cad3a24af367",
+  "sourceCommit": "a9d00b66d806477a9e88b54d412ca75e3e1dedf6",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -291,7 +291,7 @@
     {
       "id": "mapcanvas",
       "name": "栅图 MapCanvas",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -312,7 +312,7 @@
           ".pgm",
           ".png"
         ],
-        "summary": "ROS栅格地图编辑：可收起路径、灰色画笔、AI预览/试画/编辑提案与使用指南。"
+        "summary": "ROS栅格地图编辑：沿用原图未知灰度、精致分组工具栏、可收起路径与AI预览编辑。"
       }
     },
     {
