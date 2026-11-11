@@ -962,6 +962,59 @@
       }
     },
     {
+      "id": "professional-resume",
+      "kind": "plugin",
+      "distribution": "public",
+      "name": "Professional Resume",
+      "description": "加密 .pr 简历资料库、多版本简历、企业与岗位调查、基于履历证据的岗位定制。",
+      "version": "0.1.0",
+      "author": "skyelan1999",
+      "category": "creation",
+      "icon": "creation",
+      "package": "packages/professional-resume/0.1.0-adba148c7d52.zip",
+      "sha256": "adba148c7d52b78ea58d74ac76a990afe27d0f3650303b62e9170e36c0648212",
+      "bytes": 44663,
+      "minAideVersion": "0.1.17.5 RC5",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "features": [],
+      "dependencies": [
+        "需要工作台工具桥和 .pr 文件处理器；测试宿主 Aide 0.1.18.0 RC3。",
+        "生成任务复用 Aide 会话模型与联网工具；准备后需复制指令到 Aide 会话。",
+        "使用浏览器 WebCrypto；单库明文15MiB，没有固定简历份数上限。",
+        "Chrome / WebKit 在 macOS 与隔离 Linux Aide 验证；原生 Windows 未实测。"
+      ],
+      "permissions": "密码仅在页面本地解密。用户选择的履历/JD会进入 Aide 会话和模型提供商；临时任务独立加密、工作区隔离，24小时失效。原文件保存走宿主人工确认，不自动投递。",
+      "trustNotice": "Public / MIT；公开包不含个人 .pr、密码或任务。静态加密不保护已分享给模型的文本；结构校验不等于事实核实。",
+      "source": "https://github.com/skyelan1999/aide-pkg-ProfessionalResume/tree/9b0527707749efd02b96d6ebc08e45582c6d47c4",
+      "license": "MIT",
+      "readme": "# Professional Resume 0.1.0\n\n加密 .pr 职业资料库，保存多份个人档案、履历证据、公司与岗位、定制简历、正文历史和投递记录。\n\n填写档案与 JD，在岗位定制中明确选择资料并准备任务；复制指令到 Aide 会话，Aide 使用插件获取资料，调用现有联网能力调查企业与岗位，再回填定制简历。工作台取回、审阅、保存。准备任务不会自动调用模型。\n\n每条简历正文关联履历依据，保留个人贡献边界。企业报告区分事实、推断与未知，记录来源与查询日期；无法联网时标为待核实。\n\n.pr 使用 AES-256-GCM 和 PBKDF2-SHA-256。单库明文15MiB，无固定简历份数上限。密码不能找回，关闭前请保存。Word、Markdown、打印版HTML为明文导出；HTML可在系统浏览器打印为PDF。\n\n14项测试及真实Aide/Chrome/WebKit工具、文件与下载流程已验证。回填使用虚构样本，真实付费模型效果与企业调查准确性未实测。",
+      "screenshots": [],
+      "changelog": "首次公开版本：加密 .pr、多档案/证据、公司/JD、Aide任务与结果校验、企业风险报告、多简历/历史/复制、Word/Markdown/打印版HTML、投递记录。",
+      "routing": {
+        "keywords": [
+          "Professional Resume",
+          "简历",
+          "履历",
+          "求职",
+          "岗位定制",
+          "企业调查",
+          "公司背景",
+          "风险评估",
+          "resume",
+          "CV",
+          "JD"
+        ],
+        "extensions": [
+          ".pr"
+        ],
+        "summary": "加密 .pr 简历资料库，按公司岗位与履历证据定制简历，调查企业及岗位背景。"
+      }
+    },
+    {
       "id": "rviz",
       "kind": "plugin",
       "name": "RViz Workbench",

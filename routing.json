@@ -410,6 +410,31 @@
       }
     },
     {
+      "id": "professional-resume",
+      "name": "Professional Resume",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "Professional Resume",
+          "简历",
+          "履历",
+          "求职",
+          "岗位定制",
+          "企业调查",
+          "公司背景",
+          "风险评估",
+          "resume",
+          "CV",
+          "JD"
+        ],
+        "extensions": [
+          ".pr"
+        ],
+        "summary": "加密 .pr 简历资料库，按公司岗位与履历证据定制简历，调查企业及岗位背景。"
+      }
+    },
+    {
       "id": "rviz",
       "name": "RViz Workbench",
       "version": "0.1.1",
