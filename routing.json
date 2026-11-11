@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "8214743ce2b3c19987e0b494d9b1e336af7e63ae",
+  "sourceCommit": "0966e0a0e704e4a4aed76a0e4df7cad3a24af367",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -291,7 +291,7 @@
     {
       "id": "mapcanvas",
       "name": "栅图 MapCanvas",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -301,7 +301,10 @@
           "栅格地图",
           "地图编辑",
           "pgm",
-          "occupancy grid"
+          "occupancy grid",
+          "灰色画笔",
+          "地图预览",
+          "地图编辑工具"
         ],
         "extensions": [
           ".yaml",
@@ -309,7 +312,7 @@
           ".pgm",
           ".png"
         ],
-        "summary": "ROS 栅格地图工作台：YAML/PGM/PNG 导入、画墙擦墙、撤销重做与原图确认保存。"
+        "summary": "ROS栅格地图编辑：可收起路径、灰色画笔、AI预览/试画/编辑提案与使用指南。"
       }
     },
     {
