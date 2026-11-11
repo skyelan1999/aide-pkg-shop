@@ -527,7 +527,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.0",
+      "version": "1.8.1",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -547,7 +547,7 @@
           "串口"
         ],
         "extensions": [],
-        "summary": "Per-session full terminal settings plus built-in Xvfb/noVNC graphical SSH sessions; requires Aide 0.1.18.0 RC3 and viewer.protocol=1 host support."
+        "summary": "设备终端、SSH/Telnet低延迟交互、TLS中继、TCP/UDP/串口、逐会话设置及图形SSH；基础功能需Aide 0.1.18.0 RC3，图形功能另需viewer宿主。"
       }
     },
     {

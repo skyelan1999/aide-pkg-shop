@@ -63,7 +63,7 @@ Feedback 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-feedback`，保留已有
 
 Subagent 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-subagent`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `subagent-spawn`、`subagent-report`、服务名和面板槽位，没有可执行的子代理调度、结果回收或独立界面实现。Release 说明提供仓库固定提交的安装 ZIP 与摘要下载链接。
 
-Terminal 1.3.1 预发布收录于 `skyelan1999/aide-pkg-terminal`，市场ZIP与Release固定提交归档一致（SHA-256 `36118a15e9f253823f9640e3b216a6066f91e5fd453bb3f2a9abe6f8e475d9fe`）。统一 Shell/SSH/TCP/UDP/串口工作台，合并35项通信工具（总49项），支持SFTP/隧道/模拟/代理/回放、显式UTF-8/HEX发送与TX/RX日志。安装包内含固定版ssh2/serialport及运行依赖。需要配套Aide main的 `terminal-communications-v1` 等能力，旧宿主会显示不兼容；单独升级插件不会补齐宿主上下文。Linux及原生串口虚拟PTY已验证，真实硬件与Windows/macOS未实测；旧包保留，升级会结束现有连接。
+Terminal 1.8.1 收录于 `skyelan1999/aide-pkg-terminal`。市场ZIP与Release安装包逐字节一致；统一Shell/SSH/Telnet/TCP/UDP/串口、逐会话设置及可选图形窗口。短输入确认携带真实输出，减少中继打字回显的额外往返；旧串口中继脚本需重新下载部署。基础功能需Aide 0.1.18.0 RC3，图形窗口另需viewer宿主。受控本机TLS/Telnet测试不代表用户WAN或实体串口性能。旧包保留，升级会结束现有连接。
 
 Workflow 1.0.0 的独立仓库为 `skyelan1999/aide-pkg-workflow`，保留已有市场安装包的版本、字节内容与 SHA-256。它仅声明 `workflow-start`、`workflow-status`、服务名和面板槽位，没有可执行的工作流编排、进度查询或独立界面实现。Release 说明提供仓库固定提交的安装文件链接。
 
