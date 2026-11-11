@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "a8e6e69311767b3a352b96adfe80fb6765b9cccb",
+  "sourceCommit": "8214743ce2b3c19987e0b494d9b1e336af7e63ae",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -286,6 +286,30 @@
         ],
         "extensions": [],
         "summary": "官方历表离线农历换算与月历工作台，1901–2099年、闰月、干支生肖及来源信息"
+      }
+    },
+    {
+      "id": "mapcanvas",
+      "name": "栅图 MapCanvas",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "mapcanvas",
+          "栅图",
+          "ros地图",
+          "栅格地图",
+          "地图编辑",
+          "pgm",
+          "occupancy grid"
+        ],
+        "extensions": [
+          ".yaml",
+          ".yml",
+          ".pgm",
+          ".png"
+        ],
+        "summary": "ROS 栅格地图工作台：YAML/PGM/PNG 导入、画墙擦墙、撤销重做与原图确认保存。"
       }
     },
     {
