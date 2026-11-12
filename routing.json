@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "a9d00b66d806477a9e88b54d412ca75e3e1dedf6",
+  "sourceCommit": "5bec24776314b37565a13ff9f25746ca0f770741",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -485,7 +485,7 @@
     {
       "id": "sqlite",
       "name": "SQLite 数据库",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -498,13 +498,13 @@
           ".sqlite",
           ".db"
         ],
-        "summary": "SQLite 1.0.1：逐句危险写确认、实际 ATTACH 路径授权、CSV 原子导出；查询默认只读，事务/脚本默认可写。"
+        "summary": "SQLite 1.0.3：当前工作区相对路径、授权 SSH 停写快照与受控导出；保留逐句确认及 ATTACH/CSV 边界。"
       }
     },
     {
       "id": "starlink",
       "name": "StarLink · 星图查询",
-      "version": "0.1.4",
+      "version": "0.1.6",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -512,7 +512,7 @@
           "starlink · 星图查询"
         ],
         "extensions": [],
-        "summary": "供 Aide AI 调用的只读星图查询：摘要、标题/函数声明搜索、源行号与关系路径；无独立界面。"
+        "summary": "StarLink 0.1.6：AI 可见范围的本地/SSH 星图查询、完整 Unicode 规范化匹配和缓存失效；无独立界面。"
       }
     },
     {
