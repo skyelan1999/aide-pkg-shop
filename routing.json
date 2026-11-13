@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "5bec24776314b37565a13ff9f25746ca0f770741",
+  "sourceCommit": "f99510618b1a92bebd4bbd9f0427cbf260611be7",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -360,7 +360,7 @@
     {
       "id": "openai-supporter",
       "name": "OpenAISupporter",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -375,7 +375,7 @@
           "长上下文"
         ],
         "extensions": [],
-        "summary": "OpenAI 官方端点四个精确模型的离线 USD Standard 价格、缓存命中和长上下文阶梯；不提供聊天或余额查询。"
+        "summary": "OpenAI 美元费用估算；兼容的 macOS Aide 可经账户确认读取 Safari 官网预付余额。"
       }
     },
     {
