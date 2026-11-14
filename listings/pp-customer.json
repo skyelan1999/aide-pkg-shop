@@ -4,14 +4,14 @@
   "distribution": "public",
   "activationRequired": true,
   "name": "PPCustomer · 商业版",
-  "description": "面向客户的单项目协作：打开 .pp，查看甘特图、风险和沟通记录，调整展示排期并导出项目汇报。安装后需离线激活；获取报价联系 business@sklastu.com。",
-  "version": "0.2.0",
+  "description": "客户里程碑甘特图：默认仅显示里程碑，支持层级、全屏与焦点范围。变更先申请后审批；设置自动写回 .pp，.ppc 为只读客户预览。获取报价、售后、问题反馈请联系 business@sklastu.com。",
+  "version": "0.3.0",
   "author": "skyelan1999",
   "category": "planning",
   "icon": "planning",
-  "package": "packages/pp-customer/0.2.0-85f706d0127a.zip",
-  "sha256": "85f706d0127a1087756c3ae6d42d646af0e38a035c560a4432f930326599a40c",
-  "bytes": 35540,
+  "package": "packages/pp-customer/0.3.0-43316aa89af1.zip",
+  "sha256": "43316aa89af1ccfb95b94133c85233a9c310fd8556dc6458e8435a86ce575871",
+  "bytes": 50719,
   "minAideVersion": "0.1.19.0 RC2",
   "platforms": [
     "macos",
@@ -19,40 +19,40 @@
   ],
   "features": [],
   "dependencies": [
-    "本机离线授权组件（独立下载、首次配置后重启 Aide）",
-    "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需可用 Secret Service 用户会话",
-    "Aide 的 Node 插件运行环境与宿主确认保存通道；首次组件配置需要 Python 3"
+    "本机共享离线授权组件 0.3.0，首次独立配置和启动；升级新核心需新构建授权",
+    "支持文件来源 checkout/commit 写回的更新版 Aide；已验证 0.1.19.0 RC2 当前源码构建",
+    "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需 Python 3"
   ],
-  "permissions": "源 .pp 只读；排期调整和管理记录保存为 .ppcdraft，对外视图保存为 .ppc。文件写入由宿主确认。授权和受保护计算在本机组件执行。",
-  "trustNotice": "商业专有软件，公开下载安装不代表开源或获得使用许可。未授权停留在激活页；产品、设备与有效期以签发许可为准。安装包不含发行私钥、内容密钥或客户授权。首次需单独配置并启动本机组件。",
-  "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.2.0",
+  "permissions": "通过宿主来源 checkout/commit 自动写回所选可写 .pp 的 ppCustomer 专属设置区，检查整文件版本；保留基础 PP 字段。只读来源拒绝保存。.ppc 文件处理器只读，导出仅含选定已批准内容。授权和受保护计算在本机组件校验。",
+  "trustNotice": "商业专有软件，公开下载不等于授权或开源。0.3.0 使用新核心，旧许可不自动包含此构建，升级前请联系发行者取得 .plicense。未授权保持激活页。自动保存会直接写回所选 .pp，需可写来源和更新版 Aide。",
+  "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.3.0",
   "license": "Proprietary · 需离线激活",
-  "readme": "# PPCustomer 0.2.0 · 商业版\n\n一次打开一个 .pp，查看甘特图、项目进度、风险事项和沟通记录，按客户展示需要调整排期并导出汇报。源 .pp 保持只读，管理修改保存为 .ppcdraft，对外视图为 .ppc。\n\n安装包可公开下载；受保护功能需要离线授权。获取报价统一联系：business@sklastu.com。\n\n## 首次安装\n\n1. 从 Aide 市场安装 PPCustomer。\n2. 下载并解压本机组件：https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.2.0/PPCustomer-offline-component-v0.2.0.zip\n3. macOS Apple Silicon：双击组件目录中的“配置Aide连接.command”，选择包含 compose.yaml 的 Aide 安装目录。Linux：执行 python3 configure-aide.py /你的/Aide安装目录。\n4. 配置只增加只读连接目录挂载，不读取凭据、不修改项目，也不会自动重启 Aide。请保存工作，然后先停止、再启动 Aide，使挂载生效。\n5. 双击“启动授权组件.command”（Linux 执行 ./start-core.sh），保持该终端窗口运行。插件会自动连接，不用填写地址。\n6. 打开 PPCustomer，在激活页点“导出设备申请”，再点击 Aide 顶部“保存文件”。将 .pprequest 交给 business@sklastu.com 获取报价及授权。\n7. 将发行者提供的 .pplicense 导入插件。校验成功后点击“开始使用”。限时或永久、设备名单和产品范围以实际签发的授权为准。\n\n## 已有共享组件\n\n如果已部署匹配发行身份的共享组件，先打开插件重新检测即可，无需重复启动本包。若提示未安装本产品核心，请让管理员将本包 core/pp-customer.ppcore 加入现有组件的 core 目录后重启原组件；保留其他核心、系统凭据及已有设备身份。不混用不同发行身份的组件或授权，不重建密钥库。\n\n## 平台与说明\n\n本机组件提供 macOS Apple Silicon、Linux ARM64 / AMD64 二进制；当前不提供原生 Windows 组件。Linux 需要可用的 Secret Service 用户会话及系统凭据库。Mac 已完成真实离线申请、签发导入及授权保持验证；Linux 构建/原生处理已验证，真实客户 Linux 凭据会话未实机验收。macOS 二进制未做 Apple Developer ID 公证。\n\n首次组件配置和启动目前是独立步骤，不是全自动一键安装。后续私有插件可复用统一接入方案，各产品仍分别校验权益。授权仅在本机验证；离线不代表绝对防本机破解。\n\n组件文件中的 connection.json 是进程连接凭据，不是激活文件；不要发送给别人。设备申请可以交给发行者；签发私钥和内容密钥不属于客户包。\n\n新版说明、摘要与组件下载：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.2.0\n",
+  "readme": "# PPCustomer 0.3.0 · 商业版\n\n默认只选择里程碑，直接在同一张甘特图里突出显示日期和状态。可在设置中显示阶段/普通任务、层级和明细；支持全屏与焦点范围。任务变更先形成待审批预览，在项目设置中批准后才更新客户正式排期。\n\n**自动保存直接写回当前 .pp**：客户显示设置、变更申请/审批、风险和沟通等写入 PP 的专属扩展，保留基础任务及其他 PP 字段；版本冲突时拒绝覆盖并保留当前修改。`.ppc` 只包含当前客户可见的已批准内容，是只读快速预览，不含管理设置。也可在 Aide 文件面板直接打开 `.ppc`。\n\n获取报价、售后、问题反馈请联系 **business@sklastu.com**。\n\n## 首次安装与激活\n\n1. 从 Aide 市场安装 PPCustomer 商业版，使用支持文件来源写回的更新版 Aide。本版本已在 Aide 0.1.19.0 RC2 当前源码构建的隔离真实宿主验证。\n2. 下载并解压本机组件：https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.3.0/PPCustomer-offline-component-v0.3.0.zip\n3. macOS Apple Silicon 双击组件中的“配置Aide连接.command”，选择包含 compose.yaml 的 Aide 安装目录。Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n4. 配置增加只读连接目录挂载，不读取凭据或自动重启 Aide。请保存工作，先停止再启动 Aide，使挂载生效。\n5. 双击“启动授权组件.command”（Linux 执行 ./start-core.sh），保持终端运行。插件自动发现组件，无需填写连接地址。\n6. 在激活页导出设备申请，并点击 Aide 顶部“保存文件”。将申请交给发行者，取得 `.plicense` 授权文件后导入；校验通过再开始使用。旧 `.pplicense` 可兼容导入。\n\n## 从已安装商业版升级\n\n0.3.0 包含新加密核心及共享授权组件更新。**旧授权不自动包含新核心，需要发行者签发包含新构建的 .plicense**；请先准备升级授权和保存当前工作。\n\n已有共享组件应沿用其设备身份和系统凭据。管理员先备份并停止原组件，更新对应平台运行时和 core/pp-customer.ppcore，保留其他产品核心及所有设备状态，再启动组件。不要重复启动多个组件，不混用发行身份，不重建密钥库。其他产品继续按各自许可校验。\n\n新版授权界面可以单独撤销当前插件在本机的激活，操作前会要求确认并检查未保存内容。该操作不删除项目、不修改其他产品授权，也不能离线远程撤销其他设备；以后可重新导入有效许可。\n\n## 项目与保存\n\n从工作区/引用打开一个可写 `.pp` 即可管理并自动保存。新项目只勾选里程碑，其他阶段和任务按需在设置开启；已保存的勾选范围保留。甘特图中的待审批标记代表预览，汇报和 `.ppc` 均使用已批准内容。\n\n本机文件上传及示例是预览入口，浏览器不能直接覆盖原文件；请从工作区/引用重新打开原 `.pp` 启用写回。只读、文件变化或来源权限变化会拒绝保存，不把失败说成成功。导出 `.ppc` 或汇报时仍需点击宿主顶部“保存文件”。\n\nAide 首次控制先调用 ppc_guide，再 ppc_inspect 获取事项 ID/revision；提交与审批使用专用接口，常规保存不能伪造正式任务或审批历史。\n\n## 平台与验证范围\n\n本机组件提供 macOS Apple Silicon、Linux ARM64/AMD64；没有原生 Windows 组件。Linux 需要可用 Secret Service 用户会话。macOS 二进制未做 Apple Developer ID 公证。\n\n0.3.0 已完成隔离真实 Aide Go 宿主、商业界面、模拟授权及原生加密流程验证；这些不等于本版已在用户真实系统凭据库或客户现场重新验收。旧生产窗口在测试中保持原样。完全离线不能承诺防止拥有本机控制权的攻击者修改软件。\n\n组件 connection.json 是进程连接凭据，不是授权文件，不要交给别人。发行私钥、内容密钥及客户真实许可不属于客户安装包。\n\n正式说明、摘要和下载：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.3.0\n",
   "screenshots": [],
-  "changelog": "0.2.0 / 授权适配 0.2.1：单项目甘特图、风险与沟通、管理设置、排期覆盖、汇报导出；自动发现本机组件，未授权保持激活页。获取报价：business@sklastu.com。",
+  "changelog": "0.3.0：甘特图内突出里程碑，默认仅勾选里程碑；层级/全屏/焦点范围；变更申请与审批；设置自动保存 .pp；只读 .ppc 原生快速预览；Aide 接口与提示词；单产品本机撤销；通用 .plicense（兼容旧文件）。获取报价、售后、问题反馈请联系 business@sklastu.com。",
   "routing": {
     "keywords": [
       "PPCustomer",
-      "客户项目",
-      "客户汇报",
-      "项目进度",
+      "PPC",
+      "客户里程碑",
       "客户甘特图",
-      "风险事项",
-      "沟通记录",
-      "对外排期"
+      "客户汇报",
+      "客户进度",
+      "排期变更申请",
+      "客户排期审批",
+      "客户沟通"
     ],
     "extensions": [
-      ".ppc",
-      ".ppcdraft"
+      ".ppc"
     ],
-    "summary": "客户项目进度、风险与沟通工作台；商业版需离线激活。"
+    "summary": "客户里程碑甘特图与排期审批；设置写回 .pp，.ppc 仅为客户只读预览；商业版需离线激活。"
   },
   "resources": [
     {
       "title": "下载本机授权组件",
-      "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.2.0/PPCustomer-offline-component-v0.2.0.zip",
-      "sha256": "f333522cd647f22649eb71ff758d026ada1af99a63f57fcb54528a2e72f1716b",
-      "bytes": 48696732
+      "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.3.0/PPCustomer-offline-component-v0.3.0.zip",
+      "sha256": "c80d4809eef55cd4de882a9dc576358c9d7d66e1079b4cb6f94b0e6a2b9118fe",
+      "bytes": 48687957
     }
   ]
 }
