@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Aide 官方插件市场",
-  "sourceCommit": "f99510618b1a92bebd4bbd9f0427cbf260611be7",
+  "sourceCommit": "0bbde930409f25eb74026dad9993865f659c4f0d",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -781,13 +781,13 @@
       "kind": "plugin",
       "name": "Office 文档",
       "description": "生成 DOCX/XLSX/PPTX，读取与按锚点修改 DOCX 批注，并查看和编辑 XLSX，并提供原文搜索／RAG文档检索",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": "Aide",
       "category": "creation",
       "icon": "creation",
-      "package": "packages/office/1.1.0-34b4d01a5714.zip",
-      "sha256": "34b4d01a5714cad3530471b3de86c4d81eee6ca0452b85ba149b31b8ad94553f",
-      "bytes": 4287,
+      "package": "packages/office/1.1.1-cb1c28bff361.zip",
+      "sha256": "cb1c28bff3613b25146ea1699570ac3197ee4b92af5aa88572aad49df1d17651",
+      "bytes": 6933,
       "minAideVersion": "0.1.17.0 RC2",
       "platforms": [
         "windows",
@@ -800,11 +800,11 @@
       "permissions": "可向 Aide 提交文件、命令或引用管理提案；相关操作沿用现有授权。",
       "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
       "features": [],
-      "source": "https://github.com/skyelan1999/aide-pkg-office/tree/1d56ad23c7d028afe65882a534b44a9270ff406f",
+      "source": "https://github.com/skyelan1999/aide-pkg-office/tree/08e55e65ee829af7fe29767b11fd42c3400b8a01",
       "license": "MIT",
-      "readme": "# Office · Aide Office 文档\n\nAide `office` 1.1.0 独立分发，MIT 许可。安装 ZIP 与已有市场包保持逐字节一致。\n\n注册 `office_create`、`office_comments`、`office_comment_edit`、`office_document_search` 四项工具。支持通过宿主生成 DOCX/XLSX/PPTX、读取或按锚点修改 DOCX 批注，以及原文/RAG 片段检索；相关文件创建、编辑与来源权限沿用 Aide 现有审批通道。RAG 使用本地检索，不承诺 OCR 或整份文档已读。\n\n必须配合 Aide 原生 Office 工作区执行器及宿主 Python Office 环境（python-docx、openpyxl、python-pptx 等）；Node 入口负责协议注册，不能单独执行 Office 操作。安装 ZIP 不包含宿主执行器或 Python 依赖。市场兼容基线为 0.1.17.0 RC2。Linux 为本次验证环境，Windows/macOS 和实际 SSH 未实测。\n\n从 [v1.1.0 Release](https://github.com/skyelan1999/aide-pkg-office/releases/tag/v1.1.0) 的固定提交链接下载 ZIP 与 SHA256SUMS，校验后导入 Aide；也可通过[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)安装。相同 ID/版本无需重复安装。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n安装包位于 packages/v1.1.0/，保留原 LICENSE、入口、manifest、测试与包内说明；外部 README 不重新写入原 ZIP。Release 使用仓库固定提交链接，没有另行上传二进制附件。\n\n验证结果见 docs/release-verification.json。SHA-256 是完整性校验而非签名，Node 插件机制不是权限沙箱。\n",
+      "readme": "# Office · Aide Office 文档\n\nAide `office` 1.1.1 独立分发，MIT 许可。已安装旧版时使用升级入口，保留现有设置与文件。\n\n注册 `office_create`、`office_comments`、`office_comment_edit`、`office_document_search` 四项工具。支持通过宿主生成 DOCX/XLSX/PPTX、读取或按锚点修改 DOCX 批注，以及原文/RAG 片段检索；相关文件创建、编辑与来源权限沿用 Aide 现有审批通道。RAG 使用本地检索，不承诺 OCR 或整份文档已读。\n\n必须配合 Aide 原生 Office 工作区执行器及宿主 Python Office 环境（python-docx、openpyxl、python-pptx 等）；Node 入口负责协议注册，不能单独执行 Office 操作。安装 ZIP 不包含宿主执行器或 Python 依赖。市场兼容基线为 0.1.17.0 RC2。Linux 为本次验证环境，Windows/macOS 和实际 SSH 未实测。\n\n从 [v1.1.1 Release](https://github.com/skyelan1999/aide-pkg-office/releases/tag/v1.1.1) 下载 ZIP 与 SHA256SUMS，校验后导入 Aide；也可通过[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)安装。相同 ID/版本无需重复安装。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n本版通过 Release 附件提供安装包及摘要。历史 `packages/v1.1.0/` 仍保留原安装包，旧 Release 的固定提交链接不变；不要把旧包当作本版更新。\n\n本版验证见 docs/reviews/2026-11-14-common-workflow.md；1.1.0 的历史记录保留在 docs/release-verification.json。SHA-256 是完整性校验而非签名，Node 插件机制不是权限沙箱。\n\n## 生成正文并核对\n\n在对话中说明文件名、格式和正文；工具参数必须使用对应结构：\n\n```json\n{\"path\":\"report.docx\",\"format\":\"docx\",\"content\":{\"title\":\"验收报告\",\"blocks\":[{\"type\":\"paragraph\",\"text\":\"这里是实际正文。\"}]}}\n```\n\nXLSX 用 `content.sheets=[{name,rows:[[...]]}]`，PPTX 用 `content.slides=[{title,body}]`。DOCX 段落键是 `blocks` 中的 `text`，不是 `paragraphs`；表格使用 `type=table` 和 `rows`。不要把文件生成回执当作正文检查：从自动系统文档打开，或调用 `read_file(source=system-docs,path=相对路径)` 核对；未绑定文档目录时按工具返回的工作区位置打开。\n\n1.1.1 在工具定义中列出上述字段。拒绝未知字段、防止静默丢正文的生成器修复属于 Aide [#892](https://github.com/skyelan1999/aide/issues/892)，需要包含该修复的宿主源码构建；只更新插件不会更新旧宿主的 Python 生成器。此修复不覆盖已有文档，不新增外部调用。\n\n新版本包由 `python3 scripts/package.py <输出目录>` 构建；先运行 `node test.js`。旧 `packages/v1.1.0` 与其摘要保留。\n",
       "screenshots": [],
-      "changelog": "Office 1.1.0 独立分发；原运行代码和市场 ZIP 字节保持一致。",
+      "changelog": "1.1.1：提供 DOCX/XLSX/PPTX 的明确正文结构与示例，修复独立包检查。防止误填字段丢正文的严格校验需配套包含 Aide #892 修复的宿主源码构建。",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -1593,7 +1593,7 @@
       "kind": "plugin",
       "name": "PjPlan 项目文档 · 商业版筹备",
       "description": "按真实产品和模块编号规划项目文档命名、修订与 Office 生成参数。后续商业版私有交付，当前仅展示，不开放销售。",
-      "version": "3.1.0",
+      "version": "3.1.1",
       "author": "skyelan1999",
       "category": "planning",
       "icon": "planning",
@@ -1625,7 +1625,7 @@
       "license": "商业版条款待发布；不追溯改变已有版本或第三方内容的权利",
       "readme": "后续商业版计划一次购买、永久使用已购版本，大版本升级另行授权。当前公开仓库版本与未来商业版本分开；价格、正式版本和许可条款确定后才开放销售。购买后私下交付 ZIP 和针对设备授权码签发的许可证。授权升级需重新交付对应版本许可证，不代表重复收费。 受保护交付拆为开源连接层与私下交付的独立核心：Aide 安装许可与核心运行许可分别核验。核心用系统凭据库中的设备密钥解开授权；没有核心或许可则失败，不回退明文算法。原有 3.1.0 公开源码权利不变；本机测试与交叉构建不代表三平台实机、Docker 连通或正式发行验收。",
       "screenshots": [],
-      "changelog": "商业发行准备条目；版本号仅对应当前技术基线，不表示 3.1.0 已成为收费版本。 新增独立核心连接层技术准备；仍未开放销售或公开下载商业包。",
+      "changelog": "当前技术基线 3.1.1：完善配置提示与可用选项。商业发行准备条目，未开放销售，不提供公开商业安装包，不改变原有版本和第三方内容权利。",
       "routing": {
         "keywords": [
           "pjplan",
