@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "f99510618b1a92bebd4bbd9f0427cbf260611be7",
+  "sourceCommit": "0bbde930409f25eb74026dad9993865f659c4f0d",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -335,7 +335,7 @@
     {
       "id": "office",
       "name": "Office 文档",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -682,7 +682,7 @@
     {
       "id": "pjplan",
       "name": "PjPlan 项目文档 · 商业版筹备",
-      "version": "3.1.0",
+      "version": "3.1.1",
       "distribution": "private",
       "routing": {
         "keywords": [
