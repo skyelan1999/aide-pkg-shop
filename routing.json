@@ -668,24 +668,24 @@
     {
       "id": "pp-customer",
       "name": "PPCustomer · 商业版",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "distribution": "public",
       "routing": {
         "keywords": [
           "PPCustomer",
-          "客户项目",
-          "客户汇报",
-          "项目进度",
+          "PPC",
+          "客户里程碑",
           "客户甘特图",
-          "风险事项",
-          "沟通记录",
-          "对外排期"
+          "客户汇报",
+          "客户进度",
+          "排期变更申请",
+          "客户排期审批",
+          "客户沟通"
         ],
         "extensions": [
-          ".ppc",
-          ".ppcdraft"
+          ".ppc"
         ],
-        "summary": "客户项目进度、风险与沟通工作台；商业版需离线激活。"
+        "summary": "客户里程碑甘特图与排期审批；设置写回 .pp，.ppc 仅为客户只读预览；商业版需离线激活。"
       }
     },
     {
