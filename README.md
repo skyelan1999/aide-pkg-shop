@@ -39,7 +39,7 @@ GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及
 
 ## 私有付费条目
 
-`distribution=private` 的 `listings/*.json` 是人工审阅的展示元数据，由生成器合并进目录的 `privateListings` 扩展数组，原 `plugins` 只保留免费包，让旧版 Aide 仍能刷新原目录。`distribution=private` 的条目不得包含 `package/sha256/bytes` 等公开包字段，也不得在本仓库 `packages/<id>/` 存包；验证器拒绝这些情况。Pages 只复制公开包，并在重建前清理生成目录里的旧包副本。PjPlan 目前仅展示“付费筹备中”，没有价格、购买入口或真实签发密钥。
+`distribution=private` 的 `listings/*.json` 是人工审阅的展示元数据，由生成器合并进目录的 `privateListings` 扩展数组，原 `plugins` 保留公开分发包，让旧版 Aide 仍能刷新原目录。`distribution=private` 的条目不得包含 `package/sha256/bytes` 等公开包字段，也不得在本仓库 `packages/<id>/` 存包；验证器拒绝这些情况。Pages 只复制公开包，并在重建前清理生成目录里的旧包副本。PjPlan 目前仅展示“付费筹备中”，没有价格、购买入口或真实签发密钥。
 
 私有条目使用 `commerce.status=coming_soon|available`、`model=perpetual-major`、`priceLabel`、可选 HTTPS `purchaseURL` 和发布者 Ed25519 `publicKeys`（key ID → 标准 Base64 的 32 字节公钥）。开放授权安装至少需要一把公钥。Aide 通过 `private-plugin-v1` 能力识别，旧宿主不会尝试当免费包下载安装。不要把私钥、订单、客户许可证或私有存储永久链接写进公开目录。
 
@@ -105,7 +105,7 @@ Office 1.1.0 已通过[独立仓库](https://github.com/skyelan1999/aide-pkg-off
 
 ## 截图地址兼容性
 
-市场截图使用本仓库的固定 commit 原始文件地址，以兼容已发布 Aide 的截图域与仓库限制。公开插件截图的未修改副本保存在 `screenshots/<plugin-id>/`，来源 commit、原始地址、SHA-256 和许可证见 `screenshots/provenance.json` 与各目录的 `LICENSE`。更新截图时先提交图片，再以该 commit 更新 listing；随后重建目录并运行 `python3 scripts/test_public_catalog.py`、`python3 scripts/verify_catalog.py`。商业插件仍仅展示筹备元数据，不上传安装包。
+市场截图使用本仓库的固定 commit 原始文件地址，以兼容已发布 Aide 的截图域与仓库限制。公开插件截图的未修改副本保存在 `screenshots/<plugin-id>/`，来源 commit、原始地址、SHA-256 和许可证见 `screenshots/provenance.json` 与各目录的 `LICENSE`。更新截图时先提交图片，再以该 commit 更新 listing；随后重建目录并运行 `python3 scripts/test_public_catalog.py`、`python3 scripts/verify_catalog.py`。商业插件的分发方式按各条目声明：私下交付条目不上传安装包；明确授权公开分发的商业客户端可发布经过审查的客户包。
 
 
 DeepSeekSupporter 0.1.0 已独立登记，MIT 许可。Release 与市场使用同一份通用 ZIP；离线价格快照为 2026-10-22，宿主保管凭证。仅声明官方 HTTPS 端点、四个精确模型名／别名、峰谷计价与只读余额协议，不注册生成工具，也未执行真实账户或付费调用。
@@ -117,3 +117,9 @@ OpenAISupporter 0.1.0 已通过[公开仓库](https://github.com/skyelan1999/aid
 ## 2026-11 Release 配套修复
 
 SQLite 更新至1.0.1，收紧逐句危险写确认、实际ATTACH授权和CSV符号链接边界（Aide #583/#584/#586）；需支持DatabaseSync.setAuthorizer的Node及Linux目录句柄。Terminal 更新至1.5.3预发布，保留1.5.2输入调度并修复TCP代理双向背压（Aide #588）。仅这两个包重新打包，其他28个public包保持原字节；旧归档全部保留。源码、包、功能、CI、Release与市场合并分别核对，不以目录生成代替安装及功能验收。
+
+## PPCustomer 商业客户端
+
+PPCustomer 0.2.0 使用 `distribution=public` 公开分发客户安装包，`activationRequired=true` 标明使用前需要离线激活。公开下载不代表免费或开源；`license` 为专有许可。它不使用 `private-plugin-v1` 的安装授权流程，受保护操作由本机授权组件校验。其他私下交付条目保持原流程。
+
+本条目 `source` 指向公开发行说明。`resources` 提供本仓库 GitHub Release 的本机组件附件，含大小和 SHA-256；网站只呈现受限的官方 HTTPS ZIP 链接。组件需首次独立配置和启动，平台限制及安装步骤见条目和 Release。发行工具、签发私钥、内容密钥、真实设备申请及客户许可不进入公开仓库或附件。获取报价统一联系 business@sklastu.com。
