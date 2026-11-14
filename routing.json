@@ -666,6 +666,29 @@
       }
     },
     {
+      "id": "pp-customer",
+      "name": "PPCustomer · 商业版",
+      "version": "0.2.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "PPCustomer",
+          "客户项目",
+          "客户汇报",
+          "项目进度",
+          "客户甘特图",
+          "风险事项",
+          "沟通记录",
+          "对外排期"
+        ],
+        "extensions": [
+          ".ppc",
+          ".ppcdraft"
+        ],
+        "summary": "客户项目进度、风险与沟通工作台；商业版需离线激活。"
+      }
+    },
+    {
       "id": "compare",
       "name": "Compare · 商业筹备中",
       "version": "0.3.3",
