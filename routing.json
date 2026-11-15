@@ -668,7 +668,7 @@
     {
       "id": "pp-customer",
       "name": "PPCustomer · 商业版",
-      "version": "0.3.6",
+      "version": "0.3.7",
       "distribution": "public",
       "routing": {
         "keywords": [
