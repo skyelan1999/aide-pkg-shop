@@ -1,39 +1,31 @@
 {
   "id": "pp-leadership",
   "kind": "plugin",
-  "name": "PPLeaderShip · 私有交付",
+  "name": "PPLeaderShip · 商业版",
   "description": "公司级多项目组合管控：打开多个 .pp，比较项目健康度、预算、风险与跨项目资源，记录战略判断和管理决策。获取报价、售后、问题反馈请联系 business@sklastu.com。",
   "version": "0.1.3",
   "author": "skyelan1999",
   "category": "planning",
   "icon": "planning",
-  "distribution": "private",
-  "commerce": {
-    "status": "coming_soon",
-    "model": "perpetual-major",
-    "priceLabel": "联系获取报价：business@sklastu.com",
-    "publicKeys": {}
-  },
+  "distribution": "public",
   "minAideVersion": "0.1.19.0 RC2",
   "platforms": [
     "macos",
     "linux"
   ],
   "dependencies": [
-    "支持本机共享离线授权组件的 Aide 更新构建",
-    "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 授权组件需要 Secret Service 用户会话",
+    "本机共享离线授权组件 0.3.0，需首次配置和启动；已有组件应保留设备身份和其他产品核心",
+    "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需要 Python 3",
     "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
   ],
-  "features": [
-    "private-plugin-v1"
-  ],
+  "features": [],
   "permissions": "只读打开用户选择的多个 .pp；管理判断与决策记录独立保存为 .ppl，文件打开和导出沿用 Aide 宿主授权。",
-  "trustNotice": "市场只展示私有交付信息，不提供安装包、购买或授权安装入口。授权文件、设备申请、发行工具及私有实现不进入公开目录。",
+  "trustNotice": "商业专有软件，公开下载不代表免费、开源或已获得使用授权。未激活保持激活页，导入发行者签发的匹配 .plicense 后使用。发行私钥、内容密钥、签发工具及客户许可不属于市场安装包。",
   "license": "Proprietary · 需离线激活",
-  "readme": "# PPLeaderShip 0.1.3\n\n面向公司管理者的项目组合工作台。打开多个 .pp，在公司层面比较项目健康度、预算、风险与资源，形成战略判断、评分和决策记录。源 .pp 只读，管理输入独立保存为 .ppl。\n\n市场记录当前正式交付版本；公开销售入口仍在筹备，安装包通过发行者私下交付。\n\n## 离线激活\n\n插件自动发现本机共享离线授权组件，未激活时保持激活页面。导出设备申请，再点击 Aide 顶部“保存文件”。支持读取设备码的 Aide 自动使用“我的设备码”作为申请名称，默认文件名为 <设备码>-设备申请.prequest；旧版 Aide 或尚无设备码时明确提示备用名称。\n\n将申请交给发行者，取得 .plicense 后导入；兼容旧 .pprequest 和 .pplicense 后缀。有效期和指定设备以签发内容为准。软件授权界面支持单独撤销当前插件在本机的激活，项目文件和其他插件授权保留。连接排障位于 Aide 插件卡片的设置中。\n\n## 升级与验证\n\n0.1.3 统一设备码前缀及 .prequest 扩展名，沿用已有业务核心和匹配授权。已在当前 macOS Aide 的实际插件工作台和原生保存框核验自动命名；此验收不代表 Linux 或客户现场已复验。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。",
+  "readme": "# PPLeaderShip 0.1.3 · 商业版\n\n面向公司管理者的多项目组合工作台。只读打开多个 .pp，比较项目健康度、预算、风险与资源，管理判断和决策记录独立保存为 .ppl。\n\n## 安装与离线激活\n\n1. 在 Aide 市场点击安装。需要包含共享组件连接及设备码读取能力的 Aide 更新构建。\n2. 首次使用时，下载详情页提供的“共享离线授权组件”并解压到固定本地目录。macOS Apple Silicon 双击“配置Aide连接.command”选择 Aide 安装目录；Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n3. 配置只增加只读连接目录挂载，先保存工作，再停止并重新启动 Aide。随后启动组件；插件会自动连接。\n4. 打开激活页，导出设备申请，再点击 Aide 顶部“保存文件”。默认名称为 <设备码>-设备申请.prequest；旧版 Aide 或没有设备码时会明确提示备用名称。\n5. 将申请交给发行者，取得 .plicense 后导入，校验通过即可使用。签发工具兼容旧 .pprequest 申请，插件兼容旧 .pplicense 授权。有效期和指定设备以签发内容为准。\n\n已有共享组件请先停止原服务并备份安装目录，合并更新 runtime 与所需 core 文件，保留其他核心、设备身份及系统凭据，然后沿用原启动方式启动。不要重复运行组件。连接排障放在 Aide 插件卡片设置中。\n\n软件授权界面支持单独撤销当前插件的本机激活；项目和其他插件授权保留。离线撤销不影响其他设备，以后可重新导入有效授权。\n\n## 升级与验证\n\n本客户端更新沿用已有加密核心和匹配许可，不因设备申请文件名及界面更新重新签发授权。新增产品或没有对应核心授权的设备仍需发行者签发。\n\n已在 macOS Aide 实际工作台核验客户端及设备申请自动命名。共享组件使用已核对摘要的运行时与加密核心；安装配置使用虚构文件夹验证，不读取生产凭据。Linux 和客户现场未在本次发布重新验收。支持 macOS Apple Silicon、Linux ARM64/AMD64；无原生 Windows 组件，macOS 二进制未作 Developer ID 公证。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n正式发行说明：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppleadership-v0.1.3\n",
   "screenshots": [],
-  "changelog": "0.1.3：设备申请名称自动读取 Aide 设备码，默认导出 <设备码>-设备申请.prequest；授权文件统一使用 .plicense，兼容旧后缀。同步共享授权界面、导入提示和按插件撤销本机授权。首次登记私有交付市场条目。",
-  "source": "https://github.com/skyelan1999/aide-pkg-PPLeaderShip",
+  "changelog": "0.1.3：正式开放市场下载和安装，需离线激活；设备申请自动使用 Aide 设备码并导出 <设备码>-设备申请.prequest，授权文件为 .plicense；支持单独撤销当前插件的本机激活。",
+  "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppleadership-v0.1.3",
   "routing": {
     "keywords": [
       "pp-leadership",
@@ -45,6 +37,18 @@
       "跨项目资源"
     ],
     "extensions": [],
-    "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；私有交付，需离线激活。"
-  }
+    "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；商业版，市场安装后需离线激活。"
+  },
+  "activationRequired": true,
+  "package": "packages/pp-leadership/0.1.3-ab06da49b5a6.zip",
+  "sha256": "ab06da49b5a672a6be53c913c86a239823aabbc82910ad6820250e2881f39178",
+  "bytes": 34114,
+  "resources": [
+    {
+      "title": "下载共享离线授权组件",
+      "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/private-plugin-component-v0.3.0-20261115/PrivatePlugin-offline-component-v0.3.0-20261115.zip",
+      "sha256": "5efcb604e865374e38b2a3d0d253f7c6b3a7d606e83762d3f72728523be24aee",
+      "bytes": 114391483
+    }
+  ]
 }

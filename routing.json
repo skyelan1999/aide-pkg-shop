@@ -689,6 +689,44 @@
       }
     },
     {
+      "id": "professional-project",
+      "name": "ProfessionalProject · 商业版",
+      "version": "0.4.20",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "professional-project",
+          "ProfessionalProject",
+          "PP",
+          "项目管理",
+          "任务甘特图",
+          "人员费用",
+          "采购库存"
+        ],
+        "extensions": [],
+        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；商业版，市场安装后需离线激活。"
+      }
+    },
+    {
+      "id": "pp-leadership",
+      "name": "PPLeaderShip · 商业版",
+      "version": "0.1.3",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "pp-leadership",
+          "PPLeaderShip",
+          "PPL",
+          "公司战略",
+          "项目组合",
+          "多项目管控",
+          "跨项目资源"
+        ],
+        "extensions": [],
+        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；商业版，市场安装后需离线激活。"
+      }
+    },
+    {
       "id": "compare",
       "name": "Compare · 商业筹备中",
       "version": "0.3.3",
@@ -714,44 +752,6 @@
         ],
         "extensions": [],
         "summary": "按真实产品和模块编号规划项目文档命名、修订与 Office 生成参数。后续商业版私有交付，当前仅展示，不开放销售。"
-      }
-    },
-    {
-      "id": "professional-project",
-      "name": "ProfessionalProject · 商业筹备中",
-      "version": "0.4.20",
-      "distribution": "private",
-      "routing": {
-        "keywords": [
-          "professional-project",
-          "ProfessionalProject",
-          "PP",
-          "项目管理",
-          "任务甘特图",
-          "人员费用",
-          "采购库存"
-        ],
-        "extensions": [],
-        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；私有交付，使用前需离线激活。"
-      }
-    },
-    {
-      "id": "pp-leadership",
-      "name": "PPLeaderShip · 私有交付",
-      "version": "0.1.3",
-      "distribution": "private",
-      "routing": {
-        "keywords": [
-          "pp-leadership",
-          "PPLeaderShip",
-          "PPL",
-          "公司战略",
-          "项目组合",
-          "多项目管控",
-          "跨项目资源"
-        ],
-        "extensions": [],
-        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；私有交付，需离线激活。"
       }
     }
   ]

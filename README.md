@@ -124,6 +124,8 @@ PPCustomer 0.2.0 使用 `distribution=public` 公开分发客户安装包，`act
 
 本条目 `source` 指向公开发行说明。`resources` 提供本仓库 GitHub Release 的本机组件附件，含大小和 SHA-256；网站只呈现受限的官方 HTTPS ZIP 链接。组件需首次独立配置和启动，平台限制及安装步骤见条目和 Release。发行工具、签发私钥、内容密钥、真实设备申请及客户许可不进入公开仓库或附件。获取报价统一联系 business@sklastu.com。
 
-## PP 与 PPL 私有交付目录
+## PP 与 PPL 商业客户端
 
-ProfessionalProject 0.4.20 与 PPLeaderShip 0.1.3 以私有交付条目展示。共用本机离线授权流程，设备申请使用设备码前缀和 .prequest，授权文件使用 .plicense；自动命名需要包含 plugin-device-info-v1 的 Aide 更新构建。当前目录没有它们的安装包或公开授权安装入口。获取报价、售后、问题反馈请联系 business@sklastu.com。
+ProfessionalProject 0.4.20 与 PPLeaderShip 0.1.3 正式开放市场下载和安装，采用 distribution=public、activationRequired=true。安装包是商业客户端，使用前需离线激活；业务源码、发行工具、私钥、内容密钥及客户许可不公开。共享本机组件以经过审查的加密核心、固定摘要运行时及客户安装辅助文件组成，作为 GitHub Release 附件提供；不进入 Git 包目录。Compare 和 PjPlan 等未开放分发的条目继续沿用私有目录规则。
+
+设备申请使用设备码前缀和 .prequest，授权文件使用 .plicense；自动命名需要包含 plugin-device-info-v1 的 Aide 更新构建。获取报价、售后、问题反馈请联系 business@sklastu.com。
