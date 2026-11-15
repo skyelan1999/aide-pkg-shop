@@ -123,3 +123,7 @@ SQLite 更新至1.0.1，收紧逐句危险写确认、实际ATTACH授权和CSV�
 PPCustomer 0.2.0 使用 `distribution=public` 公开分发客户安装包，`activationRequired=true` 标明使用前需要离线激活。公开下载不代表免费或开源；`license` 为专有许可。它不使用 `private-plugin-v1` 的安装授权流程，受保护操作由本机授权组件校验。其他私下交付条目保持原流程。
 
 本条目 `source` 指向公开发行说明。`resources` 提供本仓库 GitHub Release 的本机组件附件，含大小和 SHA-256；网站只呈现受限的官方 HTTPS ZIP 链接。组件需首次独立配置和启动，平台限制及安装步骤见条目和 Release。发行工具、签发私钥、内容密钥、真实设备申请及客户许可不进入公开仓库或附件。获取报价统一联系 business@sklastu.com。
+
+## PP 与 PPL 私有交付目录
+
+ProfessionalProject 0.4.20 与 PPLeaderShip 0.1.3 以私有交付条目展示。共用本机离线授权流程，设备申请使用设备码前缀和 .prequest，授权文件使用 .plicense；自动命名需要包含 plugin-device-info-v1 的 Aide 更新构建。当前目录没有它们的安装包或公开授权安装入口。获取报价、售后、问题反馈请联系 business@sklastu.com。

@@ -3,7 +3,7 @@ from verify_catalog import ROOT,validate_private
 class PrivateCatalogTest(unittest.TestCase):
  def test_commercial_preparation_has_no_distribution(self):
   catalog=json.loads((ROOT/'catalog.json').read_text())
-  for ident in ('compare','professional-project'):
+  for ident in ('compare','professional-project','pp-leadership'):
    item=json.loads((ROOT/'listings'/f'{ident}.json').read_text());validate_private(item)
    self.assertEqual(item['commerce']['status'],'coming_soon')
    self.assertEqual(item['commerce']['publicKeys'],{})

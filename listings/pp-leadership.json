@@ -1,0 +1,50 @@
+{
+  "id": "pp-leadership",
+  "kind": "plugin",
+  "name": "PPLeaderShip · 私有交付",
+  "description": "公司级多项目组合管控：打开多个 .pp，比较项目健康度、预算、风险与跨项目资源，记录战略判断和管理决策。获取报价、售后、问题反馈请联系 business@sklastu.com。",
+  "version": "0.1.3",
+  "author": "skyelan1999",
+  "category": "planning",
+  "icon": "planning",
+  "distribution": "private",
+  "commerce": {
+    "status": "coming_soon",
+    "model": "perpetual-major",
+    "priceLabel": "联系获取报价：business@sklastu.com",
+    "publicKeys": {}
+  },
+  "minAideVersion": "0.1.19.0 RC2",
+  "platforms": [
+    "macos",
+    "linux"
+  ],
+  "dependencies": [
+    "支持本机共享离线授权组件的 Aide 更新构建",
+    "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 授权组件需要 Secret Service 用户会话",
+    "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
+  ],
+  "features": [
+    "private-plugin-v1"
+  ],
+  "permissions": "只读打开用户选择的多个 .pp；管理判断与决策记录独立保存为 .ppl，文件打开和导出沿用 Aide 宿主授权。",
+  "trustNotice": "市场只展示私有交付信息，不提供安装包、购买或授权安装入口。授权文件、设备申请、发行工具及私有实现不进入公开目录。",
+  "license": "Proprietary · 需离线激活",
+  "readme": "# PPLeaderShip 0.1.3\n\n面向公司管理者的项目组合工作台。打开多个 .pp，在公司层面比较项目健康度、预算、风险与资源，形成战略判断、评分和决策记录。源 .pp 只读，管理输入独立保存为 .ppl。\n\n市场记录当前正式交付版本；公开销售入口仍在筹备，安装包通过发行者私下交付。\n\n## 离线激活\n\n插件自动发现本机共享离线授权组件，未激活时保持激活页面。导出设备申请，再点击 Aide 顶部“保存文件”。支持读取设备码的 Aide 自动使用“我的设备码”作为申请名称，默认文件名为 <设备码>-设备申请.prequest；旧版 Aide 或尚无设备码时明确提示备用名称。\n\n将申请交给发行者，取得 .plicense 后导入；兼容旧 .pprequest 和 .pplicense 后缀。有效期和指定设备以签发内容为准。软件授权界面支持单独撤销当前插件在本机的激活，项目文件和其他插件授权保留。连接排障位于 Aide 插件卡片的设置中。\n\n## 升级与验证\n\n0.1.3 统一设备码前缀及 .prequest 扩展名，沿用已有业务核心和匹配授权。已在当前 macOS Aide 的实际插件工作台和原生保存框核验自动命名；此验收不代表 Linux 或客户现场已复验。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。",
+  "screenshots": [],
+  "changelog": "0.1.3：设备申请名称自动读取 Aide 设备码，默认导出 <设备码>-设备申请.prequest；授权文件统一使用 .plicense，兼容旧后缀。同步共享授权界面、导入提示和按插件撤销本机授权。首次登记私有交付市场条目。",
+  "source": "https://github.com/skyelan1999/aide-pkg-PPLeaderShip",
+  "routing": {
+    "keywords": [
+      "pp-leadership",
+      "PPLeaderShip",
+      "PPL",
+      "公司战略",
+      "项目组合",
+      "多项目管控",
+      "跨项目资源"
+    ],
+    "extensions": [],
+    "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；私有交付，需离线激活。"
+  }
+}

@@ -2,8 +2,8 @@
   "id": "professional-project",
   "kind": "plugin",
   "name": "ProfessionalProject · 商业筹备中",
-  "description": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。闭源二进制商业版筹备中，当前仅展示。",
-  "version": "0.4.18",
+  "description": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。商业版采用共享离线授权，安装包私下交付。获取报价、售后、问题反馈请联系 business@sklastu.com。",
+  "version": "0.4.20",
   "author": "skyelan1999",
   "category": "planning",
   "icon": "planning",
@@ -11,32 +11,40 @@
   "commerce": {
     "status": "coming_soon",
     "model": "perpetual-major",
-    "priceLabel": "价格待公布",
+    "priceLabel": "联系获取报价：business@sklastu.com",
     "publicKeys": {}
   },
-  "minAideVersion": "0.1.17.5 RC10",
+  "minAideVersion": "0.1.19.0 RC2",
   "platforms": [
+    "macos",
     "linux"
   ],
   "dependencies": [
-    "Linux ARM64 / AMD64 Aide 执行环境"
+    "支持本机共享离线授权组件的 Aide 更新构建",
+    "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 授权组件需要 Secret Service 用户会话",
+    "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
   ],
   "features": [
     "private-plugin-v1"
   ],
   "permissions": "项目写入与手机采集沿用宿主权限、员工配对及区域授权。",
-  "trustNotice": "仅登记商业筹备状态；未开放销售、授权安装或下载。安装包、核心源码和客户许可证不上传公开市场。",
-  "license": "Proprietary；商业许可条款待公布",
-  "readme": "商业版采用闭源编译核心，计划支持 Linux ARM64 和 AMD64。版本号标识当前技术基线，不代表已正式发售。市场仅展示元数据，不托管安装包，不提供购买或下载入口。正式交付方式、价格与授权条款确定后另行公布。 0.4.17 完善任务排序、未排期、关闭恢复与阶段前置关系；安装包内提供可直接打开的使用说明。 0.4.18 将甘特图展开与返回操作统一，避免重复全屏入口。",
+  "trustNotice": "市场只展示私有交付信息，不提供安装包、购买或授权安装入口。授权文件、设备申请、发行工具及私有实现不进入公开目录。",
+  "license": "Proprietary · 需离线激活",
+  "readme": "# ProfessionalProject 0.4.20\n\n项目计划、任务与甘特图、人员资源、费用、采购库存及手机采集协同。市场记录当前正式交付版本；公开销售入口仍在筹备，安装包通过发行者私下交付。\n\n## 离线激活\n\n插件自动发现本机共享离线授权组件，未激活时保持激活页面。导出设备申请，再点击 Aide 顶部“保存文件”。支持读取设备码的 Aide 会自动使用“我的设备码”作为申请名称，默认文件名为 <设备码>-设备申请.prequest。旧版 Aide 或尚未提供设备码时会明确提示备用名称。\n\n将申请交给发行者，取得 .plicense 授权文件后导入。兼容旧 .pprequest 设备申请和旧 .pplicense 授权文件。每份授权按签发内容限制有效期和指定设备。可在软件授权界面单独撤销当前插件在本机的激活，项目文件保留，不改变其他插件授权。连接排障位于 Aide 插件卡片的设置中。\n\n## 升级与验证\n\n0.4.20 统一设备码前缀与 .prequest 扩展名，沿用已有业务核心和匹配授权。已在当前 macOS Aide 的实际插件工作台和原生保存框核验自动命名；此验收不代表 Linux 或客户现场已复验。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。",
   "screenshots": [],
-  "changelog": "0.4.18：甘特图统一为“展开甘特图”和“返回任务表”，移除展开后重复的进入全屏按钮及无效重试提示；桌面与浏览器均可直接查看，项目与草稿保留。市场仍仅展示商业筹备元数据，不提供安装包、授权安装或下载。",
+  "changelog": "0.4.20：设备申请名称自动读取 Aide 设备码，默认导出 <设备码>-设备申请.prequest；授权文件使用 .plicense，兼容旧后缀。同步共享授权页面、导入提示与当前插件本机撤销流程。市场仍为私有交付展示条目。",
   "source": "https://github.com/skyelan1999/aide-pkg-ProfessionalProject",
   "routing": {
     "keywords": [
       "professional-project",
-      "professionalproject · 商业筹备中"
+      "ProfessionalProject",
+      "PP",
+      "项目管理",
+      "任务甘特图",
+      "人员费用",
+      "采购库存"
     ],
     "extensions": [],
-    "summary": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。闭源二进制商业版筹备中，当前仅展示。"
+    "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；私有交付，使用前需离线激活。"
   }
 }
