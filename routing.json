@@ -719,15 +719,39 @@
     {
       "id": "professional-project",
       "name": "ProfessionalProject · 商业筹备中",
-      "version": "0.4.18",
+      "version": "0.4.20",
       "distribution": "private",
       "routing": {
         "keywords": [
           "professional-project",
-          "professionalproject · 商业筹备中"
+          "ProfessionalProject",
+          "PP",
+          "项目管理",
+          "任务甘特图",
+          "人员费用",
+          "采购库存"
         ],
         "extensions": [],
-        "summary": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。闭源二进制商业版筹备中，当前仅展示。"
+        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；私有交付，使用前需离线激活。"
+      }
+    },
+    {
+      "id": "pp-leadership",
+      "name": "PPLeaderShip · 私有交付",
+      "version": "0.1.3",
+      "distribution": "private",
+      "routing": {
+        "keywords": [
+          "pp-leadership",
+          "PPLeaderShip",
+          "PPL",
+          "公司战略",
+          "项目组合",
+          "多项目管控",
+          "跨项目资源"
+        ],
+        "extensions": [],
+        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；私有交付，需离线激活。"
       }
     }
   ]
