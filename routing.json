@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "0bbde930409f25eb74026dad9993865f659c4f0d",
+  "sourceCommit": "006d28479b0d71212ca23b54af1d23d066519b2f",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -335,26 +335,34 @@
     {
       "id": "office",
       "name": "Office 文档",
-      "version": "1.1.1",
+      "version": "1.2.0",
       "distribution": "public",
       "routing": {
         "keywords": [
-          "office",
-          "office 文档",
-          "word",
-          "excel",
-          "powerpoint",
+          "Collabora",
+          "LibreOffice",
+          "Office",
+          "Word",
+          "Excel",
+          "PowerPoint",
           "docx",
           "xlsx",
           "pptx",
-          "办公文档"
+          "WOPI",
+          "AI editing"
         ],
         "extensions": [
+          ".doc",
           ".docx",
+          ".xls",
           ".xlsx",
-          ".pptx"
+          ".ppt",
+          ".pptx",
+          ".odt",
+          ".ods",
+          ".odp"
         ],
-        "summary": "生成 DOCX/XLSX/PPTX，读取与按锚点修改 DOCX 批注，并查看和编辑 XLSX，并提供原文搜索／RAG文档检索"
+        "summary": "Collabora Office 文档预览、编辑、保存与精确 AI 读写；需配置独立服务并更新到具备相应能力的 Aide 宿主。"
       }
     },
     {
@@ -407,6 +415,67 @@
         ],
         "extensions": [],
         "summary": "按 aide 插件协议制作、检查和打包插件；管理插件与引用的变更先形成待确认提案。"
+      }
+    },
+    {
+      "id": "pp-customer",
+      "name": "PPCustomer · 商业版",
+      "version": "0.3.7",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "PPCustomer",
+          "PPC",
+          "客户里程碑",
+          "客户甘特图",
+          "客户汇报",
+          "客户进度",
+          "排期变更申请",
+          "客户排期审批",
+          "客户沟通"
+        ],
+        "extensions": [
+          ".ppc"
+        ],
+        "summary": "客户里程碑甘特图与排期审批；设置写回 .pp，.ppc 仅为客户只读预览；商业版需离线激活。"
+      }
+    },
+    {
+      "id": "pp-leadership",
+      "name": "PPLeaderShip · 商业版",
+      "version": "0.1.3",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "pp-leadership",
+          "PPLeaderShip",
+          "PPL",
+          "公司战略",
+          "项目组合",
+          "多项目管控",
+          "跨项目资源"
+        ],
+        "extensions": [],
+        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；商业版，市场安装后需离线激活。"
+      }
+    },
+    {
+      "id": "professional-project",
+      "name": "ProfessionalProject · 商业版",
+      "version": "0.4.20",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "professional-project",
+          "ProfessionalProject",
+          "PP",
+          "项目管理",
+          "任务甘特图",
+          "人员费用",
+          "采购库存"
+        ],
+        "extensions": [],
+        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；商业版，市场安装后需离线激活。"
       }
     },
     {
@@ -663,67 +732,6 @@
         ],
         "extensions": [],
         "summary": "DSH workflow 能力预设：注册工作流工具与面板声明；当前未实现工作流执行或进度查询 handler。"
-      }
-    },
-    {
-      "id": "pp-customer",
-      "name": "PPCustomer · 商业版",
-      "version": "0.3.7",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "PPCustomer",
-          "PPC",
-          "客户里程碑",
-          "客户甘特图",
-          "客户汇报",
-          "客户进度",
-          "排期变更申请",
-          "客户排期审批",
-          "客户沟通"
-        ],
-        "extensions": [
-          ".ppc"
-        ],
-        "summary": "客户里程碑甘特图与排期审批；设置写回 .pp，.ppc 仅为客户只读预览；商业版需离线激活。"
-      }
-    },
-    {
-      "id": "professional-project",
-      "name": "ProfessionalProject · 商业版",
-      "version": "0.4.20",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "professional-project",
-          "ProfessionalProject",
-          "PP",
-          "项目管理",
-          "任务甘特图",
-          "人员费用",
-          "采购库存"
-        ],
-        "extensions": [],
-        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；商业版，市场安装后需离线激活。"
-      }
-    },
-    {
-      "id": "pp-leadership",
-      "name": "PPLeaderShip · 商业版",
-      "version": "0.1.3",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "pp-leadership",
-          "PPLeaderShip",
-          "PPL",
-          "公司战略",
-          "项目组合",
-          "多项目管控",
-          "跨项目资源"
-        ],
-        "extensions": [],
-        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；商业版，市场安装后需离线激活。"
       }
     },
     {

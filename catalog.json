@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Aide 官方插件市场",
-  "sourceCommit": "0bbde930409f25eb74026dad9993865f659c4f0d",
+  "sourceCommit": "006d28479b0d71212ca23b54af1d23d066519b2f",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -780,50 +780,62 @@
       "id": "office",
       "kind": "plugin",
       "name": "Office 文档",
-      "description": "生成 DOCX/XLSX/PPTX，读取与按锚点修改 DOCX 批注，并查看和编辑 XLSX，并提供原文搜索／RAG文档检索",
-      "version": "1.1.1",
+      "description": "基于 Collabora Online 预览、编辑和保存 Office 文档，支持 Aide AI 读取、检索、精确修改和批注",
+      "version": "1.2.0",
       "author": "Aide",
       "category": "creation",
       "icon": "creation",
-      "package": "packages/office/1.1.1-cb1c28bff361.zip",
-      "sha256": "cb1c28bff3613b25146ea1699570ac3197ee4b92af5aa88572aad49df1d17651",
-      "bytes": 6933,
-      "minAideVersion": "0.1.17.0 RC2",
+      "package": "packages/office/1.2.0-66ad7f5726f5.zip",
+      "sha256": "66ad7f5726f5eea843d9954690764d0afffdb084ce638bf2fa9415aef5978595",
+      "bytes": 10586,
+      "minAideVersion": "0.1.19.0 RC2",
       "platforms": [
         "windows",
         "macos",
         "linux"
       ],
       "dependencies": [
-        "Aide 原生 Office 工作区执行器与 Python Office 环境；ZIP 不包含执行器或 Python 依赖"
+        "需要 Aide 0.1.19.0 RC2 或更新版本，并具备 office-collabora-v1；旧的同版本构建需先更新到包含本次集成的 main 源码构建或后续正式版本",
+        "独立部署的 Collabora Online/CODE 服务、可达的浏览器／内部／回调地址，以及生产 TLS 和 WOPI 允许列表",
+        "Aide 原生 Office 执行器与 Python Office 环境；ZIP 不包含宿主执行器、Collabora 运行时或企业订阅"
       ],
-      "permissions": "可向 Aide 提交文件、命令或引用管理提案；相关操作沿用现有授权。",
-      "trustNotice": "Node 插件在宿主中执行；目录审核和摘要校验不等于权限沙箱。安装会注册并启用插件。",
-      "features": [],
-      "source": "https://github.com/skyelan1999/aide-pkg-office/tree/08e55e65ee829af7fe29767b11fd42c3400b8a01",
+      "permissions": "人工文档编辑和 AI 写入沿用工作区／来源权限、锁屏状态和版本校验；只读引用保持只读。",
+      "trustNotice": "MIT 插件适配层；Collabora 是单独部署并适用其自身许可证的服务。预览不占用 AI 写租约。Node 插件以宿主权限运行，不是权限沙箱。",
+      "features": [
+        "office-collabora-v1"
+      ],
+      "source": "https://github.com/skyelan1999/aide-pkg-office/tree/fadcb8bc14b23f89daa53aa0d5987be2849a50d6",
       "license": "MIT",
-      "readme": "# Office · Aide Office 文档\n\nAide `office` 1.1.1 独立分发，MIT 许可。已安装旧版时使用升级入口，保留现有设置与文件。\n\n注册 `office_create`、`office_comments`、`office_comment_edit`、`office_document_search` 四项工具。支持通过宿主生成 DOCX/XLSX/PPTX、读取或按锚点修改 DOCX 批注，以及原文/RAG 片段检索；相关文件创建、编辑与来源权限沿用 Aide 现有审批通道。RAG 使用本地检索，不承诺 OCR 或整份文档已读。\n\n必须配合 Aide 原生 Office 工作区执行器及宿主 Python Office 环境（python-docx、openpyxl、python-pptx 等）；Node 入口负责协议注册，不能单独执行 Office 操作。安装 ZIP 不包含宿主执行器或 Python 依赖。市场兼容基线为 0.1.17.0 RC2。Linux 为本次验证环境，Windows/macOS 和实际 SSH 未实测。\n\n从 [v1.1.1 Release](https://github.com/skyelan1999/aide-pkg-office/releases/tag/v1.1.1) 下载 ZIP 与 SHA256SUMS，校验后导入 Aide；也可通过[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)安装。相同 ID/版本无需重复安装。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n本版通过 Release 附件提供安装包及摘要。历史 `packages/v1.1.0/` 仍保留原安装包，旧 Release 的固定提交链接不变；不要把旧包当作本版更新。\n\n本版验证见 docs/reviews/2026-11-14-common-workflow.md；1.1.0 的历史记录保留在 docs/release-verification.json。SHA-256 是完整性校验而非签名，Node 插件机制不是权限沙箱。\n\n## 生成正文并核对\n\n在对话中说明文件名、格式和正文；工具参数必须使用对应结构：\n\n```json\n{\"path\":\"report.docx\",\"format\":\"docx\",\"content\":{\"title\":\"验收报告\",\"blocks\":[{\"type\":\"paragraph\",\"text\":\"这里是实际正文。\"}]}}\n```\n\nXLSX 用 `content.sheets=[{name,rows:[[...]]}]`，PPTX 用 `content.slides=[{title,body}]`。DOCX 段落键是 `blocks` 中的 `text`，不是 `paragraphs`；表格使用 `type=table` 和 `rows`。不要把文件生成回执当作正文检查：从自动系统文档打开，或调用 `read_file(source=system-docs,path=相对路径)` 核对；未绑定文档目录时按工具返回的工作区位置打开。\n\n1.1.1 在工具定义中列出上述字段。拒绝未知字段、防止静默丢正文的生成器修复属于 Aide [#892](https://github.com/skyelan1999/aide/issues/892)，需要包含该修复的宿主源码构建；只更新插件不会更新旧宿主的 Python 生成器。此修复不覆盖已有文档，不新增外部调用。\n\n新版本包由 `python3 scripts/package.py <输出目录>` 构建；先运行 `node test.js`。旧 `packages/v1.1.0` 与其摘要保留。\n",
+      "readme": "# Office · Aide Office 文档\n\nAide `office` 1.2.0，独立分发，MIT 许可。已安装旧版时使用升级入口，保留现有设置与文件。\n\n注册 `office_create`、`office_comments`、`office_comment_edit`、`office_document_search`、`office_document_read`、`office_document_edit` 六项工具。支持通过宿主生成 DOCX/XLSX/PPTX、读取或按锚点修改 DOCX 批注，以及原文/RAG 片段检索；相关文件创建、编辑与来源权限沿用 Aide 现有审批通道。RAG 使用本地检索，不承诺 OCR 或整份文档已读。\n\n必须配合 Aide 原生 Office 工作区执行器及宿主 Python Office 环境（python-docx、openpyxl、python-pptx 等）；Node 入口负责协议注册，不能单独执行 Office 操作。安装 ZIP 不包含宿主执行器或 Python 依赖。需要 Aide 0.1.19.0 RC2 或更新版本，且宿主必须具备 `office-collabora-v1` 能力。缺少该能力的旧同版本宿主会被市场拒绝，请先更新到包含本次集成的 Aide main 源码构建或后续正式版本。Linux 为本次验证环境，Windows/macOS 和实际 SSH 未实测。\n\n从 [v1.2.0 Release](https://github.com/skyelan1999/aide-pkg-office/releases/tag/v1.2.0) 下载 ZIP 与 SHA256SUMS，校验后导入 Aide；也可通过[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)安装。相同 ID/版本无需重复安装。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n本版通过 Release 附件提供安装包及摘要。历史 `packages/v1.1.0/` 仍保留原安装包，旧 Release 的固定提交链接不变；不要把旧包当作本版更新。\n\n本版验证见 [Collabora 集成验收](docs/reviews/2026-11-16-collabora-integration.md)；旧版本记录保留在 docs/reviews/2026-11-14-common-workflow.md 和 docs/release-verification.json。SHA-256 是完整性校验而非签名，Node 插件机制不是权限沙箱。\n\n## 生成正文并核对\n\n在对话中说明文件名、格式和正文；工具参数必须使用对应结构：\n\n```json\n{\"path\":\"report.docx\",\"format\":\"docx\",\"content\":{\"title\":\"验收报告\",\"blocks\":[{\"type\":\"paragraph\",\"text\":\"这里是实际正文。\"}]}}\n```\n\nXLSX 用 `content.sheets=[{name,rows:[[...]]}]`，PPTX 用 `content.slides=[{title,body}]`。DOCX 段落键是 `blocks` 中的 `text`，不是 `paragraphs`；表格使用 `type=table` 和 `rows`。不要把文件生成回执当作正文检查：从自动系统文档打开，或调用 `read_file(source=system-docs,path=相对路径)` 核对；未绑定文档目录时按工具返回的工作区位置打开。\n\n1.1.1 在工具定义中列出上述字段。拒绝未知字段、防止静默丢正文的生成器修复属于 Aide [#892](https://github.com/skyelan1999/aide/issues/892)，需要包含该修复的宿主源码构建；只更新插件不会更新旧宿主的 Python 生成器。此修复不覆盖已有文档，不新增外部调用。\n\n新版本包由 `python3 scripts/package.py <输出目录>` 构建；先运行 `node test.js`。旧 `packages/v1.1.0` 与其摘要保留。\n\n\n## Collabora Online（1.2.0）\n\n需要同步更新 Aide 宿主；只更新 ZIP 不会给旧宿主增加 WOPI 和 AI 结构化读写接口。市场通过 `office-collabora-v1` 能力条件检查宿主，仅有相同版本号不足以安装。\n\n在 Office 插件设置里配置 `collaboraEnabled=true`、浏览器可访问的 `collaboraUrl`、可选内部 `collaboraInternalUrl`、Collabora 服务可以访问的 `collaboraCallbackUrl`。地址变更后刷新 Aide。默认预览不阻止 AI；切换编辑后按活动状态保护草稿，30 秒无操作且确认保存后允许 AI 写入。预览、编辑、保存、选区/文档交给 AI 都在现有文件查看页面中。\n\nAI 先用 `office_document_read(path,source?,offset?)` 取得地址化文本、分页和 hash，再用 `office_document_edit(path,source?,hash,changes)` 提交精确修改。每项 changes 为 `{id,expectedText,newText}`；段落替换沿用首个文字运行格式，复杂字段和对象拒绝修改，未改动媒体包成员保留原始字节。直接结构化 AI 读写目前支持 DOCX/XLSX/PPTX；其他格式先用编辑器另存为 OOXML。仅读取已保存内容，不代表当前人工草稿已提交。\n\n插件代码仍为 MIT；Collabora 是单独部署的第三方服务，主要 MPL 2.0，不能将插件的 MIT 标成 Collabora 的许可证。CODE 可用于集成验证；企业维护版、商业支持、商标及对应镜像分发条款分别核对。ZIP 不携带 Collabora 二进制、企业订阅或 SLA。\n\n[Collabora 集成验收记录](docs/reviews/2026-11-16-collabora-integration.md)。\n",
       "screenshots": [],
-      "changelog": "1.1.1：提供 DOCX/XLSX/PPTX 的明确正文结构与示例，修复独立包检查。防止误填字段丢正文的严格校验需配套包含 Aide #892 修复的宿主源码构建。",
+      "changelog": "集成 Collabora WOPI 编辑、保存和预览，新增 DOCX/XLSX/PPTX 定位读取与精确 AI 修改。人工活跃编辑受到保护，空闲并保存后允许 AI 修改，旧版本写回拒绝覆盖。保留原离线预览、生成、DOCX 批注和检索；需要 office-collabora-v1 宿主能力。",
       "distribution": "public",
       "routing": {
         "keywords": [
-          "office",
-          "office 文档",
-          "word",
-          "excel",
-          "powerpoint",
+          "Collabora",
+          "LibreOffice",
+          "Office",
+          "Word",
+          "Excel",
+          "PowerPoint",
           "docx",
           "xlsx",
           "pptx",
-          "办公文档"
+          "WOPI",
+          "AI editing"
         ],
         "extensions": [
+          ".doc",
           ".docx",
+          ".xls",
           ".xlsx",
-          ".pptx"
+          ".ppt",
+          ".pptx",
+          ".odt",
+          ".ods",
+          ".odp"
         ],
-        "summary": "生成 DOCX/XLSX/PPTX，读取与按锚点修改 DOCX 批注，并查看和编辑 XLSX，并提供原文搜索／RAG文档检索"
+        "summary": "Collabora Office 文档预览、编辑、保存与精确 AI 读写；需配置独立服务并更新到具备相应能力的 Aide 宿主。"
       }
     },
     {
@@ -964,6 +976,173 @@
         "extensions": [],
         "summary": "按 aide 插件协议制作、检查和打包插件；管理插件与引用的变更先形成待确认提案。"
       }
+    },
+    {
+      "id": "pp-customer",
+      "kind": "plugin",
+      "distribution": "public",
+      "activationRequired": true,
+      "name": "PPCustomer · 商业版",
+      "description": "客户里程碑甘特图与排期审批，自动保存 .pp，支持 PDF/HTML/Markdown 项目汇报与只读 .ppc 预览。启动为空白首页。获取报价、售后、问题反馈请联系 business@sklastu.com。",
+      "version": "0.3.7",
+      "author": "skyelan1999",
+      "category": "planning",
+      "icon": "planning",
+      "package": "packages/pp-customer/0.3.7-efb458e126d7.zip",
+      "sha256": "efb458e126d7ba578625f9c0523fbe79bf52cd496a8cdc4034162978e181314a",
+      "bytes": 7660222,
+      "minAideVersion": "0.1.19.0 RC2",
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "features": [],
+      "dependencies": [
+        "本机共享离线授权组件 0.3.0，首次独立配置和启动；升级新核心需新构建授权",
+        "支持文件来源 checkout/commit 写回的更新版 Aide；已验证 0.1.19.0 RC2 当前源码构建",
+        "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需 Python 3",
+        "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建；旧版保留备用名称并提示"
+      ],
+      "permissions": "通过宿主来源 checkout/commit 自动写回所选可写 .pp 的 ppCustomer 专属设置区，检查整文件版本；保留基础 PP 字段。只读来源拒绝保存。.ppc 文件处理器只读，导出仅含选定已批准内容。授权和受保护计算在本机组件校验。",
+      "trustNotice": "商业专有软件，公开下载不等于授权或开源。0.3.0 使用新核心，旧许可不自动包含此构建，升级前请联系发行者取得 .plicense。未授权保持激活页。自动保存会直接写回所选 .pp，需可写来源和更新版 Aide。",
+      "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.3.7",
+      "license": "Proprietary · 需离线激活",
+      "readme": "# PPCustomer 0.3.7 · 商业版\n\n默认只选择里程碑，直接在同一张甘特图里突出显示日期和状态。可在设置中显示阶段/普通任务、层级和明细；支持全屏与焦点范围。任务变更先形成待审批预览，在项目设置中批准后才更新客户正式排期。\n\n**自动保存直接写回当前 .pp**：客户显示设置、变更申请/审批、风险和沟通等写入 PP 的专属扩展，保留基础任务及其他 PP 字段；版本冲突时拒绝覆盖并保留当前修改。`.ppc` 只包含当前客户可见的已批准内容，是只读快速预览，不含管理设置。也可在 Aide 文件面板直接打开 `.ppc`。\n\n获取报价、售后、问题反馈请联系 **business@sklastu.com**。\n\n## 首次安装与激活\n\n1. 从 Aide 市场安装 PPCustomer 商业版，使用支持文件来源写回的更新版 Aide。0.3.0 的来源写回流程已在 Aide 0.1.19.0 RC2 源码构建的隔离真实宿主验证；本次修订的验证范围见下文。\n2. 下载并解压本机组件：https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.3.0/PPCustomer-offline-component-v0.3.0.zip\n3. macOS Apple Silicon 双击组件中的“配置Aide连接.command”，选择包含 compose.yaml 的 Aide 安装目录。Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n4. 配置增加只读连接目录挂载，不读取凭据或自动重启 Aide。请保存工作，先停止再启动 Aide，使挂载生效。\n5. 双击“启动授权组件.command”（Linux 执行 ./start-core.sh），保持终端运行。插件自动发现组件，无需填写连接地址。\n6. 在激活页导出设备申请，并点击 Aide 顶部“保存文件”。将申请交给发行者，取得 `.plicense` 授权文件后导入；校验通过再开始使用。旧 `.pplicense` 可兼容导入。\n\n## 从已安装商业版升级\n\n0.3.0 包含新加密核心及共享授权组件更新。**旧授权不自动包含新核心，需要发行者签发包含新构建的 .plicense**；请先准备升级授权和保存当前工作。\n\n已有共享组件应沿用其设备身份和系统凭据。管理员先备份并停止原组件，更新对应平台运行时和 core/pp-customer.ppcore，保留其他产品核心及所有设备状态，再启动组件。不要重复启动多个组件，不混用发行身份，不重建密钥库。其他产品继续按各自许可校验。\n\n新版授权界面可以单独撤销当前插件在本机的激活，操作前会要求确认并检查未保存内容。该操作不删除项目、不修改其他产品授权，也不能离线远程撤销其他设备；以后可重新导入有效许可。\n\n## 项目与保存\n\n从工作区/引用打开一个可写 `.pp` 即可管理并自动保存。新项目只勾选里程碑，其他阶段和任务按需在设置开启；已保存的勾选范围保留。甘特图中的待审批标记代表预览，汇报和 `.ppc` 均使用已批准内容。\n\n本机文件上传及示例是预览入口，浏览器不能直接覆盖原文件；请从工作区/引用重新打开原 `.pp` 启用写回。只读、文件变化或来源权限变化会拒绝保存，不把失败说成成功。导出 `.ppc` 或汇报时仍需点击宿主顶部“保存文件”。\n\nAide 首次控制先调用 ppc_guide，再 ppc_inspect 获取事项 ID/revision；提交与审批使用专用接口，常规保存不能伪造正式任务或审批历史。\n\n## 平台与验证范围\n\n本机组件提供 macOS Apple Silicon、Linux ARM64/AMD64；没有原生 Windows 组件。Linux 需要可用 Secret Service 用户会话。macOS 二进制未做 Apple Developer ID 公证。\n\n0.3.0 已完成隔离真实 Aide Go 宿主、商业界面、模拟授权及原生加密流程验证；这些不等于本版已在用户真实系统凭据库或客户现场重新验收。旧生产窗口在测试中保持原样。完全离线不能承诺防止拥有本机控制权的攻击者修改软件。\n\n组件 connection.json 是进程连接凭据，不是授权文件，不要交给别人。发行私钥、内容密钥及客户真实许可不属于客户安装包。\n\n正式说明、摘要和下载：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.3.7\n\n## 0.3.1 本机授权撤销修复\n\n撤销区为独立描边按钮，勾选确认后才可点击。若提示本机授权组件过旧，请按上述步骤更新并重启原共享组件；只更新插件 ZIP 不会更新宿主程序。保留原设备身份及系统凭据，不重复运行多个组件。\n\n0.3.1 复用 0.3.0 加密业务核心及原生运行时；已经包含 0.3.0 核心的许可不需要重新签发。由 0.2.0 升级至 0.3.x 仍需匹配新核心的授权。\n\n## 0.3.2 启动与界面\n\n普通启动、刷新和重新安装均进入空白首页，不自动读取上次绑定的项目。请明确从工作区打开原 .pp；其中已保存的设置和待审批申请仍然保留。Aide 文件面板明确打开 .ppc 时仍直接显示所选只读文件。\n\n甘特图搜索、日周月、焦点范围和全屏/折叠操作统一对齐，窄屏和指定日期范围自动换行，下拉框复用 Aide 主题。界面版本号与安装包一致。继续复用 0.3.0 加密业务核心，无需为本次界面升级重新签发匹配授权。\n\n## 自动保存控制\n\nPPCustomer 0.3.3：顶部提供自动保存开关和立即保存按钮。关闭后停止自动写入并保留未保存提示，重新开启恢复自动保存；开关选择随 .pp 保存，不进入 .ppc 预览。空白及只读预览不能启用自动保存。保存失败状态可点击或用键盘重试。沿用 0.3.0 核心及匹配授权，无需重新激活。\n\n验证：36 Node、8 Python 和 11 商业阶段测试；虚构项目浏览器验证暂停、手动保存、重新打开、恢复、冲突重试和只读限制，390px 无横向溢出。未操作真实客户项目或授权。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n## PDF 汇报\n\nPPCustomer 0.3.4 新增直接导出 PDF。导出汇报格式可选择 PDF、HTML 或 Markdown。PDF 在本机离线生成，内置中文字体，包含自动分页的甘特图、完整排期、风险、沟通及客户可见记录。只使用已批准公开视图，待审批变更不进入正式汇报；只读 .ppc 也可导出。\n\n生成后仍需点击 Aide 顶部“保存文件”。输入/输出支持 64 KiB 分块与 SHA-256 校验，临时文件在传输后清理；单份最多 16 MiB/256 页，最多 4 份临时导出、10 分钟到期，过大时减少可见范围后重试。\n\n字体和通用 PDF 引擎随包提供，无需联网或调用系统打印；对应来源和第三方许可在 vendor/pdf。业务核心仍为 0.3.0，匹配许可继续有效，无需为本次客户端升级重新激活。\n\n验证：40 Node、8 Python、11 商业阶段测试；80 事项长报告生成 14 页，中文可提取且字体嵌入，待审批日期/隐藏标记被排除，首中末页通过 Poppler 目视检查。浏览器实际下载 PDF、只读预览与中断重试通过；隔离 Linux Node 24 也能生成。未使用真实客户文件或许可测试。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n## 0.3.5 流程与界面修正\n\n首次保存前的事项编号保持稳定，Aide 可直接发起待审批申请。点击甘特条可按选中事项聚焦；打开其他项目清空上一项目的搜索、焦点与保存错误。取消打开保留当前项目；手动保存失败提示清晰区分自动保存。甘特图按自然月标注月份，Esc 完整退出全屏；PDF 短排期不再重复日期刻度。\n\n沿用现有 0.3.0 加密核心和匹配许可，无需重新激活。本次验证包括 42 Node、8 Python、11 商业阶段测试以及虚构项目隔离浏览器回归，未安装到用户当前生产窗口。\n\n## 0.3.6 设备申请自动命名\n\n导出设备申请时，名称自动采用 Aide 消息面板中的“我的设备码”，文件名为“设备码-设备申请.prequest”。设置中的名称仅作备用。需要包含 plugin-device-info-v1 的更新版 Aide 源码构建；旧版或尚无设备码时仍可导出，并明确提示采用备用名称。锁屏或调用失效则拒绝继续生成。\n\n设备码只作便于核对的显示名称，不替代原有设备身份和签名校验。沿用原生授权组件、加密核心及匹配许可，无需重新激活。此版本已通过共用适配器与实际导出界面隔离测试，签名绑定测试使用临时内存设备；未重启用户当前 Aide 或生成真实设备申请。\n\n## 0.3.7 通用设备申请文件\n\n设备申请统一使用 .prequest，文件名以设备码开头，例如 AB12CD-设备申请.prequest。设备申请接口会返回 suggestedFilename 供自动化使用。无法读取设备码时保留通用备用文件名及原有提示，不伪造设备号。\n\n签发工具新版同时兼容 .prequest 和旧 .pprequest；旧申请无需改动内容。申请的签名信封、原生授权组件、加密核心、设备身份及匹配许可都保持不变，授权文件仍为 .plicense，无需重新激活。\n\n15 项共用 Node 测试、许可 Go 测试、实际界面下载与新旧扩展名导入转交检查通过；测试仅使用虚构设备和隔离端点，不代表在用户真实凭据或客户现场重新验收。\n",
+      "screenshots": [],
+      "changelog": "0.3.7：设备申请统一为 .prequest，文件名以设备码开头；接口返回 suggestedFilename。签发工具兼容旧 .pprequest，申请签名和授权校验保持不变。",
+      "routing": {
+        "keywords": [
+          "PPCustomer",
+          "PPC",
+          "客户里程碑",
+          "客户甘特图",
+          "客户汇报",
+          "客户进度",
+          "排期变更申请",
+          "客户排期审批",
+          "客户沟通"
+        ],
+        "extensions": [
+          ".ppc"
+        ],
+        "summary": "客户里程碑甘特图与排期审批；设置写回 .pp，.ppc 仅为客户只读预览；商业版需离线激活。"
+      },
+      "resources": [
+        {
+          "title": "下载本机授权组件",
+          "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.3.0/PPCustomer-offline-component-v0.3.0.zip",
+          "sha256": "c80d4809eef55cd4de882a9dc576358c9d7d66e1079b4cb6f94b0e6a2b9118fe",
+          "bytes": 48687957
+        }
+      ]
+    },
+    {
+      "id": "pp-leadership",
+      "kind": "plugin",
+      "name": "PPLeaderShip · 商业版",
+      "description": "公司级多项目组合管控：打开多个 .pp，比较项目健康度、预算、风险与跨项目资源，记录战略判断和管理决策。获取报价、售后、问题反馈请联系 business@sklastu.com。",
+      "version": "0.1.3",
+      "author": "skyelan1999",
+      "category": "planning",
+      "icon": "planning",
+      "distribution": "public",
+      "minAideVersion": "0.1.19.0 RC2",
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "dependencies": [
+        "本机共享离线授权组件 0.3.0，需首次配置和启动；已有组件应保留设备身份和其他产品核心",
+        "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需要 Python 3",
+        "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
+      ],
+      "features": [],
+      "permissions": "只读打开用户选择的多个 .pp；管理判断与决策记录独立保存为 .ppl，文件打开和导出沿用 Aide 宿主授权。",
+      "trustNotice": "商业专有软件，公开下载不代表免费、开源或已获得使用授权。未激活保持激活页，导入发行者签发的匹配 .plicense 后使用。发行私钥、内容密钥、签发工具及客户许可不属于市场安装包。",
+      "license": "Proprietary · 需离线激活",
+      "readme": "# PPLeaderShip 0.1.3 · 商业版\n\n面向公司管理者的多项目组合工作台。只读打开多个 .pp，比较项目健康度、预算、风险与资源，管理判断和决策记录独立保存为 .ppl。\n\n## 安装与离线激活\n\n1. 在 Aide 市场点击安装。需要包含共享组件连接及设备码读取能力的 Aide 更新构建。\n2. 首次使用时，下载详情页提供的“共享离线授权组件”并解压到固定本地目录。macOS Apple Silicon 双击“配置Aide连接.command”选择 Aide 安装目录；Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n3. 配置只增加只读连接目录挂载，先保存工作，再停止并重新启动 Aide。随后启动组件；插件会自动连接。\n4. 打开激活页，导出设备申请，再点击 Aide 顶部“保存文件”。默认名称为 <设备码>-设备申请.prequest；旧版 Aide 或没有设备码时会明确提示备用名称。\n5. 将申请交给发行者，取得 .plicense 后导入，校验通过即可使用。签发工具兼容旧 .pprequest 申请，插件兼容旧 .pplicense 授权。有效期和指定设备以签发内容为准。\n\n已有共享组件请先停止原服务并备份安装目录，合并更新 runtime 与所需 core 文件，保留其他核心、设备身份及系统凭据，然后沿用原启动方式启动。不要重复运行组件。连接排障放在 Aide 插件卡片设置中。\n\n软件授权界面支持单独撤销当前插件的本机激活；项目和其他插件授权保留。离线撤销不影响其他设备，以后可重新导入有效授权。\n\n## 升级与验证\n\n本客户端更新沿用已有加密核心和匹配许可，不因设备申请文件名及界面更新重新签发授权。新增产品或没有对应核心授权的设备仍需发行者签发。\n\n已在 macOS Aide 实际工作台核验客户端及设备申请自动命名。共享组件使用已核对摘要的运行时与加密核心；安装配置使用虚构文件夹验证，不读取生产凭据。Linux 和客户现场未在本次发布重新验收。支持 macOS Apple Silicon、Linux ARM64/AMD64；无原生 Windows 组件，macOS 二进制未作 Developer ID 公证。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n正式发行说明：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppleadership-v0.1.3\n",
+      "screenshots": [],
+      "changelog": "0.1.3：正式开放市场下载和安装，需离线激活；设备申请自动使用 Aide 设备码并导出 <设备码>-设备申请.prequest，授权文件为 .plicense；支持单独撤销当前插件的本机激活。",
+      "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppleadership-v0.1.3",
+      "routing": {
+        "keywords": [
+          "pp-leadership",
+          "PPLeaderShip",
+          "PPL",
+          "公司战略",
+          "项目组合",
+          "多项目管控",
+          "跨项目资源"
+        ],
+        "extensions": [],
+        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；商业版，市场安装后需离线激活。"
+      },
+      "activationRequired": true,
+      "package": "packages/pp-leadership/0.1.3-ab06da49b5a6.zip",
+      "sha256": "ab06da49b5a672a6be53c913c86a239823aabbc82910ad6820250e2881f39178",
+      "bytes": 34114,
+      "resources": [
+        {
+          "title": "下载共享离线授权组件",
+          "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/private-plugin-component-v0.3.0-20261115/PrivatePlugin-offline-component-v0.3.0-20261115.zip",
+          "sha256": "5efcb604e865374e38b2a3d0d253f7c6b3a7d606e83762d3f72728523be24aee",
+          "bytes": 114391483
+        }
+      ]
+    },
+    {
+      "id": "professional-project",
+      "kind": "plugin",
+      "name": "ProfessionalProject · 商业版",
+      "description": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。商业版采用共享离线授权，市场可直接安装，使用前需离线激活。获取报价、售后、问题反馈请联系 business@sklastu.com。",
+      "version": "0.4.20",
+      "author": "skyelan1999",
+      "category": "planning",
+      "icon": "planning",
+      "distribution": "public",
+      "minAideVersion": "0.1.19.0 RC2",
+      "platforms": [
+        "macos",
+        "linux"
+      ],
+      "dependencies": [
+        "本机共享离线授权组件 0.3.0，需首次配置和启动；已有组件应保留设备身份和其他产品核心",
+        "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需要 Python 3",
+        "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
+      ],
+      "features": [],
+      "permissions": "项目写入与手机采集沿用宿主权限、员工配对及区域授权。",
+      "trustNotice": "商业专有软件，公开下载不代表免费、开源或已获得使用授权。未激活保持激活页，导入发行者签发的匹配 .plicense 后使用。发行私钥、内容密钥、签发工具及客户许可不属于市场安装包。",
+      "license": "Proprietary · 需离线激活",
+      "readme": "# ProfessionalProject 0.4.20 · 商业版\n\n项目计划、任务甘特图、人员资源、费用、采购库存与手机采集协同。\n\n## 安装与离线激活\n\n1. 在 Aide 市场点击安装。需要包含共享组件连接及设备码读取能力的 Aide 更新构建。\n2. 首次使用时，下载详情页提供的“共享离线授权组件”并解压到固定本地目录。macOS Apple Silicon 双击“配置Aide连接.command”选择 Aide 安装目录；Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n3. 配置只增加只读连接目录挂载，先保存工作，再停止并重新启动 Aide。随后启动组件；插件会自动连接。\n4. 打开激活页，导出设备申请，再点击 Aide 顶部“保存文件”。默认名称为 <设备码>-设备申请.prequest；旧版 Aide 或没有设备码时会明确提示备用名称。\n5. 将申请交给发行者，取得 .plicense 后导入，校验通过即可使用。签发工具兼容旧 .pprequest 申请，插件兼容旧 .pplicense 授权。有效期和指定设备以签发内容为准。\n\n已有共享组件请先停止原服务并备份安装目录，合并更新 runtime 与所需 core 文件，保留其他核心、设备身份及系统凭据，然后沿用原启动方式启动。不要重复运行组件。连接排障放在 Aide 插件卡片设置中。\n\n软件授权界面支持单独撤销当前插件的本机激活；项目和其他插件授权保留。离线撤销不影响其他设备，以后可重新导入有效授权。\n\n## 升级与验证\n\n本客户端更新沿用已有加密核心和匹配许可，不因设备申请文件名及界面更新重新签发授权。新增产品或没有对应核心授权的设备仍需发行者签发。\n\n已在 macOS Aide 实际工作台核验客户端及设备申请自动命名。共享组件使用已核对摘要的运行时与加密核心；安装配置使用虚构文件夹验证，不读取生产凭据。Linux 和客户现场未在本次发布重新验收。支持 macOS Apple Silicon、Linux ARM64/AMD64；无原生 Windows 组件，macOS 二进制未作 Developer ID 公证。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n正式发行说明：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/professionalproject-v0.4.20\n",
+      "screenshots": [],
+      "changelog": "0.4.20：正式开放市场下载和安装，需离线激活；设备申请自动使用 Aide 设备码并导出 <设备码>-设备申请.prequest，授权文件为 .plicense；支持单独撤销当前插件的本机激活。",
+      "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/professionalproject-v0.4.20",
+      "routing": {
+        "keywords": [
+          "professional-project",
+          "ProfessionalProject",
+          "PP",
+          "项目管理",
+          "任务甘特图",
+          "人员费用",
+          "采购库存"
+        ],
+        "extensions": [],
+        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；商业版，市场安装后需离线激活。"
+      },
+      "activationRequired": true,
+      "package": "packages/professional-project/0.4.20-ba2187c32bad.zip",
+      "sha256": "ba2187c32bad40854bb6d5e995c06ef874aaa93b8f30888bddbe971b5f82d6f9",
+      "bytes": 137301,
+      "resources": [
+        {
+          "title": "下载共享离线授权组件",
+          "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/private-plugin-component-v0.3.0-20261115/PrivatePlugin-offline-component-v0.3.0-20261115.zip",
+          "sha256": "5efcb604e865374e38b2a3d0d253f7c6b3a7d606e83762d3f72728523be24aee",
+          "bytes": 114391483
+        }
+      ]
     },
     {
       "id": "professional-resume",
@@ -1542,173 +1721,6 @@
         "extensions": [],
         "summary": "DSH workflow 能力预设：注册工作流工具与面板声明；当前未实现工作流执行或进度查询 handler。"
       }
-    },
-    {
-      "id": "pp-customer",
-      "kind": "plugin",
-      "distribution": "public",
-      "activationRequired": true,
-      "name": "PPCustomer · 商业版",
-      "description": "客户里程碑甘特图与排期审批，自动保存 .pp，支持 PDF/HTML/Markdown 项目汇报与只读 .ppc 预览。启动为空白首页。获取报价、售后、问题反馈请联系 business@sklastu.com。",
-      "version": "0.3.7",
-      "author": "skyelan1999",
-      "category": "planning",
-      "icon": "planning",
-      "package": "packages/pp-customer/0.3.7-efb458e126d7.zip",
-      "sha256": "efb458e126d7ba578625f9c0523fbe79bf52cd496a8cdc4034162978e181314a",
-      "bytes": 7660222,
-      "minAideVersion": "0.1.19.0 RC2",
-      "platforms": [
-        "macos",
-        "linux"
-      ],
-      "features": [],
-      "dependencies": [
-        "本机共享离线授权组件 0.3.0，首次独立配置和启动；升级新核心需新构建授权",
-        "支持文件来源 checkout/commit 写回的更新版 Aide；已验证 0.1.19.0 RC2 当前源码构建",
-        "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需 Python 3",
-        "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建；旧版保留备用名称并提示"
-      ],
-      "permissions": "通过宿主来源 checkout/commit 自动写回所选可写 .pp 的 ppCustomer 专属设置区，检查整文件版本；保留基础 PP 字段。只读来源拒绝保存。.ppc 文件处理器只读，导出仅含选定已批准内容。授权和受保护计算在本机组件校验。",
-      "trustNotice": "商业专有软件，公开下载不等于授权或开源。0.3.0 使用新核心，旧许可不自动包含此构建，升级前请联系发行者取得 .plicense。未授权保持激活页。自动保存会直接写回所选 .pp，需可写来源和更新版 Aide。",
-      "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.3.7",
-      "license": "Proprietary · 需离线激活",
-      "readme": "# PPCustomer 0.3.7 · 商业版\n\n默认只选择里程碑，直接在同一张甘特图里突出显示日期和状态。可在设置中显示阶段/普通任务、层级和明细；支持全屏与焦点范围。任务变更先形成待审批预览，在项目设置中批准后才更新客户正式排期。\n\n**自动保存直接写回当前 .pp**：客户显示设置、变更申请/审批、风险和沟通等写入 PP 的专属扩展，保留基础任务及其他 PP 字段；版本冲突时拒绝覆盖并保留当前修改。`.ppc` 只包含当前客户可见的已批准内容，是只读快速预览，不含管理设置。也可在 Aide 文件面板直接打开 `.ppc`。\n\n获取报价、售后、问题反馈请联系 **business@sklastu.com**。\n\n## 首次安装与激活\n\n1. 从 Aide 市场安装 PPCustomer 商业版，使用支持文件来源写回的更新版 Aide。0.3.0 的来源写回流程已在 Aide 0.1.19.0 RC2 源码构建的隔离真实宿主验证；本次修订的验证范围见下文。\n2. 下载并解压本机组件：https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.3.0/PPCustomer-offline-component-v0.3.0.zip\n3. macOS Apple Silicon 双击组件中的“配置Aide连接.command”，选择包含 compose.yaml 的 Aide 安装目录。Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n4. 配置增加只读连接目录挂载，不读取凭据或自动重启 Aide。请保存工作，先停止再启动 Aide，使挂载生效。\n5. 双击“启动授权组件.command”（Linux 执行 ./start-core.sh），保持终端运行。插件自动发现组件，无需填写连接地址。\n6. 在激活页导出设备申请，并点击 Aide 顶部“保存文件”。将申请交给发行者，取得 `.plicense` 授权文件后导入；校验通过再开始使用。旧 `.pplicense` 可兼容导入。\n\n## 从已安装商业版升级\n\n0.3.0 包含新加密核心及共享授权组件更新。**旧授权不自动包含新核心，需要发行者签发包含新构建的 .plicense**；请先准备升级授权和保存当前工作。\n\n已有共享组件应沿用其设备身份和系统凭据。管理员先备份并停止原组件，更新对应平台运行时和 core/pp-customer.ppcore，保留其他产品核心及所有设备状态，再启动组件。不要重复启动多个组件，不混用发行身份，不重建密钥库。其他产品继续按各自许可校验。\n\n新版授权界面可以单独撤销当前插件在本机的激活，操作前会要求确认并检查未保存内容。该操作不删除项目、不修改其他产品授权，也不能离线远程撤销其他设备；以后可重新导入有效许可。\n\n## 项目与保存\n\n从工作区/引用打开一个可写 `.pp` 即可管理并自动保存。新项目只勾选里程碑，其他阶段和任务按需在设置开启；已保存的勾选范围保留。甘特图中的待审批标记代表预览，汇报和 `.ppc` 均使用已批准内容。\n\n本机文件上传及示例是预览入口，浏览器不能直接覆盖原文件；请从工作区/引用重新打开原 `.pp` 启用写回。只读、文件变化或来源权限变化会拒绝保存，不把失败说成成功。导出 `.ppc` 或汇报时仍需点击宿主顶部“保存文件”。\n\nAide 首次控制先调用 ppc_guide，再 ppc_inspect 获取事项 ID/revision；提交与审批使用专用接口，常规保存不能伪造正式任务或审批历史。\n\n## 平台与验证范围\n\n本机组件提供 macOS Apple Silicon、Linux ARM64/AMD64；没有原生 Windows 组件。Linux 需要可用 Secret Service 用户会话。macOS 二进制未做 Apple Developer ID 公证。\n\n0.3.0 已完成隔离真实 Aide Go 宿主、商业界面、模拟授权及原生加密流程验证；这些不等于本版已在用户真实系统凭据库或客户现场重新验收。旧生产窗口在测试中保持原样。完全离线不能承诺防止拥有本机控制权的攻击者修改软件。\n\n组件 connection.json 是进程连接凭据，不是授权文件，不要交给别人。发行私钥、内容密钥及客户真实许可不属于客户安装包。\n\n正式说明、摘要和下载：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppcustomer-v0.3.7\n\n## 0.3.1 本机授权撤销修复\n\n撤销区为独立描边按钮，勾选确认后才可点击。若提示本机授权组件过旧，请按上述步骤更新并重启原共享组件；只更新插件 ZIP 不会更新宿主程序。保留原设备身份及系统凭据，不重复运行多个组件。\n\n0.3.1 复用 0.3.0 加密业务核心及原生运行时；已经包含 0.3.0 核心的许可不需要重新签发。由 0.2.0 升级至 0.3.x 仍需匹配新核心的授权。\n\n## 0.3.2 启动与界面\n\n普通启动、刷新和重新安装均进入空白首页，不自动读取上次绑定的项目。请明确从工作区打开原 .pp；其中已保存的设置和待审批申请仍然保留。Aide 文件面板明确打开 .ppc 时仍直接显示所选只读文件。\n\n甘特图搜索、日周月、焦点范围和全屏/折叠操作统一对齐，窄屏和指定日期范围自动换行，下拉框复用 Aide 主题。界面版本号与安装包一致。继续复用 0.3.0 加密业务核心，无需为本次界面升级重新签发匹配授权。\n\n## 自动保存控制\n\nPPCustomer 0.3.3：顶部提供自动保存开关和立即保存按钮。关闭后停止自动写入并保留未保存提示，重新开启恢复自动保存；开关选择随 .pp 保存，不进入 .ppc 预览。空白及只读预览不能启用自动保存。保存失败状态可点击或用键盘重试。沿用 0.3.0 核心及匹配授权，无需重新激活。\n\n验证：36 Node、8 Python 和 11 商业阶段测试；虚构项目浏览器验证暂停、手动保存、重新打开、恢复、冲突重试和只读限制，390px 无横向溢出。未操作真实客户项目或授权。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n## PDF 汇报\n\nPPCustomer 0.3.4 新增直接导出 PDF。导出汇报格式可选择 PDF、HTML 或 Markdown。PDF 在本机离线生成，内置中文字体，包含自动分页的甘特图、完整排期、风险、沟通及客户可见记录。只使用已批准公开视图，待审批变更不进入正式汇报；只读 .ppc 也可导出。\n\n生成后仍需点击 Aide 顶部“保存文件”。输入/输出支持 64 KiB 分块与 SHA-256 校验，临时文件在传输后清理；单份最多 16 MiB/256 页，最多 4 份临时导出、10 分钟到期，过大时减少可见范围后重试。\n\n字体和通用 PDF 引擎随包提供，无需联网或调用系统打印；对应来源和第三方许可在 vendor/pdf。业务核心仍为 0.3.0，匹配许可继续有效，无需为本次客户端升级重新激活。\n\n验证：40 Node、8 Python、11 商业阶段测试；80 事项长报告生成 14 页，中文可提取且字体嵌入，待审批日期/隐藏标记被排除，首中末页通过 Poppler 目视检查。浏览器实际下载 PDF、只读预览与中断重试通过；隔离 Linux Node 24 也能生成。未使用真实客户文件或许可测试。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n## 0.3.5 流程与界面修正\n\n首次保存前的事项编号保持稳定，Aide 可直接发起待审批申请。点击甘特条可按选中事项聚焦；打开其他项目清空上一项目的搜索、焦点与保存错误。取消打开保留当前项目；手动保存失败提示清晰区分自动保存。甘特图按自然月标注月份，Esc 完整退出全屏；PDF 短排期不再重复日期刻度。\n\n沿用现有 0.3.0 加密核心和匹配许可，无需重新激活。本次验证包括 42 Node、8 Python、11 商业阶段测试以及虚构项目隔离浏览器回归，未安装到用户当前生产窗口。\n\n## 0.3.6 设备申请自动命名\n\n导出设备申请时，名称自动采用 Aide 消息面板中的“我的设备码”，文件名为“设备码-设备申请.prequest”。设置中的名称仅作备用。需要包含 plugin-device-info-v1 的更新版 Aide 源码构建；旧版或尚无设备码时仍可导出，并明确提示采用备用名称。锁屏或调用失效则拒绝继续生成。\n\n设备码只作便于核对的显示名称，不替代原有设备身份和签名校验。沿用原生授权组件、加密核心及匹配许可，无需重新激活。此版本已通过共用适配器与实际导出界面隔离测试，签名绑定测试使用临时内存设备；未重启用户当前 Aide 或生成真实设备申请。\n\n## 0.3.7 通用设备申请文件\n\n设备申请统一使用 .prequest，文件名以设备码开头，例如 AB12CD-设备申请.prequest。设备申请接口会返回 suggestedFilename 供自动化使用。无法读取设备码时保留通用备用文件名及原有提示，不伪造设备号。\n\n签发工具新版同时兼容 .prequest 和旧 .pprequest；旧申请无需改动内容。申请的签名信封、原生授权组件、加密核心、设备身份及匹配许可都保持不变，授权文件仍为 .plicense，无需重新激活。\n\n15 项共用 Node 测试、许可 Go 测试、实际界面下载与新旧扩展名导入转交检查通过；测试仅使用虚构设备和隔离端点，不代表在用户真实凭据或客户现场重新验收。\n",
-      "screenshots": [],
-      "changelog": "0.3.7：设备申请统一为 .prequest，文件名以设备码开头；接口返回 suggestedFilename。签发工具兼容旧 .pprequest，申请签名和授权校验保持不变。",
-      "routing": {
-        "keywords": [
-          "PPCustomer",
-          "PPC",
-          "客户里程碑",
-          "客户甘特图",
-          "客户汇报",
-          "客户进度",
-          "排期变更申请",
-          "客户排期审批",
-          "客户沟通"
-        ],
-        "extensions": [
-          ".ppc"
-        ],
-        "summary": "客户里程碑甘特图与排期审批；设置写回 .pp，.ppc 仅为客户只读预览；商业版需离线激活。"
-      },
-      "resources": [
-        {
-          "title": "下载本机授权组件",
-          "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/ppcustomer-v0.3.0/PPCustomer-offline-component-v0.3.0.zip",
-          "sha256": "c80d4809eef55cd4de882a9dc576358c9d7d66e1079b4cb6f94b0e6a2b9118fe",
-          "bytes": 48687957
-        }
-      ]
-    },
-    {
-      "id": "professional-project",
-      "kind": "plugin",
-      "name": "ProfessionalProject · 商业版",
-      "description": "项目计划、人员费用、空间规划、采购库存与手机扫码协同。商业版采用共享离线授权，市场可直接安装，使用前需离线激活。获取报价、售后、问题反馈请联系 business@sklastu.com。",
-      "version": "0.4.20",
-      "author": "skyelan1999",
-      "category": "planning",
-      "icon": "planning",
-      "distribution": "public",
-      "minAideVersion": "0.1.19.0 RC2",
-      "platforms": [
-        "macos",
-        "linux"
-      ],
-      "dependencies": [
-        "本机共享离线授权组件 0.3.0，需首次配置和启动；已有组件应保留设备身份和其他产品核心",
-        "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需要 Python 3",
-        "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
-      ],
-      "features": [],
-      "permissions": "项目写入与手机采集沿用宿主权限、员工配对及区域授权。",
-      "trustNotice": "商业专有软件，公开下载不代表免费、开源或已获得使用授权。未激活保持激活页，导入发行者签发的匹配 .plicense 后使用。发行私钥、内容密钥、签发工具及客户许可不属于市场安装包。",
-      "license": "Proprietary · 需离线激活",
-      "readme": "# ProfessionalProject 0.4.20 · 商业版\n\n项目计划、任务甘特图、人员资源、费用、采购库存与手机采集协同。\n\n## 安装与离线激活\n\n1. 在 Aide 市场点击安装。需要包含共享组件连接及设备码读取能力的 Aide 更新构建。\n2. 首次使用时，下载详情页提供的“共享离线授权组件”并解压到固定本地目录。macOS Apple Silicon 双击“配置Aide连接.command”选择 Aide 安装目录；Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n3. 配置只增加只读连接目录挂载，先保存工作，再停止并重新启动 Aide。随后启动组件；插件会自动连接。\n4. 打开激活页，导出设备申请，再点击 Aide 顶部“保存文件”。默认名称为 <设备码>-设备申请.prequest；旧版 Aide 或没有设备码时会明确提示备用名称。\n5. 将申请交给发行者，取得 .plicense 后导入，校验通过即可使用。签发工具兼容旧 .pprequest 申请，插件兼容旧 .pplicense 授权。有效期和指定设备以签发内容为准。\n\n已有共享组件请先停止原服务并备份安装目录，合并更新 runtime 与所需 core 文件，保留其他核心、设备身份及系统凭据，然后沿用原启动方式启动。不要重复运行组件。连接排障放在 Aide 插件卡片设置中。\n\n软件授权界面支持单独撤销当前插件的本机激活；项目和其他插件授权保留。离线撤销不影响其他设备，以后可重新导入有效授权。\n\n## 升级与验证\n\n本客户端更新沿用已有加密核心和匹配许可，不因设备申请文件名及界面更新重新签发授权。新增产品或没有对应核心授权的设备仍需发行者签发。\n\n已在 macOS Aide 实际工作台核验客户端及设备申请自动命名。共享组件使用已核对摘要的运行时与加密核心；安装配置使用虚构文件夹验证，不读取生产凭据。Linux 和客户现场未在本次发布重新验收。支持 macOS Apple Silicon、Linux ARM64/AMD64；无原生 Windows 组件，macOS 二进制未作 Developer ID 公证。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n正式发行说明：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/professionalproject-v0.4.20\n",
-      "screenshots": [],
-      "changelog": "0.4.20：正式开放市场下载和安装，需离线激活；设备申请自动使用 Aide 设备码并导出 <设备码>-设备申请.prequest，授权文件为 .plicense；支持单独撤销当前插件的本机激活。",
-      "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/professionalproject-v0.4.20",
-      "routing": {
-        "keywords": [
-          "professional-project",
-          "ProfessionalProject",
-          "PP",
-          "项目管理",
-          "任务甘特图",
-          "人员费用",
-          "采购库存"
-        ],
-        "extensions": [],
-        "summary": "项目计划、任务甘特图、人员费用、采购库存与手机采集；商业版，市场安装后需离线激活。"
-      },
-      "activationRequired": true,
-      "package": "packages/professional-project/0.4.20-ba2187c32bad.zip",
-      "sha256": "ba2187c32bad40854bb6d5e995c06ef874aaa93b8f30888bddbe971b5f82d6f9",
-      "bytes": 137301,
-      "resources": [
-        {
-          "title": "下载共享离线授权组件",
-          "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/private-plugin-component-v0.3.0-20261115/PrivatePlugin-offline-component-v0.3.0-20261115.zip",
-          "sha256": "5efcb604e865374e38b2a3d0d253f7c6b3a7d606e83762d3f72728523be24aee",
-          "bytes": 114391483
-        }
-      ]
-    },
-    {
-      "id": "pp-leadership",
-      "kind": "plugin",
-      "name": "PPLeaderShip · 商业版",
-      "description": "公司级多项目组合管控：打开多个 .pp，比较项目健康度、预算、风险与跨项目资源，记录战略判断和管理决策。获取报价、售后、问题反馈请联系 business@sklastu.com。",
-      "version": "0.1.3",
-      "author": "skyelan1999",
-      "category": "planning",
-      "icon": "planning",
-      "distribution": "public",
-      "minAideVersion": "0.1.19.0 RC2",
-      "platforms": [
-        "macos",
-        "linux"
-      ],
-      "dependencies": [
-        "本机共享离线授权组件 0.3.0，需首次配置和启动；已有组件应保留设备身份和其他产品核心",
-        "macOS Apple Silicon 或 Linux ARM64/AMD64；Linux 需要 Secret Service 用户会话；首次配置需要 Python 3",
-        "设备码自动命名需包含 plugin-device-info-v1 的 Aide 更新构建"
-      ],
-      "features": [],
-      "permissions": "只读打开用户选择的多个 .pp；管理判断与决策记录独立保存为 .ppl，文件打开和导出沿用 Aide 宿主授权。",
-      "trustNotice": "商业专有软件，公开下载不代表免费、开源或已获得使用授权。未激活保持激活页，导入发行者签发的匹配 .plicense 后使用。发行私钥、内容密钥、签发工具及客户许可不属于市场安装包。",
-      "license": "Proprietary · 需离线激活",
-      "readme": "# PPLeaderShip 0.1.3 · 商业版\n\n面向公司管理者的多项目组合工作台。只读打开多个 .pp，比较项目健康度、预算、风险与资源，管理判断和决策记录独立保存为 .ppl。\n\n## 安装与离线激活\n\n1. 在 Aide 市场点击安装。需要包含共享组件连接及设备码读取能力的 Aide 更新构建。\n2. 首次使用时，下载详情页提供的“共享离线授权组件”并解压到固定本地目录。macOS Apple Silicon 双击“配置Aide连接.command”选择 Aide 安装目录；Linux 执行 python3 configure-aide.py /你的/Aide安装目录。首次配置需要 Python 3。\n3. 配置只增加只读连接目录挂载，先保存工作，再停止并重新启动 Aide。随后启动组件；插件会自动连接。\n4. 打开激活页，导出设备申请，再点击 Aide 顶部“保存文件”。默认名称为 <设备码>-设备申请.prequest；旧版 Aide 或没有设备码时会明确提示备用名称。\n5. 将申请交给发行者，取得 .plicense 后导入，校验通过即可使用。签发工具兼容旧 .pprequest 申请，插件兼容旧 .pplicense 授权。有效期和指定设备以签发内容为准。\n\n已有共享组件请先停止原服务并备份安装目录，合并更新 runtime 与所需 core 文件，保留其他核心、设备身份及系统凭据，然后沿用原启动方式启动。不要重复运行组件。连接排障放在 Aide 插件卡片设置中。\n\n软件授权界面支持单独撤销当前插件的本机激活；项目和其他插件授权保留。离线撤销不影响其他设备，以后可重新导入有效授权。\n\n## 升级与验证\n\n本客户端更新沿用已有加密核心和匹配许可，不因设备申请文件名及界面更新重新签发授权。新增产品或没有对应核心授权的设备仍需发行者签发。\n\n已在 macOS Aide 实际工作台核验客户端及设备申请自动命名。共享组件使用已核对摘要的运行时与加密核心；安装配置使用虚构文件夹验证，不读取生产凭据。Linux 和客户现场未在本次发布重新验收。支持 macOS Apple Silicon、Linux ARM64/AMD64；无原生 Windows 组件，macOS 二进制未作 Developer ID 公证。\n\n获取报价、售后、问题反馈请联系 business@sklastu.com。\n\n正式发行说明：https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppleadership-v0.1.3\n",
-      "screenshots": [],
-      "changelog": "0.1.3：正式开放市场下载和安装，需离线激活；设备申请自动使用 Aide 设备码并导出 <设备码>-设备申请.prequest，授权文件为 .plicense；支持单独撤销当前插件的本机激活。",
-      "source": "https://github.com/skyelan1999/aide-pkg-shop/releases/tag/ppleadership-v0.1.3",
-      "routing": {
-        "keywords": [
-          "pp-leadership",
-          "PPLeaderShip",
-          "PPL",
-          "公司战略",
-          "项目组合",
-          "多项目管控",
-          "跨项目资源"
-        ],
-        "extensions": [],
-        "summary": "只读汇总多个 .pp，比较项目健康度、预算、风险及跨项目资源，管理判断和决策独立保存为 .ppl；商业版，市场安装后需离线激活。"
-      },
-      "activationRequired": true,
-      "package": "packages/pp-leadership/0.1.3-ab06da49b5a6.zip",
-      "sha256": "ab06da49b5a672a6be53c913c86a239823aabbc82910ad6820250e2881f39178",
-      "bytes": 34114,
-      "resources": [
-        {
-          "title": "下载共享离线授权组件",
-          "url": "https://github.com/skyelan1999/aide-pkg-shop/releases/download/private-plugin-component-v0.3.0-20261115/PrivatePlugin-offline-component-v0.3.0-20261115.zip",
-          "sha256": "5efcb604e865374e38b2a3d0d253f7c6b3a7d606e83762d3f72728523be24aee",
-          "bytes": 114391483
-        }
-      ]
     }
   ],
   "privateListings": [
