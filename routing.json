@@ -591,7 +591,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.5",
+      "version": "1.8.6",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -623,7 +623,7 @@
           "中继延迟"
         ],
         "extensions": [],
-        "summary": "设备终端、TLS 中继和中继配置备份。支持中继按键回显优化，以及 SSH 独立或并排图形窗口。"
+        "summary": "设备终端、TLS 中继和中继配置备份。支持中继远端回显推送，以及自动缩放的 SSH 独立或并排图形窗口。"
       }
     },
     {
