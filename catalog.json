@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Aide 官方插件市场",
-  "sourceCommit": "409644a7038a7ce80056a5ea75fd1d0ab359b755",
+  "sourceCommit": "f15b4340cc3c20da58c68d0947ecd6cae0bcb153",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -774,69 +774,6 @@
         ],
         "extensions": [],
         "summary": "原文编辑、保存去重与图片／附件／draw.io 资源快照。历史保存在 Aide 服务数据目录，按工作区和来源隔离。"
-      }
-    },
-    {
-      "id": "office",
-      "kind": "plugin",
-      "name": "Office 文档",
-      "description": "Aide 内置离线 Office 预览、编辑和保存，支持 AI 读取、检索、精确修改和批注；无需额外服务设置",
-      "version": "1.3.0",
-      "author": "Aide",
-      "category": "creation",
-      "icon": "creation",
-      "package": "packages/office/1.3.0-a1f8e9e505af.zip",
-      "sha256": "a1f8e9e505af3c80855f7d070cdce7c093fd70547f97af58a56166b157a82a89",
-      "bytes": 12831,
-      "minAideVersion": "0.1.19.0 RC2",
-      "platforms": [
-        "windows",
-        "macos",
-        "linux"
-      ],
-      "dependencies": [
-        "需要具备 office-offline-v1 的 Aide 完整宿主构建，最低 0.1.19.0 RC2；相同版本号的旧构建需先更新至包含 Aide PR #938 的 main 源码构建或后续正式版本",
-        "完整宿主内置并自动管理离线 Collabora CODE 引擎与 Office Python 环境；无需另外部署服务、填写地址或运行时下载",
-        "此 ZIP 仅包含适配层，不会为旧宿主补装引擎；云端 AI 模型调用仍需模型服务，离线 AI 需要已可用的本地模型"
-      ],
-      "permissions": "人工文档编辑和 AI 写入沿用工作区／来源权限、锁屏状态和版本校验；只读引用保持只读。",
-      "trustNotice": "MIT 插件适配层；完整 Aide 宿主中的原版 CODE 引擎保留 MPL 及第三方许可。仅供 Aide 会话与内部 AI 工具使用，无独立 WOPI、转换或文档读写服务。预览不占用 AI 写租约，活跃编辑及未保存内容受到保护。Node 插件以宿主权限运行，不是权限沙箱。",
-      "features": [
-        "office-collabora-v1",
-        "office-offline-v1"
-      ],
-      "source": "https://github.com/skyelan1999/aide-pkg-office/tree/bbc1851cb698b93d99f3b227ccfe2741a453b0d9",
-      "license": "MIT",
-      "readme": "# Office · Aide Office 文档\n\nAide `office` 1.3.0，适配层 MIT 许可。配合包含内置引擎的完整 Aide 运行包使用，旧版升级保留现有文件。\n\n注册 `office_create`、`office_comments`、`office_comment_edit`、`office_document_search`、`office_document_read`、`office_document_edit` 六项工具。支持通过宿主生成 DOCX/XLSX/PPTX、读取或按锚点修改 DOCX 批注，以及原文/RAG 片段检索；相关文件创建、编辑与来源权限沿用 Aide 现有审批通道。RAG 使用本地检索，不承诺 OCR 或整份文档已读。\n\n必须配合 Aide 原生 Office 工作区执行器及宿主 Python Office 环境（python-docx、openpyxl、python-pptx 等）；Node 入口负责协议注册，不能单独执行 Office 操作。安装 ZIP 不包含宿主执行器或 Python 依赖。需要 Aide 0.1.19.0 RC2 或更新版本，且宿主必须具备 `office-offline-v1` 能力。缺少该能力的旧同版本宿主会被市场拒绝，请先更新到包含本次集成的 Aide main 源码构建或后续正式版本。Linux 为本次验证环境，Windows/macOS 和实际 SSH 未实测。\n\n从 [v1.3.0 Release](https://github.com/skyelan1999/aide-pkg-office/releases/tag/v1.3.0) 下载 ZIP 与 SHA256SUMS，校验后导入 Aide；也可通过[插件市场](https://skyelan1999.github.io/aide-pkg-shop/)安装。相同 ID/版本无需重复安装。\n\n```sh\nsha256sum -c SHA256SUMS\n```\n\n本版通过 Release 附件提供安装包及摘要。历史 `packages/v1.1.0/` 仍保留原安装包，旧 Release 的固定提交链接不变；不要把旧包当作本版更新。\n\n本版验证见 [内置离线集成验收](docs/reviews/2026-11-16-offline-integration.md)；1.2.0 的外部服务方案及旧版本记录保留为历史。SHA-256 是完整性校验而非签名，Node 插件机制不是权限沙箱。\n\n## 生成正文并核对\n\n在对话中说明文件名、格式和正文；工具参数必须使用对应结构：\n\n```json\n{\"path\":\"report.docx\",\"format\":\"docx\",\"content\":{\"title\":\"验收报告\",\"blocks\":[{\"type\":\"paragraph\",\"text\":\"这里是实际正文。\"}]}}\n```\n\nXLSX 用 `content.sheets=[{name,rows:[[...]]}]`，PPTX 用 `content.slides=[{title,body}]`。DOCX 段落键是 `blocks` 中的 `text`，不是 `paragraphs`；表格使用 `type=table` 和 `rows`。不要把文件生成回执当作正文检查：从自动系统文档打开，或调用 `read_file(source=system-docs,path=相对路径)` 核对；未绑定文档目录时按工具返回的工作区位置打开。\n\n1.1.1 在工具定义中列出上述字段。拒绝未知字段、防止静默丢正文的生成器修复属于 Aide [#892](https://github.com/skyelan1999/aide/issues/892)，需要包含该修复的宿主源码构建；只更新插件不会更新旧宿主的 Python 生成器。此修复不覆盖已有文档，不新增外部调用。\n\n新版本包由 `python3 scripts/package.py <输出目录>` 构建；先运行 `node test.js`。旧 `packages/v1.1.0` 与其摘要保留。\n\n\n## 内置离线 Office（1.3.0）\n\n需要具备 `office-offline-v1` 的完整 Aide 宿主。引擎随主程序安装，无需单独部署、填地址、添加设置或联网下载；旧服务设置不再使用。只更新 ZIP 不会为旧主程序补上引擎。\n\n插件不提供独立 HTTP/MCP 服务。引擎和文档回调只在 Aide 内部回环通信，浏览器只能通过 Aide 授权的文档会话访问；没有额外对外端口或管理/通用转换入口。默认预览不阻止 AI；切换编辑后按活动状态保护草稿，30 秒无操作且确认保存后允许 AI 写入。预览、编辑、保存、选区/文档交给 AI 都在现有文件查看页面中。\n\nAI 先用 `office_document_read(path,source?,offset?)` 取得地址化文本、分页和 hash，再用 `office_document_edit(path,source?,hash,changes)` 提交精确修改。每项 changes 为 `{id,expectedText,newText}`；段落替换沿用首个文字运行格式，复杂字段和对象拒绝修改，未改动媒体包成员保留原始字节。直接结构化 AI 读写目前支持 DOCX/XLSX/PPTX；其他格式先用编辑器另存为 OOXML。仅读取已保存内容，不代表当前人工草稿已提交。\n\n文档预览编辑保存可断网使用；云端模型仍需要供应商连接，纯离线推理需使用已有本地模型。插件代码 MIT，随 Aide 主程序分发的未修改 CODE 引擎适用 MPL 及其第三方许可证。ZIP 不携带引擎二进制、企业订阅或 SLA；引擎属于完整 Aide 运行包。\n\n[内置离线集成验收记录](docs/reviews/2026-11-16-offline-integration.md)。\n",
-      "screenshots": [],
-      "changelog": "1.3.0 改为 Aide 内置离线 Office：首次打开自动启动，无需填写服务地址；引擎及 WOPI 仅在宿主回环监听，公开 WOPI、管理、转换及通用文档读写接口关闭。保留六项 AI 工具和升级用户数据，需 office-offline-v1 宿主。",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "Collabora",
-          "LibreOffice",
-          "Office",
-          "Word",
-          "Excel",
-          "PowerPoint",
-          "docx",
-          "xlsx",
-          "pptx",
-          "WOPI",
-          "AI editing"
-        ],
-        "extensions": [
-          ".doc",
-          ".docx",
-          ".xls",
-          ".xlsx",
-          ".ppt",
-          ".pptx",
-          ".odt",
-          ".ods",
-          ".odp"
-        ],
-        "summary": "Aide 内置离线 Office 预览、编辑、保存与内部 AI 读写，无需额外服务设置；需 office-offline-v1 完整宿主。"
       }
     },
     {

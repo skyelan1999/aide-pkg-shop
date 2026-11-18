@@ -26,9 +26,13 @@ class PublicListingTest(unittest.TestCase):
  def test_public_listing_survives_catalog_rebuild(self):
   item=self.listing();self.assertEqual(self.load(item),[item])
  def test_rejects_private_payloads_collisions_and_unsafe_public_paths(self):
-  for field,value in [('distribution','private'),('id','office'),('package','packages/example/../../secret.zip'),('sha256','invalid'),('bytes',0),('commerce',{'status':'available'})]:
+  for field,value in [('distribution','private'),('package','packages/example/../../secret.zip'),('sha256','invalid'),('bytes',0),('commerce',{'status':'available'})]:
    item=self.listing();item[field]=value
    with self.assertRaises(AssertionError):self.load(item)
+ def test_rejects_retired_office_even_with_valid_package(self):
+  item=self.listing()
+  item.update(id='office',package='packages/office/1.3.0-a1f8e9e505af.zip')
+  with self.assertRaisesRegex(AssertionError, 'retired plugin'):self.load(item)
  def test_source_compatibility_is_explicit_bounded_and_preserved(self):
   valid=dict(minAideVersion='0.1.17.6 RC1',features=['provider-support-usd-v1'])
   self.assertEqual(self.load(self.listing(sourceCompatibility=valid))[0]['sourceCompatibility'],valid)

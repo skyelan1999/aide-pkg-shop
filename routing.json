@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "409644a7038a7ce80056a5ea75fd1d0ab359b755",
+  "sourceCommit": "f15b4340cc3c20da58c68d0947ecd6cae0bcb153",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -330,39 +330,6 @@
         ],
         "extensions": [],
         "summary": "原文编辑、保存去重与图片／附件／draw.io 资源快照。历史保存在 Aide 服务数据目录，按工作区和来源隔离。"
-      }
-    },
-    {
-      "id": "office",
-      "name": "Office 文档",
-      "version": "1.3.0",
-      "distribution": "public",
-      "routing": {
-        "keywords": [
-          "Collabora",
-          "LibreOffice",
-          "Office",
-          "Word",
-          "Excel",
-          "PowerPoint",
-          "docx",
-          "xlsx",
-          "pptx",
-          "WOPI",
-          "AI editing"
-        ],
-        "extensions": [
-          ".doc",
-          ".docx",
-          ".xls",
-          ".xlsx",
-          ".ppt",
-          ".pptx",
-          ".odt",
-          ".ods",
-          ".odp"
-        ],
-        "summary": "Aide 内置离线 Office 预览、编辑、保存与内部 AI 读写，无需额外服务设置；需 office-offline-v1 完整宿主。"
       }
     },
     {

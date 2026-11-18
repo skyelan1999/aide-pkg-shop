@@ -4,7 +4,7 @@ import base64, hashlib, io, json, shutil, stat, subprocess, zipfile
 from urllib.parse import urlsplit
 from pathlib import Path
 from routing import build_index,metadata
-from build_catalog import load_listings
+from build_catalog import RETIRED_PLUGIN_IDS,load_listings
 ROOT=Path(__file__).resolve().parents[1]
 def validate_private(p):
  assert p.get('distribution')=='private'
@@ -23,6 +23,7 @@ def main():
  assert json.loads((ROOT/'routing.json').read_text())==build_index(d), 'routing index stale; run python3 scripts/routing.py'
  items=d['plugins']+d.get('privateListings',[])
  catalog_by_id={p['id']:p for p in items}
+ assert not RETIRED_PLUGIN_IDS.intersection(catalog_by_id), 'retired plugin must not be published'
  for listing in load_listings():
   expected=dict(listing,routing=metadata(listing))
   assert catalog_by_id.get(listing['id'])==expected, 'listing/catalog/routing mismatch; rebuild catalog: '+listing['id']

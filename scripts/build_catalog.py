@@ -11,7 +11,8 @@ GROUPS = {
  'planning': [],
  'utilities': [],
 }
-CATEGORY = {p:g for g,ps in GROUPS.items() for p in ps}
+RETIRED_PLUGIN_IDS = frozenset({"office"})
+CATEGORY = {p:g for g,ps in GROUPS.items() for p in ps if p not in RETIRED_PLUGIN_IDS}
 PERMISSIONS = {
  'creation':'可向 Aide 提交文件、命令或引用管理提案；相关操作沿用现有授权。',
  'workspace':'可能访问已授权文件或调用主机控制能力；浏览器和电脑控制另需宿主授权。',
@@ -23,6 +24,7 @@ def load_listings(directory=ROOT/'listings'):
  items=[];seen=set(CATEGORY)
  for listing in sorted(directory.glob('*.json')):
   item=json.loads(listing.read_text())
+  assert item['id'] not in RETIRED_PLUGIN_IDS, 'retired plugin must not be listed'
   assert item['id'] not in seen, 'duplicate listing id'
   seen.add(item['id'])
   assert item.get('distribution') in ('private','public')
@@ -69,7 +71,6 @@ def main():
     dependencies=[name+' '+version for name,version in json.loads(files['package.json']).get('dependencies',{}).items()]
    if ident=='browser-control':dependencies.append('Aide 浏览器运行环境；Safari 模式需要宿主桥接')
    if ident=='computer-control':dependencies.append('Aide Computer Bridge 与操作系统屏幕录制/辅助功能权限')
-   if ident=='office':dependencies.append('Aide Office Python 运行环境')
    if ident=='skill':dependencies.append('需要包含 skill_library 原生执行器的 Aide 源码构建（192b80f3 及后续）；旧版仅上传 ZIP 不足以启用')
    if ident=='plugin-authoring':dependencies.append('需要 Aide 原生 manage_plugins / manage_references 管理执行器；管理动作遵守角色开关与人工确认')
    readme=files.get('README.md',b'').decode('utf-8',errors='replace')[:16000]
