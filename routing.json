@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "4ae9b7d8135b80974ee7f813320dd7a1bdec3d7e",
+  "sourceCommit": "409644a7038a7ce80056a5ea75fd1d0ab359b755",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -624,7 +624,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.1",
+      "version": "1.8.2",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -641,10 +641,13 @@
           "会话复制",
           "中继",
           "终端",
-          "串口"
+          "串口",
+          "中继备份",
+          "中继恢复",
+          "base64"
         ],
         "extensions": [],
-        "summary": "设备终端、SSH/Telnet低延迟交互、TLS中继、TCP/UDP/串口、逐会话设置及图形SSH；基础功能需Aide 0.1.18.0 RC3，图形功能另需viewer宿主。"
+        "summary": "设备终端和 TLS 中继。支持 .v1.base64 文件备份和恢复中继配置。"
       }
     },
     {
