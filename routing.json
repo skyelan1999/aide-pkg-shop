@@ -591,7 +591,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.2",
+      "version": "1.8.3",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -611,10 +611,14 @@
           "串口",
           "中继备份",
           "中继恢复",
-          "base64"
+          "base64",
+          "rviz",
+          "opengl",
+          "ros2",
+          "图形窗口"
         ],
         "extensions": [],
-        "summary": "设备终端和 TLS 中继。支持 .v1.base64 文件备份和恢复中继配置。"
+        "summary": "设备终端、TLS 中继和中继配置备份。直连 SSH 可用 Aide 内置图形窗口查看 RViz 等 OpenGL 应用。"
       }
     },
     {
