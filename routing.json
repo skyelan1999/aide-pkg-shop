@@ -591,7 +591,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.7",
+      "version": "1.8.8",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -623,7 +623,7 @@
           "中继延迟"
         ],
         "extensions": [],
-        "summary": "设备终端、TLS 中继和中继配置备份。支持中继远端回显推送，直连与中继 SSH 均可在独立或并排图形窗口显示 RViz 等 OpenGL 应用。"
+        "summary": "设备终端、TLS 中继和中继配置备份。通过 Aide 公共工作台窗口，在独立视窗中显示 SSH 的 RViz 等图形应用。"
       }
     },
     {
