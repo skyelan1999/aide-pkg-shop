@@ -591,7 +591,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.8",
+      "version": "1.8.9",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -620,10 +620,13 @@
           "并排显示",
           "按键回显",
           "回显延迟",
-          "中继延迟"
+          "中继延迟",
+          "终端截图",
+          "X11 录屏",
+          "WebM"
         ],
         "extensions": [],
-        "summary": "设备终端、TLS 中继和中继配置备份。通过 Aide 公共工作台窗口，在独立视窗中显示 SSH 的 RViz 等图形应用。"
+        "summary": "设备终端、TLS 中继、SSH 图形窗口和会话内的 X11 PNG 截图与 WebM 录像。"
       }
     },
     {
