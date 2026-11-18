@@ -591,7 +591,7 @@
     {
       "id": "terminal",
       "name": "设备终端工作台",
-      "version": "1.8.4",
+      "version": "1.8.5",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -617,10 +617,13 @@
           "ros2",
           "图形窗口",
           "独立窗口",
-          "并排显示"
+          "并排显示",
+          "按键回显",
+          "回显延迟",
+          "中继延迟"
         ],
         "extensions": [],
-        "summary": "设备终端、TLS 中继和中继配置备份。SSH 图形窗口可独立打开或并排显示，直连支持 RViz 等 OpenGL 应用。"
+        "summary": "设备终端、TLS 中继和中继配置备份。支持中继按键回显优化，以及 SSH 独立或并排图形窗口。"
       }
     },
     {
