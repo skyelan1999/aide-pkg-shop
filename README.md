@@ -37,6 +37,12 @@ GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及
 
 回退目录提交即可停止推荐新版本；客户端不会自动卸载已安装插件。已安装插件按 Aide 的升级备份和恢复说明处理。不要原地覆盖已发版 ZIP。
 
+## 产品 Release 与市场登记
+
+独立插件在所属产品仓库建立版本标签和 GitHub Release。ProfessionalProject、PPLeaderShip 和 PPCustomer 的商业版由各自的私有产品仓库管理，共享离线授权组件由组件仓库管理。市场维护版本条目、兼容信息、经审批的客户端安装包和 SHA-256。客户授权和私下交付沿用产品发布流程。
+
+商店中已有的商业 Release 仍承载部分版本说明和离线组件下载链接。历史版本迁移时先核对产品源码提交与安装包摘要，再验证旧链接所覆盖的首次安装、离线激活及已装客户端的更新路径。
+
 ## 私有付费条目
 
 `distribution=private` 的 `listings/*.json` 是人工审阅的展示元数据，由生成器合并进目录的 `privateListings` 扩展数组，原 `plugins` 保留公开分发包，让旧版 Aide 仍能刷新原目录。`distribution=private` 的条目不得包含 `package/sha256/bytes` 等公开包字段，也不得在本仓库 `packages/<id>/` 存包；验证器拒绝这些情况。Pages 只复制公开包，并在重建前清理生成目录里的旧包副本。PjPlan 目前仅展示“付费筹备中”，没有价格、购买入口或真实签发密钥。
