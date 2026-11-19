@@ -1,0 +1,44 @@
+{
+  "id": "mimo-supporter",
+  "kind": "plugin",
+  "name": "MiMoSupporter",
+  "description": "小米 MiMo 中国区实时推理刊例价，配套宿主可查询账户余额和个人 Token Plan 余量。",
+  "version": "0.1.0",
+  "author": "skyelan1999",
+  "category": "workspace",
+  "icon": "workspace",
+  "package": "packages/mimo-supporter/0.1.0-070c043f90f1.zip",
+  "sha256": "070c043f90f164c29932e731f47559056d130319abfadd924059059aadf94d65",
+  "bytes": 3425,
+  "minAideVersion": "0.1.17.5 RC5",
+  "platforms": [
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "dependencies": [
+    "离线费率需要 Aide 0.1.17.5 RC5 或更新版本中的 providerSupport 协议 1。",
+    "账户余额和个人 Token Plan Credits 需要具备 MiMo 账户适配的 Aide。"
+  ],
+  "permissions": "费率在本地计算。查询账户时，Aide 使用自身凭证库中的所选密钥与官方接口通信。插件入口只声明档案。",
+  "trustNotice": "公开 MIT 社区插件，与小米官方产品独立。价格按中国区刊例估算，实际费用以账单为准。",
+  "features": [],
+  "source": "https://github.com/skyelan1999/aide-pkg-MiMoSupporter/tree/89cf654e745cebe124bf672b528533a765840a30",
+  "license": "MIT",
+  "readme": "# MiMoSupporter\n\nMiMoSupporter 为 Aide 提供小米 MiMo 的离线费率。带有 MiMo 账户适配的 Aide 还可查询账户余额和个人 Token Plan 套餐余量。项目使用 MIT 许可，由社区维护，与小米官方产品独立。\n\n## 安装与使用\n\n在 Aide 插件市场安装并启用 MiMoSupporter，或导入 GitHub Release 的 ZIP。使用费率需要 Aide 0.1.17.5 RC5 或更新版本中的 `providerSupport` 协议 1。余额和套餐余量需要具备 MiMo 账户适配的 Aide。各版本在现有的使用统计中显示宿主支持的数据。[GitHub Release](https://github.com/skyelan1999/aide-pkg-MiMoSupporter/releases/tag/v0.1.0)\n\n进入「模型设置 → 添加提供商」，添加小米 MiMo 按量计费服务，使用 `https://api.xiaomimimo.com/v1` 和控制台发放的 `sk-` 密钥。Aide 按已配置的官方 HTTPS 地址与精确模型 ID 匹配费率。密钥保存在 Aide 的凭证库，由宿主使用。插件只提供声明档案。\n\n## 中国区按量计费\n\n截至 2026-11-19 的实时推理公开价格，单位为人民币／百万 Token。\n\n| 模型 ID | 输入（未命中缓存） | 输入（命中缓存） | 输出 |\n| --- | ---: | ---: | ---: |\n| `mimo-v2.6-pro` | ¥3 | ¥0.025 | ¥6 |\n| `mimo-v2.6-flash` | ¥1 | ¥0.02 | ¥2 |\n\n估算以中国区实时推理刊例价为准。批量推理、海外计价、语音、搜索、定制模型和合同折扣请查小米账单。其他模型与代理端点沿用 Aide 的费率配置。价格快照随插件版本更新。[MiMo 批量与实时价格](https://mimo.mi.com/docs/zh-CN/quick-start/usage-guide/text-generation/batch-api)\n\n## 账户余额与个人套餐余量\n\n支持 MiMo 账户适配的 Aide 会在用户查询时向小米官方接口发出只读请求。按量账户按接口返回的币种显示余额。[账户余额接口](https://mimo.mi.com/docs/zh-CN/api/asset/balance-get)\n\n个人 Token Plan 使用套餐页面提供的 OpenAI 兼容地址和 `tp-` 密钥。中国、新加坡和欧洲集群的套餐余量以 Credits 为单位。团队版请在小米控制台查看席位和额度。上表的人民币费率只适用于按量计费的实时推理。[个人套餐余量接口](https://mimo.mi.com/docs/zh-CN/api/asset/credits-get) · [Token Plan 接入](https://mimo.mi.com/docs/zh-CN/tokenplan/Token%20Plan/quick-access)\n\n## 检查与打包\n\n```sh\nnode --test test/catalog.test.cjs\npython3 scripts/package.py\ncd dist && shasum -a 256 -c SHA256SUMS\n```\n\n市场和 GitHub Release 使用同一份通用 ZIP。检查使用本地档案及合成数据。\n",
+  "screenshots": [],
+  "changelog": "首次发行。提供 2026-11-19 中国区 MiMo V2.6 Pro、Flash 实时费率。具备 MiMo 账户适配的 Aide 可查询按量余额和个人套餐 Credits。",
+  "distribution": "public",
+  "routing": {
+    "keywords": [
+      "MiMoSupporter",
+      "小米 MiMo",
+      "Xiaomi MiMo",
+      "mimo-v2.6-pro",
+      "mimo-v2.6-flash",
+      "MiMo Token Plan"
+    ],
+    "extensions": [],
+    "summary": "为小米 MiMo 提供中国区实时推理费率。配套宿主可查询按量账户余额和个人 Token Plan Credits。"
+  }
+}
