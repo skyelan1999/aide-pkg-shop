@@ -272,6 +272,24 @@
       }
     },
     {
+      "id": "kimi-supporter",
+      "name": "KimiSupporter",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "KimiSupporter",
+          "Kimi",
+          "Moonshot",
+          "月之暗面",
+          "kimi-k3.1-pro",
+          "kimi-k3"
+        ],
+        "extensions": [],
+        "summary": "为月之暗面 Kimi 提供中国区实时推理费率。配套宿主可查询所选密钥的账户余额。"
+      }
+    },
+    {
       "id": "lunar-calendar",
       "name": "农历日历",
       "version": "1.1.0",
@@ -330,6 +348,24 @@
         ],
         "extensions": [],
         "summary": "原文编辑、保存去重与图片／附件／draw.io 资源快照。历史保存在 Aide 服务数据目录，按工作区和来源隔离。"
+      }
+    },
+    {
+      "id": "mimo-supporter",
+      "name": "MiMoSupporter",
+      "version": "0.1.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "MiMoSupporter",
+          "小米 MiMo",
+          "Xiaomi MiMo",
+          "mimo-v2.6-pro",
+          "mimo-v2.6-flash",
+          "MiMo Token Plan"
+        ],
+        "extensions": [],
+        "summary": "为小米 MiMo 提供中国区实时推理费率。配套宿主可查询按量账户余额和个人 Token Plan Credits。"
       }
     },
     {
