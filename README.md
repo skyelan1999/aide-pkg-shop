@@ -41,7 +41,7 @@ GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及
 
 独立插件在所属产品仓库建立版本标签和 GitHub Release。ProfessionalProject、PPLeaderShip 和 PPCustomer 的商业版由各自的私有产品仓库管理，共享离线授权组件由组件仓库管理。市场维护版本条目、兼容信息、经审批的客户端安装包和 SHA-256。客户授权和私下交付沿用产品发布流程。
 
-商店中已有的商业 Release 仍承载部分版本说明和离线组件下载链接。历史版本迁移时先核对产品源码提交与安装包摘要，再验证旧链接所覆盖的首次安装、离线激活及已装客户端的更新路径。
+客户发行说明和已公开的离线授权组件由 [商业客户端下载](https://github.com/skyelan1999/aide-commercial-downloads) 提供。产品历史版本归档在各自的私有仓库。市场继续按目录版本和 SHA-256 分发客户插件安装包。
 
 ## 私有付费条目
 
@@ -130,10 +130,10 @@ SQLite 更新至1.0.1，收紧逐句危险写确认、实际ATTACH授权和CSV�
 
 PPCustomer 0.2.0 使用 `distribution=public` 公开分发客户安装包，`activationRequired=true` 标明使用前需要离线激活。公开下载不代表免费或开源；`license` 为专有许可。它不使用 `private-plugin-v1` 的安装授权流程，受保护操作由本机授权组件校验。其他私下交付条目保持原流程。
 
-本条目 `source` 指向公开发行说明。`resources` 提供本仓库 GitHub Release 的本机组件附件，含大小和 SHA-256；网站只呈现受限的官方 HTTPS ZIP 链接。组件需首次独立配置和启动，平台限制及安装步骤见条目和 Release。发行工具、签发私钥、内容密钥、真实设备申请及客户许可不进入公开仓库或附件。获取报价统一联系 business@sklastu.com。
+本条目 `source` 指向公开发行说明。`resources` 提供商业客户端下载仓库的本机组件附件，含大小和 SHA-256；网站只呈现受限的官方 HTTPS ZIP 链接。组件需首次独立配置和启动，平台限制及安装步骤见条目和 Release。发行工具、签发私钥、内容密钥、真实设备申请及客户许可不进入公开仓库或附件。获取报价统一联系 business@sklastu.com。
 
 ## PP 与 PPL 商业客户端
 
-ProfessionalProject 0.4.20 与 PPLeaderShip 0.1.3 正式开放市场下载和安装，采用 distribution=public、activationRequired=true。安装包是商业客户端，使用前需离线激活；业务源码、发行工具、私钥、内容密钥及客户许可不公开。共享本机组件以经过审查的加密核心、固定摘要运行时及客户安装辅助文件组成，作为 GitHub Release 附件提供；不进入 Git 包目录。Compare 和 PjPlan 等未开放分发的条目继续沿用私有目录规则。
+ProfessionalProject 0.4.20 与 PPLeaderShip 0.1.3 正式开放市场下载和安装，采用 distribution=public、activationRequired=true。安装包是商业客户端，使用前需离线激活；业务源码、发行工具、私钥、内容密钥及客户许可不公开。共享本机组件以经过审查的加密核心、固定摘要运行时及客户安装辅助文件组成，通过商业客户端下载仓库的 GitHub Release 提供；不进入 Git 包目录。Compare 和 PjPlan 等未开放分发的条目继续沿用私有目录规则。
 
 设备申请使用设备码前缀和 .prequest，授权文件使用 .plicense；自动命名需要包含 plugin-device-info-v1 的 Aide 更新构建。获取报价、售后、问题反馈请联系 business@sklastu.com。
