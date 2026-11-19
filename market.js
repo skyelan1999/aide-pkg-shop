@@ -8,7 +8,7 @@ function icon(p){const e=node('span','plugin-icon');e.innerHTML='<svg viewBox="0
 function safePackage(p){return /^packages\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_.-]+\.zip$/.test(p.package)&&!p.package.includes('..')&&/^[a-f0-9]{64}$/.test(p.sha256)&&p.bytes>0&&p.bytes<=24*1024*1024;}
 function privateListing(p){return p.distribution==='private'&&!p.package&&!p.sha256&&!p.bytes&&p.commerce&&['coming_soon','available'].includes(p.commerce.status);}
 function safeSource(p){try{const u=new URL(p.source);return u.protocol==='https:'&&u.hostname==='github.com'&&u.pathname.startsWith('/skyelan1999/');}catch{return false;}}
-function safeResource(r){try{const u=new URL(r.url);return u.origin==='https://github.com'&&!u.username&&!u.password&&!u.search&&!u.hash&&/^\/skyelan1999\/aide-pkg-shop\/releases\/download\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+\.zip$/.test(u.pathname)&&/^[a-f0-9]{64}$/.test(r.sha256)&&Number.isSafeInteger(r.bytes)&&r.bytes>0&&r.bytes<=256*1024*1024;}catch{return false;}}
+function safeResource(r){try{const u=new URL(r.url);return u.origin==='https://github.com'&&!u.username&&!u.password&&!u.search&&!u.hash&&/^\/skyelan1999\/aide-commercial-downloads\/releases\/download\/[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+\.zip$/.test(u.pathname)&&/^[a-f0-9]{64}$/.test(r.sha256)&&Number.isSafeInteger(r.bytes)&&r.bytes>0&&r.bytes<=256*1024*1024;}catch{return false;}}
 function routingTerm(query,term){
  term=String(term||'').toLowerCase();if(!term)return false;
  if(/[^\x00-\x7f]/.test(term)||term.startsWith('.'))return query.includes(term);
