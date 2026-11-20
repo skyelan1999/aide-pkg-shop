@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "f15b4340cc3c20da58c68d0947ecd6cae0bcb153",
+  "sourceCommit": "bc60a3ec30aaff1de78e39688aebb4fbe3aa8405",
   "plugins": [
     {
       "id": "ali-bailian-supporter",
@@ -590,7 +590,7 @@
     {
       "id": "step-viewer",
       "name": "STEP Viewer",
-      "version": "0.1.1",
+      "version": "0.1.3",
       "distribution": "public",
       "routing": {
         "keywords": [
