@@ -761,7 +761,7 @@
     {
       "id": "strategy-generator",
       "name": "策略参数生成器 / Strategy Generator",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -777,10 +777,17 @@
           "max_tokens",
           "profile",
           "context window",
-          "参数计算"
+          "参数计算",
+          "模型配置经验",
+          "qwen",
+          "deepseek",
+          "gemini",
+          "claude",
+          "codex bridge",
+          "aide主题"
         ],
         "extensions": [],
-        "summary": "按任务用途、复杂度和模型真实约束生成可解释的 Aide 采样、输出预算及会话策略建议，本地计算，不自动应用。"
+        "summary": "按九类用途、真实模型约束与十个型号/模式经验起点生成 Aide 策略参数，主题跟随宿主，本地计算并展示来源，不自动应用。"
       }
     },
     {
