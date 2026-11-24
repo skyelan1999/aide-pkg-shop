@@ -1776,14 +1776,14 @@
       "id": "strategy-generator",
       "kind": "plugin",
       "name": "策略参数生成器 / Strategy Generator",
-      "description": "根据问答、编程、研究、写作等九类用途及上下文限制，计算 Aide 输出预算、采样与会话参数建议；本地工作台，附计算依据和填写位置。",
-      "version": "0.1.0",
+      "description": "根据九类任务用途及真实模型限制计算 Aide 策略参数，实时跟随 Aide 主题；新增十个型号/模式的官方配置起点、经验建议和来源。",
+      "version": "0.2.0",
       "author": "skyelan1999",
       "category": "utilities",
       "icon": "utilities",
-      "package": "packages/strategy-generator/0.1.0-150567b2a924.zip",
-      "sha256": "150567b2a92451489a7ac4c50141080699c4ab0f2fb2933d63f1858f1e178498",
-      "bytes": 23675,
+      "package": "packages/strategy-generator/0.2.0-b0fe4b1cfb50.zip",
+      "sha256": "b0fe4b1cfb5045b37f31d664ce224afda1d0241e039d3e72fb9b8eaa9c1398fe",
+      "bytes": 33583,
       "minAideVersion": "0.1.17.6 RC2",
       "platforms": [
         "windows",
@@ -1792,16 +1792,17 @@
       ],
       "dependencies": [
         "Aide workbench protocol 1 and Node.js 18+. No runtime third-party packages or API key required.",
-        "Manually confirm model context/output limits, sampler support, JSON mode and supported reasoning levels. Exported reports are not complete Aide configuration imports."
+        "Manually confirm model context/output limits, sampler support, JSON mode and supported reasoning levels. Exported reports are not complete Aide configuration imports.",
+        "Live palette/theme sync requires Aide workbench theme protocol 1; older hosts and standalone previews use the system theme. Model-specific native thinking/Top K/Min P fields require separate backend configuration."
       ],
       "permissions": "Calculates recommendations locally and exposes three calculation tools. Does not read credentials, providers, user files or sessions; no runtime network/model calls, settings writes or browser persistence. Explicit Copy writes the clipboard; Download saves a recommendation JSON. Aide may audit tool-call arguments under its own policy. No automatic profile import or permission changes.",
-      "trustNotice": "Public MIT preview. 15 Node tests cover 243 preset combinations and 300 budget cases; two publisher-identity tests pass locally. Cross-platform CI identity is recorded in the Release notes. Chromium checked modes, invalid/overfull input, estimation, copy/download and narrow layouts. An isolated actual Aide host accepted the ZIP, called all three tools and validated nine generated profiles. Heuristic recommendations are not benchmarked optimum parameters or an exact tokenizer; no real-model quality/latency/cost or Windows native UI acceptance is claimed.",
+      "trustNotice": "Public MIT preview. 20 Node tests cover generic budgets, model policies and theme-message validation; two publisher-identity tests pass. Exact six-platform/Node CI identity is recorded in the Release. Chromium fixture checked all eight Aide palette/mode combinations, eleven guide choices, controls, invalid inputs, clipboard fallback, downloads and 390px layouts. An isolated actual Aide host accepted the ZIP, called all three tools and validated nineteen purpose/model profiles unchanged. Model advice has dated official sources and explicit heuristic boundaries; no new real-model benchmark, native UI theme or OS destination-paste acceptance is claimed.",
       "features": [],
-      "source": "https://github.com/skyelan1999/aide-pkg-StrategyGenerator/tree/8716f8b7a7e542974f9d2ca10f9e8291fa1d8918",
+      "source": "https://github.com/skyelan1999/aide-pkg-StrategyGenerator/tree/adefddee1b4fb8dceed20525468f8c1c600207b2",
       "license": "MIT",
-      "readme": "# 策略参数生成器 / Strategy Generator\n\nMIT 开源的独立 Aide 插件。根据用途、复杂度、速度偏好、真实上下文窗口、输入总量和模型输出限制，生成有计算依据的策略参数。当前版本 0.1.0。\n\n支持日常问答、编程实现、排错审查、研究分析、数据与推导、专业写作、创意构思、结构化提取和翻译润色九种用途。提供本地工作台及 strategy_generate、strategy_presets、strategy_estimate_tokens 三个计算工具，无运行时第三方依赖，Node.js 18+。\n\n## 使用\n\n1. 将 Release 中的 strategy-generator-0.1.0.zip 导入 Aide，打开插件工作台。\n2. 选择用途与模型能力；尚不确定时保留模型默认。填写实际窗口、输入和输出上限。\n3. 查看输出预算、采样参数、推理强度、环境容量和每项填写位置。复制参数或下载完整建议 JSON。\n4. 在 Aide 的 AI 参数配置中新建自定义配置，逐项填写 profile.params；聊天栏分别设置推理强度与并行容量。插件不会自动应用或覆盖现有配置。\n\n兼容 Aide workbench protocol 1；生成配置符合 Aide profiles 的既有字段和 65536 输出上限。输出报告不是 Aide 全量配置文件，不能直接覆盖 profiles.json；现有 Aide 没有本插件专用的一键应用能力。模型支持的推理/采样档位仍需按实际服务确认。上下文不足时会禁止导出；复制权限失败时提供选中明文的手动复制兜底。\n\n## 计算而非保证最优\n\n预算按“窗口 − 输入 − 工具预留 − 安全余量”计算，并受模型与 Aide 上限约束；用途基数、复杂度系数和推理/并行阈值均为公开的经验规则。没有调用模型测试质量、token 费用或时延，也不保证推理正确、输出长度或并行提速。请用真实任务做小样本比较再调整。\n\n未知能力与推理兼容模式省略采样参数；标准采样每次最多调温度或 Top P 中的一项。JSON 对象仅在确认支持时启用。文本估算是字符公式，不能替代模型 tokenizer。完整公式、Aide 源码依据与官方参数参考见 [计算方法](https://github.com/skyelan1999/aide-pkg-StrategyGenerator/blob/8716f8b7a7e542974f9d2ca10f9e8291fa1d8918/docs/METHOD.md)。\n\n## 数据与权限\n\n界面在本页内计算，不读取提供商、密钥、历史会话或用户文件，不写入浏览器持久化，不发网络请求或模型调用。显式复制会写剪贴板；下载会保存建议 JSON。AI 工具在宿主中计算；宿主可能按自身规则保存工具调用参数。无需输入 API Key。\n\n## Development\n\n```sh\nnpm run build\nnpm test\nnpm run package\n```\n\nGenerated index.js is self-contained for Aide's entry-only validator. Generated viewer.html embeds the same deterministic engine and runs offline. scripts/package.py uses a fixed allowlist and reproducible ZIP metadata. See [acceptance](https://github.com/skyelan1999/aide-pkg-StrategyGenerator/blob/main/docs/ACCEPTANCE.md) for actual verification and delivery state.\n\nPublic source and releases: https://github.com/skyelan1999/aide-pkg-StrategyGenerator\n\nBugs, requests and acceptance are tracked in [Aide Issues](https://github.com/skyelan1999/aide/issues); identify Strategy Generator and its version. License: MIT, copyright 2026 skyelan1999.\n",
+      "readme": "# 策略参数生成器 / Strategy Generator\n\nMIT 开源的独立 Aide 插件。根据用途、复杂度、速度偏好、真实上下文窗口、输入总量和模型输出限制，生成有计算依据的策略参数。当前版本 0.2.0。\n\n支持日常问答、编程实现、排错审查、研究分析、数据与推导、专业写作、创意构思、结构化提取和翻译润色九种用途。提供本地工作台及 strategy_generate、strategy_presets、strategy_estimate_tokens 三个计算工具，无运行时第三方依赖，Node.js 18+。\n\n## 使用\n\n1. 将 Release 中的 strategy-generator-0.2.0.zip 导入 Aide，打开插件工作台。\n2. 选择用途和模型配置经验：OpenAI 推理、Codex Bridge、DeepSeek 思考/非思考、Qwen3 原版、Qwen3.6-27B、Claude 和 Gemini。也可保留通用能力模式。填写实际窗口、输入和输出上限。\n3. 查看输出预算、采样参数、推理强度、环境容量和每项填写位置。复制参数或下载完整建议 JSON。\n4. 在 Aide 的 AI 参数配置中新建自定义配置，逐项填写 profile.params；聊天栏分别设置推理强度与并行容量。插件不会自动应用或覆盖现有配置。\n\n兼容 Aide workbench protocol 1；生成配置符合 Aide profiles 的既有字段和 65536 输出上限。输出报告不是 Aide 全量配置文件，不能直接覆盖 profiles.json；现有 Aide 没有本插件专用的一键应用能力。模型支持的推理/采样档位仍需按实际服务确认。上下文不足时会禁止导出；复制权限失败时提供选中明文的手动复制兜底。\n\n## Aide 主题与模型经验\n\n工作台通过 Aide 现有主题协议实时跟随舒适、经典、专业、现代四套配色及明暗模式，背景、表单、按钮、选中态与预算条使用宿主颜色。无主题协议的旧宿主或独立预览回退到系统明暗主题。\n\n十个型号/模式预设分别显示官方约束、经验建议、来源链接与资料核对日期（2026-11-24）。Qwen 代际与思考模式分开；Top K、Min P、思考开关等服务端字段只展示，不混入 Aide profile。Claude/Gemini 原生推理参数没有确认网关映射时保持 auto；Codex Bridge 的输出预算不是 CLI 严格执行上限。选择预设不会猜测或修改真实上下文与输出上限。\n\n这些经验是试调起点，未新增真实模型评测。完整逐型号依据见 [计算方法](https://github.com/skyelan1999/aide-pkg-StrategyGenerator/blob/adefddee1b4fb8dceed20525468f8c1c600207b2/docs/METHOD.md)。\n\n## 计算而非保证最优\n\n预算按“窗口 − 输入 − 工具预留 − 安全余量”计算，并受模型与 Aide 上限约束；用途基数、复杂度系数和推理/并行阈值均为公开的经验规则。没有调用模型测试质量、token 费用或时延，也不保证推理正确、输出长度或并行提速。请用真实任务做小样本比较再调整。\n\n未知能力与推理兼容模式省略采样参数；通用标准采样每次最多调温度或 Top P 中的一项；明确选择 Qwen 型号官方基线时保留其采样组合。JSON 对象仅在确认支持时启用。文本估算是字符公式，不能替代模型 tokenizer。完整公式、Aide 源码依据与官方参数参考见 [计算方法](https://github.com/skyelan1999/aide-pkg-StrategyGenerator/blob/adefddee1b4fb8dceed20525468f8c1c600207b2/docs/METHOD.md)。\n\n## 数据与权限\n\n界面在本页内计算，不读取提供商、密钥、历史会话或用户文件，不写入浏览器持久化，不发网络请求或模型调用。显式复制会写剪贴板；下载会保存建议 JSON。AI 工具在宿主中计算；宿主可能按自身规则保存工具调用参数。无需输入 API Key。\n\n## Development\n\n```sh\nnpm run build\nnpm test\nnpm run package\n```\n\nGenerated index.js is self-contained for Aide's entry-only validator. Generated viewer.html embeds the same deterministic engine and runs offline. scripts/package.py uses a fixed allowlist and reproducible ZIP metadata. See [acceptance](https://github.com/skyelan1999/aide-pkg-StrategyGenerator/blob/adefddee1b4fb8dceed20525468f8c1c600207b2/docs/ACCEPTANCE-0.2.0.md) for actual verification and delivery state.\n\nPublic source and releases: https://github.com/skyelan1999/aide-pkg-StrategyGenerator\n\nBugs, requests and acceptance are tracked in [Aide Issues](https://github.com/skyelan1999/aide/issues); identify Strategy Generator and its version. License: MIT, copyright 2026 skyelan1999.\n",
       "screenshots": [],
-      "changelog": "0.1.0：首次公开 MIT 预览。九类用途、复杂度与速度偏好、上下文/输出预算计算；采样能力与 JSON 兼容性选择；推理强度和环境容量建议；计算依据、复制兜底、JSON 下载与三个本地计算工具。",
+      "changelog": "0.2.0：实时跟随 Aide 四套配色及明暗主题；新增 OpenAI 推理、Codex Bridge、DeepSeek、Qwen3 原版/Qwen3.6-27B、Claude、Gemini 十个型号/模式经验预设，区分官方基线、经验建议与服务端字段。保留九类用途、预算计算和复制/下载；不自动应用，无新增真实模型评测。",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -1817,10 +1818,17 @@
           "max_tokens",
           "profile",
           "context window",
-          "参数计算"
+          "参数计算",
+          "模型配置经验",
+          "qwen",
+          "deepseek",
+          "gemini",
+          "claude",
+          "codex bridge",
+          "aide主题"
         ],
         "extensions": [],
-        "summary": "按任务用途、复杂度和模型真实约束生成可解释的 Aide 采样、输出预算及会话策略建议，本地计算，不自动应用。"
+        "summary": "按九类用途、真实模型约束与十个型号/模式经验起点生成 Aide 策略参数，主题跟随宿主，本地计算并展示来源，不自动应用。"
       }
     }
   ],
