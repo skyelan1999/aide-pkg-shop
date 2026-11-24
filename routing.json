@@ -105,7 +105,7 @@
     {
       "id": "codex-bridge",
       "name": "Codex Bridge · Codex 模型桥接",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "distribution": "public",
       "routing": {
         "keywords": [
