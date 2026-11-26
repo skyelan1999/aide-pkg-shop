@@ -136,7 +136,7 @@
     {
       "id": "compare",
       "name": "Compare · 商业版",
-      "version": "0.4.1",
+      "version": "0.5.0",
       "distribution": "public",
       "routing": {
         "keywords": [
@@ -147,10 +147,16 @@
           "git diff",
           "分支比较",
           "图片对比",
-          "文档对比"
+          "文档对比",
+          "git 日志",
+          "分支树",
+          "git history",
+          "gerrit",
+          "github",
+          "gitlab"
         ],
         "extensions": [],
-        "summary": "文件、目录、Git、图片和文档只读比较；专有商业版，需要离线激活。"
+        "summary": "本地只读比较和 Git 日志，支持同机授权引用，需离线激活。"
       }
     },
     {

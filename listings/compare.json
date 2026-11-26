@@ -2,8 +2,8 @@
   "id": "compare",
   "kind": "plugin",
   "name": "Compare · 商业版",
-  "description": "本地只读文件、目录、Git、图片与文档比较。使用前需离线激活。",
-  "version": "0.4.1",
+  "description": "本地只读比较与 Git 日志。支持工作区和已授权的本地 Git 引用；需离线激活。",
+  "version": "0.5.0",
   "author": "skyelan1999",
   "category": "workspace",
   "icon": "workspace",
@@ -15,12 +15,17 @@
     "linux"
   ],
   "dependencies": [
-    "需 0.4.0 共享离线授权组件及明确配置的同机工作区；Mac Docker Desktop 标准挂载可手动开启映射",
-    "Git 比较需本机 Git，PDF 提取需宿主 Python 3 和 pypdf"
+    "需 0.5.0 离线授权组件和匹配的新 Compare 许可；旧许可请继续使用 0.4.1",
+    "本地 Git 引用须同时经 AIDE 和本机组件授权；不支持 SSH/SFTP",
+    "Git 需宿主安装；PDF 需宿主 Python 3 和 pypdf"
   ],
   "permissions": "读取用户选定文件、目录或本地 Git 版本；不 fetch、不修改仓库或比较输入。证据 ZIP 可能包含原文件副本。",
   "trustNotice": "专有商业软件，下载安装不代表获得使用授权。仅发布薄插件和审定的加密核心组件，不发布私有源、签发工具、发行私钥、内容密钥或客户授权。",
-  "features": [],
+  "features": [
+    "独立 Git 日志、分支树和拓扑图，查看提交与文件改动",
+    "工作区与本地引用切换；Git 日志与比较双向带入",
+    "分类展示已缓存的 Gerrit、GitHub 和 GitLab 评审引用，不包含远端实时检查"
+  ],
   "screenshots": [],
   "routing": {
     "keywords": [
@@ -31,24 +36,30 @@
       "git diff",
       "分支比较",
       "图片对比",
-      "文档对比"
+      "文档对比",
+      "git 日志",
+      "分支树",
+      "git history",
+      "gerrit",
+      "github",
+      "gitlab"
     ],
     "extensions": [],
-    "summary": "文件、目录、Git、图片和文档只读比较；专有商业版，需要离线激活。"
+    "summary": "本地只读比较和 Git 日志，支持同机授权引用，需离线激活。"
   },
   "activationRequired": true,
-  "package": "packages/compare/0.4.1-9f9160fb3626.zip",
-  "sha256": "9f9160fb36269b420e8bf7beb069151125e37ae95359ea2d5f3071ad9b76a9f1",
-  "bytes": 30435,
-  "source": "https://github.com/skyelan1999/aide-commercial-downloads/releases/tag/compare-offline-0.4.1",
-  "readme": "# Compare 0.4.1 商业版：离线安装与 Docker Desktop 配置\n\n- 0.4.1 只更新薄插件，继续使用 0.4.0 发布的共享离线授权组件与原加密核心。有效的 Compare 许可不用重签；原 PP 许可不会自动包含 Compare。已有授权服务不应覆盖设备状态或其他 PP 核心。\n- 修复设备申请：在 Compare 中点「导出设备申请」，等 AIDE 顶部出现「保存文件」再保存。新文件带 `Compare-` 前缀。\n- 原生 AIDE：宿主离线组件通过 `--compare-workspace` 指定同一个专用工作区，不能填整个用户主目录；Compare 保持默认设置。\n- Mac Docker Desktop：仅支持同机 AIDE 的标准 macOS 本地挂载（宿主的 `/Users` 在容器中对应 `/local/Users`）。让共享组件的 `--compare-workspace` 指向该 Mac 上专用工作区的真实绝对路径；按共享组件安装说明将其 bridge 目录只读挂载到容器 `/run/pp-license`，保留「自动连接本机授权组件」，并在 Compare 插件设置打开「映射 Mac Docker Desktop 工作区」，重新打开工作台。\n- 映射默认关闭，只接受当前 AIDE 工作区，宿主再次核对配置的唯一目录。自定义挂载、远程 Docker 主机、SSH/SFTP 和引用目录不在本次支持范围内。Git 安装在宿主；PDF 提取需宿主 Python 3 和 pypdf。\n- 保存或导入许可时使用同机私有文件，请勿把发行材料放进工作区、Git 或同步盘。服务端安装包与原版本相同，支持 macOS Apple Silicon 及 Linux ARM64/AMD64 的原生工作区。\n\n[下载 0.4.0 共享离线授权组件（0.4.1 继续使用）](https://github.com/skyelan1999/aide-commercial-downloads/releases/download/compare-offline-0.4.0/Compare-offline-component-v0.4.0.zip)。首次启用 0.4.1 的 Docker 映射需手动开启选项；其他安装继续按原生方式工作。\n",
-  "changelog": "0.4.1：修复设备申请不能保存；新增默认关闭的同机 Mac Docker Desktop 工作区映射。继续使用 0.4.0 的共享离线组件及原 Compare 授权。",
+  "package": "packages/compare/0.5.0-4402bb6e48a4.zip",
+  "sha256": "4402bb6e48a407cfa263dd7397655db90b345d8e5e0e0895a57adf3cc66657cb",
+  "bytes": 36170,
+  "source": "https://github.com/skyelan1999/aide-commercial-downloads/releases/tag/compare-offline-0.5.0",
+  "readme": "# Compare 0.5.0 商业版\n\n独立的 Git 日志页：左侧分支树，中间提交图，右侧提交说明、父提交与改动文件。可切换 AIDE 工作区和已添加的本地 Git 引用。两页共享来源与仓库；选中分支或提交后，点「带到 Git 比较」即可预填 HEAD 与目标版本。\n\nGerrit Change、GitHub PR、GitLab MR 按已缓存的 Git 引用归类。不会 fetch、联网读平台检查或修改仓库。CI/审批状态显示未连接；暂存、未暂存、未跟踪、冲突、相对上游领先/落后为本地状态。\n\n**升级前确认：0.5.0 需要同版本加密核心与新的 Compare 离线许可。** 仅升级薄插件不会让旧组件支持新日志，也不能让 0.4.x 授权打开新核心。继续使用旧许可的用户请保留 0.4.1 插件与 0.4.0 组件。其他 PP 产品继续使用原有核心与许可，不要删除或覆盖。\n\n- 通过 AIDE 市场安装 0.5.0 薄插件。已有安装先备份当前组件和服务配置，再按共享组件说明升级；保留设备身份与其他 PP 产品的加密核心。为 0.5.0 导出 Compare 设备申请，拿到匹配许可后再切换。未授权不运行核心。\n- 工作区通过 `--compare-workspace` 配置。每个额外 Git 引用需在 AIDE 中添加并允许读取，再由宿主组件用一个 `--compare-reference` 显式授权对应本机目录（可重复）。不支持 SSH/SFTP、任意路径或符号链接逃逸。额外引用只支持目录浏览及 Git 操作。\n- Mac Docker Desktop：使用标准同机挂载，将宿主 bridge 目录只读挂载为容器 `/run/pp-license`；在 Compare 设置启用「映射 Mac Docker Desktop 工作区」。工作区及引用都要可由 AIDE 映射到同一台 Mac。\n- Git 需装在宿主；PDF 提取需 Python 3 和 pypdf。支持 macOS Apple Silicon、Linux ARM64/AMD64。\n",
+  "changelog": "0.5.0：新增 Git 日志，支持选择工作区或已授权本地引用，并联动 Git 比较。需匹配组件和新许可。",
   "resources": [
     {
-      "title": "下载 Compare 共享离线授权组件",
-      "url": "https://github.com/skyelan1999/aide-commercial-downloads/releases/download/compare-offline-0.4.0/Compare-offline-component-v0.4.0.zip",
-      "sha256": "2eb7a799bd8c702408800f33879fa6b96e2b11036823e0b6bf82f7a60d8606bb",
-      "bytes": 43406681
+      "title": "下载 Compare 0.5.0 离线组件（需新许可）",
+      "url": "https://github.com/skyelan1999/aide-commercial-downloads/releases/download/compare-offline-0.5.0/Compare-offline-component-v0.5.0.zip",
+      "sha256": "f79782656f48eb84a7219b73df4fe2fa7dc4ecb6ae91a93ecabd5e0917d18cdd",
+      "bytes": 37203551
     }
   ]
 }
