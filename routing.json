@@ -134,6 +134,26 @@
       }
     },
     {
+      "id": "compare",
+      "name": "Compare · 商业版",
+      "version": "0.4.0",
+      "distribution": "public",
+      "routing": {
+        "keywords": [
+          "compare",
+          "diff",
+          "文件比较",
+          "目录比较",
+          "git diff",
+          "分支比较",
+          "图片对比",
+          "文档对比"
+        ],
+        "extensions": [],
+        "summary": "文件、目录、Git、图片和文档只读比较；专有商业版，需要离线激活。"
+      }
+    },
+    {
       "id": "computer-control",
       "name": "电脑控制",
       "version": "1.2.0",
@@ -788,20 +808,6 @@
         ],
         "extensions": [],
         "summary": "按九类用途、真实模型约束与十个型号/模式经验起点生成 Aide 策略参数，主题跟随宿主，本地计算并展示来源，不自动应用。"
-      }
-    },
-    {
-      "id": "compare",
-      "name": "Compare · 商业筹备中",
-      "version": "0.3.3",
-      "distribution": "private",
-      "routing": {
-        "keywords": [
-          "compare",
-          "compare · 商业筹备中"
-        ],
-        "extensions": [],
-        "summary": "本地文件、目录、Git、图片与文档比较，提供可复核报告。闭源二进制商业版筹备中，当前仅展示。"
       }
     },
     {

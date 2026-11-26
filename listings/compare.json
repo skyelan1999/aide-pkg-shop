@@ -1,43 +1,54 @@
 {
   "id": "compare",
   "kind": "plugin",
-  "name": "Compare · 商业筹备中",
-  "description": "本地文件、目录、Git、图片与文档比较，提供可复核报告。闭源二进制商业版筹备中，当前仅展示。",
-  "version": "0.3.3",
+  "name": "Compare · 商业版",
+  "description": "本地只读文件、目录、Git、图片与文档比较。使用前需离线激活。",
+  "version": "0.4.0",
   "author": "skyelan1999",
-  "category": "utilities",
-  "icon": "utilities",
-  "distribution": "private",
-  "commerce": {
-    "status": "coming_soon",
-    "model": "perpetual-major",
-    "priceLabel": "价格待公布",
-    "publicKeys": {}
-  },
-  "minAideVersion": "0.1.17.3 RC1",
+  "category": "workspace",
+  "icon": "workspace",
+  "distribution": "public",
+  "license": "Proprietary · 需离线激活",
+  "minAideVersion": "0.1.19.0 RC2",
   "platforms": [
+    "macos",
     "linux"
   ],
   "dependencies": [
-    "Linux ARM64 / AMD64 Aide 执行环境",
-    "Git；PDF 文本提取需要 Python 3 与 pypdf"
+    "需匹配的本机共享离线授权组件，使用明确配置的同机工作区",
+    "Git 比较需本机 Git，PDF 提取需宿主 Python 3 和 pypdf"
   ],
-  "features": [
-    "private-plugin-v1"
-  ],
-  "permissions": "只读访问 Aide 已授权的工作区与引用；导出文件沿用宿主保存流程。",
-  "trustNotice": "仅登记商业筹备状态；未开放销售、授权安装或下载。安装包、核心源码和客户许可证不上传公开市场。",
-  "license": "Proprietary；商业许可条款待公布",
-  "readme": "商业版采用闭源编译核心，计划支持 Linux ARM64 和 AMD64。版本号标识当前技术基线，不代表已正式发售。市场仅展示元数据，不托管安装包，不提供购买或下载入口。正式交付方式、价格与授权条款确定后另行公布。",
+  "permissions": "读取用户选定文件、目录或本地 Git 版本；不 fetch、不修改仓库或比较输入。证据 ZIP 可能包含原文件副本。",
+  "trustNotice": "专有商业软件，下载安装不代表获得使用授权。仅发布薄插件和审定的加密核心组件，不发布私有源、签发工具、发行私钥、内容密钥或客户授权。",
+  "features": [],
   "screenshots": [],
-  "changelog": "登记为商业筹备中；未上传任何安装包或下载链接。",
-  "source": "https://github.com/skyelan1999/aide-pkg-Compare",
   "routing": {
     "keywords": [
       "compare",
-      "compare · 商业筹备中"
+      "diff",
+      "文件比较",
+      "目录比较",
+      "git diff",
+      "分支比较",
+      "图片对比",
+      "文档对比"
     ],
     "extensions": [],
-    "summary": "本地文件、目录、Git、图片与文档比较，提供可复核报告。闭源二进制商业版筹备中，当前仅展示。"
-  }
+    "summary": "文件、目录、Git、图片和文档只读比较；专有商业版，需要离线激活。"
+  },
+  "activationRequired": true,
+  "package": "packages/compare/0.4.0-a827ad713040.zip",
+  "sha256": "a827ad713040d68a84632ccfd9e297d07375b35c6529e9d143f5954d12a20a6e",
+  "bytes": 29458,
+  "source": "https://github.com/skyelan1999/aide-commercial-downloads/releases/tag/compare-offline-0.4.0",
+  "readme": "# Compare 0.4.0 · 专有商业版\n\n- 安装薄插件后，需在本机配置共享离线授权组件和专用 AIDE 工作区，并导入包含 Compare 的设备绑定 .plicense。原 PP 授权不自动延伸到 Compare。\n- 仅同机原生 AIDE 工作区；不支持 Docker 工作区映射、SSH/SFTP 和引用来源。提供 macOS Apple Silicon、Linux ARM64/AMD64 的组件构建。Git 需要安装在授权组件的运行环境中；PDF 文本提取需 Python 3 和 pypdf。\n- 组件包只带 Compare 加密核心。已有 PP 的设备请进行受控升级：保留原组件数据路径、PP 核心、钥匙串身份和许可证，不要直接覆盖或重置。在同一共享运行时中添加 compare.ppcore，并以 --compare-workspace 指定同机 AIDE 工作区，不要配置整个主目录。\n- Linux：使用解压包中与 CPU 架构一致的 pp-core，沿用原有安全的本机回环连接方式。macOS Apple Silicon 新装可用 install-macos-core.py，明确提供 --compare-workspace。已有配置的 Mac 遇到安装器拒绝替换时，应走受控升级，不能删除原设备身份。\n- 获取报价、售后或配置帮助：business@sklastu.com。\n",
+  "changelog": "0.4.0：从筹备条目升级为可安装的专有商业薄插件；需共享离线授权组件及 Compare 专属许可。新增目录差异筛选、差异跳转、Git 分支选择和共同祖先比较。",
+  "resources": [
+    {
+      "title": "下载 Compare 共享离线授权组件",
+      "url": "https://github.com/skyelan1999/aide-commercial-downloads/releases/download/compare-offline-0.4.0/Compare-offline-component-v0.4.0.zip",
+      "sha256": "2eb7a799bd8c702408800f33879fa6b96e2b11036823e0b6bf82f7a60d8606bb",
+      "bytes": 43406681
+    }
+  ]
 }
