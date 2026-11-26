@@ -3,7 +3,7 @@
   "kind": "plugin",
   "name": "Compare · 商业版",
   "description": "本地只读文件、目录、Git、图片与文档比较。使用前需离线激活。",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "skyelan1999",
   "category": "workspace",
   "icon": "workspace",
@@ -15,7 +15,7 @@
     "linux"
   ],
   "dependencies": [
-    "需匹配的本机共享离线授权组件，使用明确配置的同机工作区",
+    "需 0.4.0 共享离线授权组件及明确配置的同机工作区；Mac Docker Desktop 标准挂载可手动开启映射",
     "Git 比较需本机 Git，PDF 提取需宿主 Python 3 和 pypdf"
   ],
   "permissions": "读取用户选定文件、目录或本地 Git 版本；不 fetch、不修改仓库或比较输入。证据 ZIP 可能包含原文件副本。",
@@ -37,12 +37,12 @@
     "summary": "文件、目录、Git、图片和文档只读比较；专有商业版，需要离线激活。"
   },
   "activationRequired": true,
-  "package": "packages/compare/0.4.0-a827ad713040.zip",
-  "sha256": "a827ad713040d68a84632ccfd9e297d07375b35c6529e9d143f5954d12a20a6e",
-  "bytes": 29458,
-  "source": "https://github.com/skyelan1999/aide-commercial-downloads/releases/tag/compare-offline-0.4.0",
-  "readme": "# Compare 0.4.0 · 专有商业版\n\n- 安装薄插件后，需在本机配置共享离线授权组件和专用 AIDE 工作区，并导入包含 Compare 的设备绑定 .plicense。原 PP 授权不自动延伸到 Compare。\n- 仅同机原生 AIDE 工作区；不支持 Docker 工作区映射、SSH/SFTP 和引用来源。提供 macOS Apple Silicon、Linux ARM64/AMD64 的组件构建。Git 需要安装在授权组件的运行环境中；PDF 文本提取需 Python 3 和 pypdf。\n- 组件包只带 Compare 加密核心。已有 PP 的设备请进行受控升级：保留原组件数据路径、PP 核心、钥匙串身份和许可证，不要直接覆盖或重置。在同一共享运行时中添加 compare.ppcore，并以 --compare-workspace 指定同机 AIDE 工作区，不要配置整个主目录。\n- Linux：使用解压包中与 CPU 架构一致的 pp-core，沿用原有安全的本机回环连接方式。macOS Apple Silicon 新装可用 install-macos-core.py，明确提供 --compare-workspace。已有配置的 Mac 遇到安装器拒绝替换时，应走受控升级，不能删除原设备身份。\n- 获取报价、售后或配置帮助：business@sklastu.com。\n",
-  "changelog": "0.4.0：从筹备条目升级为可安装的专有商业薄插件；需共享离线授权组件及 Compare 专属许可。新增目录差异筛选、差异跳转、Git 分支选择和共同祖先比较。",
+  "package": "packages/compare/0.4.1-9f9160fb3626.zip",
+  "sha256": "9f9160fb36269b420e8bf7beb069151125e37ae95359ea2d5f3071ad9b76a9f1",
+  "bytes": 30435,
+  "source": "https://github.com/skyelan1999/aide-commercial-downloads/releases/tag/compare-offline-0.4.1",
+  "readme": "# Compare 0.4.1 商业版：离线安装与 Docker Desktop 配置\n\n- 0.4.1 只更新薄插件，继续使用 0.4.0 发布的共享离线授权组件与原加密核心。有效的 Compare 许可不用重签；原 PP 许可不会自动包含 Compare。已有授权服务不应覆盖设备状态或其他 PP 核心。\n- 修复设备申请：在 Compare 中点「导出设备申请」，等 AIDE 顶部出现「保存文件」再保存。新文件带 `Compare-` 前缀。\n- 原生 AIDE：宿主离线组件通过 `--compare-workspace` 指定同一个专用工作区，不能填整个用户主目录；Compare 保持默认设置。\n- Mac Docker Desktop：仅支持同机 AIDE 的标准 macOS 本地挂载（宿主的 `/Users` 在容器中对应 `/local/Users`）。让共享组件的 `--compare-workspace` 指向该 Mac 上专用工作区的真实绝对路径；按共享组件安装说明将其 bridge 目录只读挂载到容器 `/run/pp-license`，保留「自动连接本机授权组件」，并在 Compare 插件设置打开「映射 Mac Docker Desktop 工作区」，重新打开工作台。\n- 映射默认关闭，只接受当前 AIDE 工作区，宿主再次核对配置的唯一目录。自定义挂载、远程 Docker 主机、SSH/SFTP 和引用目录不在本次支持范围内。Git 安装在宿主；PDF 提取需宿主 Python 3 和 pypdf。\n- 保存或导入许可时使用同机私有文件，请勿把发行材料放进工作区、Git 或同步盘。服务端安装包与原版本相同，支持 macOS Apple Silicon 及 Linux ARM64/AMD64 的原生工作区。\n\n[下载 0.4.0 共享离线授权组件（0.4.1 继续使用）](https://github.com/skyelan1999/aide-commercial-downloads/releases/download/compare-offline-0.4.0/Compare-offline-component-v0.4.0.zip)。首次启用 0.4.1 的 Docker 映射需手动开启选项；其他安装继续按原生方式工作。\n",
+  "changelog": "0.4.1：修复设备申请不能保存；新增默认关闭的同机 Mac Docker Desktop 工作区映射。继续使用 0.4.0 的共享离线组件及原 Compare 授权。",
   "resources": [
     {
       "title": "下载 Compare 共享离线授权组件",
