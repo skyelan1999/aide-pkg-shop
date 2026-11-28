@@ -49,6 +49,14 @@ def main():
    m=json.loads(z.read('manifest.json'));assert m['id']==p['id'] and m['version']==p['version'];assert m['main'] in z.namelist()
   total+=len(raw)
  private_ids=[p['id'].lower() for p in items if p.get('distribution')=='private']
+ english=json.loads((ROOT/'catalog-en.json').read_text());assert english['schemaVersion']==1 and isinstance(english['plugins'],dict)
+ assert set(english['plugins'])==seen, 'English catalog must cover exactly the published listing IDs'
+ allowed={'name','description','dependencies','permissions','trustNotice','license','priceLabel','resourceTitles'}
+ for ident,text in english['plugins'].items():
+  assert set(text)<=allowed, 'English overrides must remain display-only: '+ident
+  assert all(isinstance(text.get(k),str) and text[k].strip() for k in ('name','description')), 'English name/description required: '+ident
+  if 'dependencies' in text:assert isinstance(text['dependencies'],list) and all(isinstance(x,str) for x in text['dependencies'])
+  if 'resourceTitles' in text:assert isinstance(text['resourceTitles'],list) and all(isinstance(x,str) for x in text['resourceTitles'])
  for name in subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0'):
   lower=name.lower()
   assert not lower.endswith(('.pem','.key','.license.json')), 'private keys/customer licenses must not enter marketplace: '+name
@@ -56,8 +64,10 @@ def main():
  out=ROOT/'public';out.mkdir(exist_ok=True)
  # Generated output only: remove stale package copies before publishing a new catalog.
  if (out/'packages').exists():shutil.rmtree(out/'packages')
- for filename in ['index.html','market.css','market.js','favicon.svg','catalog.json','routing.json']:
+ for filename in ['index.html','market.css','market.js','favicon.svg','catalog.json','catalog-en.json','routing.json']:
   shutil.copyfile(ROOT/filename,out/filename)
+ (out/'en').mkdir(exist_ok=True)
+ shutil.copyfile(ROOT/'en/index.html',out/'en/index.html')
  for p in items:
   if p.get('distribution')=='private':continue
   target=out/p['package'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/p['package'],target)

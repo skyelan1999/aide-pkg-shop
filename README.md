@@ -33,6 +33,8 @@ python3 -m http.server 8765 --directory public
 
 GitHub Pages workflow 仅发布 `public/`，其中只含静态网站、目录及被目录引用的包。首次发布需仓库开启 Pages 的 GitHub Actions 构建。
 
+中文页面位于根路径，英文页面位于 `en/`。`catalog-en.json` 只覆盖名称、摘要、依赖、权限和组件标题等展示文本；`market.js` 始终从原 `catalog.json` 读取包路径、字节数、SHA-256、分发状态与安装信息。英文详情的原始 README 和更新记录保留中文并折叠展示。新增或删除条目时必须同步英文覆盖表，`verify_catalog.py` 会要求两种目录的条目 ID 完全一致，并把英文页面和覆盖表一并组装进 `public/`。
+
 ## 回退
 
 回退目录提交即可停止推荐新版本；客户端不会自动卸载已安装插件。已安装插件按 Aide 的升级备份和恢复说明处理。不要原地覆盖已发版 ZIP。

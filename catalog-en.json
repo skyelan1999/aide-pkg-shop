@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 1,
+  "plugins": {
+    "ali-bailian-supporter": {
+      "name": "ALiBaiLianSupporter",
+      "description": "Official Beijing list prices, workspace matching, and read-only RAM billing account queries.",
+      "dependencies": [
+        "Pricing plugins take precedence; unmatched models retain manual rates.",
+        "Matches the Beijing region only. RAM billing credentials are stored in Aide’s encrypted vault and never exposed to plugin scripts.",
+        "Requires Aide 0.1.17.5 RC5 or a newer build with the same host adapters.",
+        "RC5 is the first published core host for these adapters; the earlier RC4 tag was not released."
+      ],
+      "permissions": "The plugin does not store or read API keys. Provider requests and credentials are managed by the Aide host.",
+      "trustNotice": "Public MIT plugin. Digests verify package integrity; they are not publisher signatures or a permission sandbox."
+    },
+    "almanac": {
+      "name": "Almanac",
+      "description": "Gregorian, lunar, and traditional Chinese almanac calendars with solar terms, festivals, daily guidance, and read-only Aide queries.",
+      "dependencies": [
+        "Node.js 18+; no npm installation required; runs offline.",
+        "The workbench requires the Aide protocol 1 controlled tool bridge. Linux host/browser acceptance passed; native Windows/macOS were not tested.",
+        "Lunar and solar-term dates use the built-in pinned Hong Kong Observatory calendar for 1901–2099; conversion does not depend on Chinese lunar ICU data."
+      ],
+      "permissions": "Read-only local calendar calculations. Today is determined by the host system clock and Asia/Shanghai. No network access, workspace reads/writes, or background tasks. The workbench calls only this plugin’s two tools.",
+      "trustNotice": "Node plugins run with Aide user permissions; trusted plugins are not an OS sandbox. Almanac guidance is traditional folklore, not scientific prediction, and festivals are not official holiday schedules. Code is MIT; HKO dates are attributed under government open-data terms and are not officially certified. Distant midnight boundaries may vary by one day."
+    },
+    "archive-tools": {
+      "name": "Archive Tools",
+      "description": "Create and safely extract ZIP, TAR, TAR.GZ, TAR.BZ2, and TAR.XZ archives in the current workspace.",
+      "dependencies": [
+        "Requires Aide’s native archive_compress/archive_extract executors. TAR.BZ2 creation and XZ codecs require the python3 standard-library bz2/lzma modules."
+      ],
+      "permissions": "Reads selected files/directories in the current workspace and writes sibling archives or new extraction directories. Compression never overwrites existing targets; extraction avoids name collisions. Aide’s existing write permissions and approvals apply.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "auto-ai-model-router": {
+      "name": "AutoAiModelRouter",
+      "description": "Offline scoring and native adapter routing for configured models based on text roles and image, video, or speech output capabilities.",
+      "permissions": "The plugin does not store or read API keys. Provider requests and credentials are managed by the Aide host.",
+      "trustNotice": "Public MIT plugin. Digests verify package integrity; they are not publisher signatures or a permission sandbox."
+    },
+    "browser-control": {
+      "name": "Browser Control",
+      "description": "A standalone headless Chromium browser for reading real page content, links, and controls, with navigation, clicking, input, scrolling, and optional Safari switching.",
+      "dependencies": ["Aide browser runtime; Safari mode requires the host bridge."],
+      "permissions": "May access authorized files or invoke host control capabilities. Browser and computer control require separate host authorization.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "codex-bridge": {
+      "name": "Codex Bridge · Codex Model Bridge",
+      "description": "Local Codex model bridge with in-plugin host management, native/Docker API addresses, reliable copying, time-limited plaintext keys, three platforms, model catalogs, and read-only account quotas."
+    },
+    "compare": {
+      "name": "Compare · Commercial",
+      "description": "Local read-only comparisons and Git logs for workspaces and authorized local Git refs. Offline activation required.",
+      "dependencies": [
+        "Requires the 0.5.0 offline licensing component and a matching new Compare license; older licenses should remain on 0.4.1.",
+        "Local Git refs must be authorized by both Aide and the local component; SSH/SFTP is not supported.",
+        "Git must be installed on the host; PDF requires host Python 3 and pypdf."
+      ],
+      "permissions": "Reads user-selected files, directories, or local Git revisions. Does not fetch or modify repositories or comparison inputs. Evidence ZIP files may contain copies of original files.",
+      "trustNotice": "Proprietary commercial software; downloading and installing do not grant usage rights. Only the thin plugin and reviewed encrypted core components are published—not private source, signing tools, release private keys, content keys, or customer licenses.",
+      "license": "Proprietary · Offline activation required",
+      "resourceTitles": ["Download Compare 0.5.0 offline component (new license required)"]
+    },
+    "computer-control": {
+      "name": "Computer Control",
+      "description": "Foreground-window screenshots, control reading, and confirmed keyboard/mouse control on macOS and Windows. The native Windows bridge does not require PowerShell.",
+      "dependencies": [
+        "macOS 14+ native bridge with Screen Recording/Accessibility permission, or the standalone Windows bridge ZIP for Windows 10/11 and Server 2016+ Desktop Experience.",
+        "Windows desktop requires .NET Framework 4.6.2+, an unlocked interactive session, and the precompiled host for your CPU. No PowerShell, Go, Node, or Python required.",
+        "Requires a host-specific bridge token, an allowed application configuration, and Aide’s per-action confirmation."
+      ],
+      "permissions": "Reads only allowed foreground application windows and controls, excluding password fields. Clicking, input, and keystrokes require individual confirmation. Windows has no fullscreen-screenshot fallback and does not control lock screens, UAC secure desktops, or applications beyond local permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "current-time": {
+      "name": "Current Date & Time",
+      "description": "Query the runtime’s current date, time, and time zone, with optional IANA time-zone selection.",
+      "dependencies": [
+        "Node.js 18+; no npm installation required; runs offline.",
+        "The workbench requires the Aide protocol 1 controlled tool bridge. Linux host/browser acceptance passed; native Windows/macOS were not tested."
+      ],
+      "permissions": "Read-only access to the Aide Node runtime clock and ISO week calendar. No network access or workspace reads/writes. SSH workspaces do not switch to reading the device clock.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "deepseek-supporter": {
+      "name": "DeepSeekSupporter",
+      "description": "Offline list prices and peak/off-peak calendar for official DeepSeek endpoints, plus a read-only balance protocol declaration.",
+      "dependencies": [
+        "Requires Aide providerSupport protocol 1 adapters (0.1.17.5 RC5 or newer).",
+        "Offline profile dated 2026-10-22; unknown models or proxy endpoints retain host-defined manual rates.",
+        "Pure JavaScript/data package; no separate ARM64 or AMD64 compilation."
+      ],
+      "permissions": "Plugin scripts do not read or store API keys. Credentials, cost estimates, and user-requested balance queries are managed by the Aide host.",
+      "trustNotice": "Public MIT plugin, not an official DeepSeek release. Digests verify integrity only and are not publisher signatures; cost estimates do not replace upstream billing."
+    },
+    "environment-guide": {
+      "name": "Environment Guide",
+      "description": "Automatically gives AI the current working directory, top-level files, supporting-source context, and usage guidance without reading file contents or automatically connecting to remote sources.",
+      "dependencies": ["Requires Aide with the native environment-guide context builder; the standalone ZIP does not include the host Go implementation."],
+      "permissions": "Read-only sampling of top-level names in the current workspace and reference directories, plus enabled source metadata. Does not read content, automatically connect to remote sources, or inject source credentials.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "feedback": {
+      "name": "Feedback",
+      "description": "DSH feedback capability preset: registers feedback tools and panel declarations; feedback collection and aggregation handlers are not yet implemented.",
+      "dependencies": [],
+      "permissions": "Registers task-coordination tools. Actual task execution and management operations use existing Aide permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "file-preview": {
+      "name": "File Preview",
+      "description": "Background read-only rendering of PDF, Office, images, Markdown, and HTML, with page captures and cropped zoom for visual review. The rendering engine is deployed separately."
+    },
+    "goal": {
+      "name": "Goals",
+      "description": "DSH goal capability preset: registers goal tools and panel declarations; goal-management handlers are not yet implemented.",
+      "dependencies": [],
+      "permissions": "Registers task-coordination tools. Actual task execution and management operations use existing Aide permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "kimi-supporter": {
+      "name": "KimiSupporter",
+      "description": "Offline CNY rates for Moonshot Kimi models in China and read-only account balances on compatible hosts.",
+      "dependencies": [
+        "Offline rates require providerSupport protocol 1 in Aide 0.1.17.5 RC5 or newer.",
+        "Account balances require Aide with Moonshot account adapters."
+      ],
+      "permissions": "Rates are calculated locally. For account queries, Aide uses the selected key from its own credential vault to communicate with official APIs. The plugin entry only declares profiles.",
+      "trustNotice": "Public MIT community plugin, independent of official Moonshot products. Prices are estimates based on China list rates; actual charges are determined by billing."
+    },
+    "lunar-calendar": {
+      "name": "Lunar Calendar",
+      "description": "Offline lunar-date conversion and monthly calendar workbench based on official tables, covering 1901–2099, leap months, sexagenary cycles, zodiac signs, and source information.",
+      "dependencies": [
+        "Node.js 18+; no npm installation required; runs offline.",
+        "The workbench requires the Aide protocol 1 controlled tool bridge. Linux host/browser acceptance passed; native Windows/macOS were not tested.",
+        "Lunar and solar-term dates use the built-in pinned Hong Kong Observatory calendar for 1901–2099; conversion does not depend on Chinese lunar ICU data."
+      ],
+      "permissions": "Read-only Chinese lunar-date calculations. When no date is supplied, today is determined using Asia/Shanghai. No network access or workspace reads/writes. The clock comes from the Aide runtime.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin. Code is MIT; HKO dates are attributed under government open-data terms and are not officially certified. Distant midnight boundaries may vary by one day."
+    },
+    "mapcanvas": {
+      "name": "MapCanvas",
+      "description": "ROS grid-map editing that preserves unknown gray values, with a refined grouped toolbar, collapsible paths, and AI-assisted preview editing."
+    },
+    "markdown-history": {
+      "name": "Markdown History",
+      "description": "Original-text editing, save deduplication, and snapshots of images, attachments, and draw.io resources. History is stored in Aide’s service data directory and isolated by workspace and source.",
+      "dependencies": ["Requires Aide’s native markdown_history executor and server-side Markdown history/save support; the ZIP contains neither the host executor nor history data."],
+      "permissions": "Reads authorized Markdown history and resource snapshots. Listing history may observe changes and write server-side history records. Original edits and restoration still follow Aide’s write permissions and approvals.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "mimo-supporter": {
+      "name": "MiMoSupporter",
+      "description": "China list prices for Xiaomi MiMo real-time inference, with account balances and personal Token Plan allowances on compatible hosts.",
+      "dependencies": [
+        "Offline rates require providerSupport protocol 1 in Aide 0.1.17.5 RC5 or newer.",
+        "Account balances and personal Token Plan Credits require Aide with MiMo account adapters."
+      ],
+      "permissions": "Rates are calculated locally. For account queries, Aide uses the selected key from its own credential vault to communicate with official APIs. The plugin entry only declares profiles.",
+      "trustNotice": "Public MIT community plugin, independent of official Xiaomi products. Prices are estimates based on China list rates; actual charges are determined by billing."
+    },
+    "openai-supporter": {
+      "name": "OpenAISupporter",
+      "description": "USD cost estimates for configured OpenAI models; on macOS, confirmed account access can read the official website’s prepaid balance.",
+      "dependencies": [
+        "Requires Aide 0.1.19.0 RC2 or newer; older versions should remain on 0.1.0. Source installations are checked by the host for required capabilities.",
+        "Website balances require macOS, Safari, an existing web login, Accessibility permission, and confirmation that the web account matches the selected API key.",
+        "Cost estimates use the 2026-10-30 Standard price snapshot and were not repriced for this release; they do not replace billing. Current account balances still require actual confirmation.",
+        "Generic JavaScript/JSON package with no ARM64/AMD64 variants. Windows/Linux retain cost estimates; website balance sync is not yet supported."
+      ],
+      "permissions": "The data-profile plugin does not access API keys or register AI tools. Credentials, model synchronization, and cost snapshots are managed by the Aide host.",
+      "trustNotice": "MIT community plugin, not an official OpenAI product. Keys are stored by Aide. Website balances require explicit account association and an existing web login. Installation does not automatically grant permissions, link accounts, or call models. Web reading is not an official balance API."
+    },
+    "plan": {
+      "name": "Plans",
+      "description": "DSH plan capability preset: registers planning tools and panel declarations; plan-generation and review handlers are not yet implemented.",
+      "dependencies": [],
+      "permissions": "Registers task-coordination tools. Actual task execution and management operations use existing Aide permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "plugin-authoring": {
+      "name": "Plugin Workshop",
+      "description": "Create, inspect, and package plugins using the aide plugin protocol. Plugin and reference-management changes are first prepared as proposals for confirmation.",
+      "dependencies": ["Requires Aide’s native manage_plugins/manage_references executors; management actions follow role switches and manual confirmation."],
+      "permissions": "Can submit file, command, or reference-management proposals to Aide; related operations use existing authorization.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "pp-customer": {
+      "name": "PPCustomer · Commercial",
+      "description": "Customer milestone Gantt charts and schedule approvals with automatic .pp saving, PDF/HTML/Markdown project reports, and read-only .ppc previews. Starts with a blank home page. Contact business@sklastu.com for pricing, support, or feedback.",
+      "dependencies": [
+        "Local shared offline licensing component 0.3.0, configured and started separately on first use; upgrading to a new core requires a newly authorized build.",
+        "Requires an updated Aide with source checkout/commit write-back; verified against the current 0.1.19.0 RC2 source build.",
+        "macOS Apple Silicon or Linux ARM64/AMD64; Linux requires a Secret Service user session; initial setup requires Python 3.",
+        "Automatic device-code naming requires an Aide build with plugin-device-info-v1; older hosts retain fallback names and guidance."
+      ],
+      "permissions": "Uses host source checkout/commit to write only the ppCustomer settings section of a selected writable .pp, with whole-file version checks and base PP fields preserved. Read-only sources reject saving. The .ppc handler is read-only, and exports contain only selected approved content. Licensing and protected computation are verified by the local component.",
+      "trustNotice": "Proprietary commercial software; public download is neither authorization nor open source. Version 0.3.0 uses a new core, and older licenses do not automatically include this build. Contact the publisher for a matching .plicense before upgrading. Unauthorized installs remain on the activation page. Autosave writes directly to the selected .pp and requires a writable source and updated Aide.",
+      "license": "Proprietary · Offline activation required",
+      "resourceTitles": ["Download local licensing component"]
+    },
+    "pp-leadership": {
+      "name": "PPLeaderShip · Commercial",
+      "description": "Company-level multi-project portfolio control: open multiple .pp files, compare project health, budgets, risks, and cross-project resources, and record strategic judgments and management decisions. Contact business@sklastu.com for pricing, support, or feedback.",
+      "dependencies": [
+        "Local shared offline licensing component 0.3.0, configured and started on first use; existing components should preserve device identity and other product cores.",
+        "macOS Apple Silicon or Linux ARM64/AMD64; Linux requires a Secret Service user session; initial setup requires Python 3.",
+        "Automatic device-code naming requires an Aide build with plugin-device-info-v1."
+      ],
+      "permissions": "Opens multiple user-selected .pp files read-only. Management judgments and decisions are saved separately as .ppl. File opening and export use Aide host authorization.",
+      "trustNotice": "Proprietary commercial software; public download does not mean free, open source, or licensed for use. Unauthorized installs remain on the activation page until a matching publisher-issued .plicense is imported. Release private keys, content keys, signing tools, and customer licenses are not included in market packages.",
+      "license": "Proprietary · Offline activation required",
+      "resourceTitles": ["Download shared offline licensing component"]
+    },
+    "professional-project": {
+      "name": "ProfessionalProject · Commercial",
+      "description": "Project planning, staffing costs, space planning, procurement, inventory, and mobile QR collaboration. The commercial edition uses shared offline licensing and can be installed from the market, with offline activation required before use. Contact business@sklastu.com for pricing, support, or feedback.",
+      "dependencies": [
+        "Local shared offline licensing component 0.3.0, configured and started on first use; existing components should preserve device identity and other product cores.",
+        "macOS Apple Silicon or Linux ARM64/AMD64; Linux requires a Secret Service user session; initial setup requires Python 3.",
+        "Automatic device-code naming requires an Aide build with plugin-device-info-v1."
+      ],
+      "permissions": "Project writes and mobile data collection use host permissions, employee pairing, and area authorization.",
+      "trustNotice": "Proprietary commercial software; public download does not mean free, open source, or licensed for use. Unauthorized installs remain on the activation page until a matching publisher-issued .plicense is imported. Release private keys, content keys, signing tools, and customer licenses are not included in market packages.",
+      "license": "Proprietary · Offline activation required",
+      "resourceTitles": ["Download shared offline licensing component"]
+    },
+    "professional-resume": {
+      "name": "Professional Resume",
+      "description": "Encrypted .pr resume libraries, workspace/reference reading, saving and Save As, multi-version job tailoring, and company/role research.",
+      "dependencies": [
+        "Source selection and Save As require compatible Aide fileAccess/files.select support. Older hosts retain local and bound-file capabilities without claiming support for new channels.",
+        "Generation tasks reuse Aide conversation models and web tools; after preparation, instructions must be copied into an Aide conversation.",
+        "Uses browser WebCrypto; up to 15 MiB of plaintext per library, with no fixed limit on resume count.",
+        "Verified in Chrome/WebKit on macOS and isolated Linux Aide; native Windows was not tested."
+      ],
+      "permissions": "Passwords decrypt only locally in the page. User-selected resumes/JDs enter Aide conversations and model providers. Temporary tasks are independently encrypted, workspace-isolated, and expire after 24 hours. Original-file saving requires host confirmation and is never submitted automatically. Manual file channels read only selected formats; saving uses host confirmation and source write locks. File passwords are never sent to models.",
+      "trustNotice": "Public MIT package; no personal .pr files, passwords, or tasks are included. Static encryption does not protect text shared with a model. Schema validation does not verify factual accuracy."
+    },
+    "rviz": {
+      "name": "RViz Workbench",
+      "description": "Guided preview for ROS 1/2 3D topics, TF, maps, and project URDF, with Docker onboarding and guides for connections, displays, models, and SSH.",
+      "dependencies": [
+        "Aide 0.1.17.5 RC12 or compatible source/workbench APIs, backend Node.js 18+, and browser WebGL.",
+        "The ROS environment must separately provide rosbridge, rosapi, and topic message definitions; ROS is not bundled.",
+        "SSH mode requires backend OpenSSH, configured key aliases, and known_hosts; current Aide SSH credentials are not inherited automatically.",
+        "Platform lists indicate JavaScript package installation targets. Windows/macOS typically use the Linux backend through Aide Docker; physical-device and external-robot acceptance remain incomplete."
+      ],
+      "permissions": "Connects to user-specified ROS bridges with read-only subscriptions and reads project model resources from host-authorized sources. Saving display configurations creates file proposals. SSH mode starts backend OpenSSH forwarding, accepts no page passwords, and sends no robot control.",
+      "trustNotice": "Public MIT preview plugin. Digest verification is neither a publisher signature nor a permission sandbox. Node code and connection workers run in the host environment. This is not a complete port of the original RViz."
+    },
+    "skill": {
+      "name": "Skill Library",
+      "description": "Find public GitHub Skills for a task, verify cached copies, and prepare them as read-only references while preserving existing reference permissions and management confirmation.",
+      "dependencies": ["Requires an Aide source build with the native skill_library executor (192b80f3 or later); uploading the ZIP alone is insufficient on older versions."],
+      "permissions": "Can submit file, command, or reference-management proposals to Aide; related operations use existing authorization.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "sqlite": {
+      "name": "SQLite Database",
+      "description": "SQLite 1.0.3: workspace-relative paths, authorized SSH quiesced snapshots, and controlled exports, with per-statement confirmation and explicit ATTACH/CSV boundaries.",
+      "dependencies": [
+        "Requires the matching Aide 0.1.19.0 RC1 host and Node 24 DatabaseSync.setAuthorizer. Upgrade the host before updating the plugin.",
+        "Local relative paths follow the current workspace; SSH uses host checkout/commit and never falls back to the local machine.",
+        "Other writers must stop and WAL checkpoint must complete before remote snapshots. Limits are 64 MiB per file and per call, with no distributed locks or cross-slot atomic transactions."
+      ],
+      "permissions": "Can directly read/write databases and export files within allowed mount roots. Queries default to read-only; transactions and scripts default to writable; exports write files. SQL and paths must be reviewed before execution—these are not proposal-only operations.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "starlink": {
+      "name": "StarLink · Knowledge Map Query",
+      "description": "StarLink 0.1.6: local/SSH knowledge-map queries within AI-visible scope, full Unicode-normalized matching, and cache invalidation; no standalone interface.",
+      "dependencies": [
+        "Requires the AI-scoped knowledge-map host API in Aide 0.1.19.0 RC1; older hosts explicitly reject it.",
+        "Supports matching local and SSH workspace identities without receiving SSH credentials or connecting independently to remote systems.",
+        "Uses Aide’s native resident-plugin protocol. If not running after first installation, start the StarLink daemon in plugin management."
+      ],
+      "permissions": "Read-only queries of authorized knowledge-map indexes, source summaries, and static relationships in the current workspace. The backend reads local access tokens and certificates only to call a fixed loopback HTTPS endpoint. Tokens are not returned; no files are written and no commands are executed.",
+      "trustNotice": "Node plugins are trusted host code, not a permission sandbox. Indexes may be incomplete or stale snapshots, and static relationships do not imply runtime execution."
+    },
+    "step-viewer": {
+      "name": "STEP Viewer",
+      "description": "Local read-only STEP/STP previews, assembly exploded views, and measurements, with the CAD engine downloaded on demand.",
+      "permissions": "Reads only the currently bound model. The CAD engine downloads only after an explicit install click. Models are processed locally and require no model API key.",
+      "trustNotice": "Public MIT plugin; third-party engines retain their original licenses. Digests verify integrity, not publisher signatures or a permission sandbox."
+    },
+    "subagent": {
+      "name": "Subagents",
+      "description": "DSH subagent capability preset: registers subagent tools and panel declarations; dispatch and result-collection handlers are not yet implemented.",
+      "dependencies": [],
+      "permissions": "Registers task-coordination tools. Actual task execution and management operations use existing Aide permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "terminal": {
+      "name": "Device Terminal Workbench",
+      "description": "Persistent Shell, SSH, Telnet, TCP, UDP, and serial workbenches with TLS relay and X11. Aide can read screenshots and video frames extracted by timestamp.",
+      "dependencies": [
+        "Aide 0.1.18.0 RC3 or newer, trusted workbench identity, private session state and sessionCopyVersion=1 host context; graphics need a host implementing workbench.viewer.protocol=1 (aide main def8df6a or later). Plugin-only updates cannot add host capabilities.",
+        "Node.js 24, Linux Python 3 PTY/memfd, /bin/bash, and OpenSSH. The package includes ssh2 1.17.0, serialport 12.0.0, and runtime dependencies.",
+        "Serial testing used a native-driver virtual PTY. Real USB/UART requires device mapping and permissions; hardware and Windows/macOS were not tested.",
+        "Manually deployed device relays require Python 3.10+ and cryptography; serial relays also require pyserial 3.5. Fixed relay TCP ports must be reachable from the Aide runtime.",
+        "Built-in graphical windows for direct and relay SSH use a session-specific X Server allocated by Aide. Remote sshd must allow X11Forwarding and provide xauth.",
+        "Built-in graphical sessions need host-provided Xvfb, xauth, openbox, x11vnc and websockify in the Aide runtime image; the plugin does not install system packages. Linux is verified; macOS/Windows graphical hosts are not tested.",
+        "History restoration after workspace-mapping changes requires a host containing Aide PR #939. Existing sessions and logs remain workspace-specific; plugin upgrades cannot replace an older host.",
+        "Aide versions with shared workbench windows provide standalone graphical windows. Older hosts use the original graphics entry and can display it beside the terminal if the browser blocks pop-ups.",
+        "X11 capture requires Pillow XCB and WebP support in the Linux Aide runtime; the official Aide image already includes them."
+      ],
+      "permissions": "Shell and SSH commands, SFTP transfers, TCP/UDP/serial sending, proxying, simulation, replay, and boundary-packet probing all require explicit user intent. Trusted Node plugins use the Aide runtime user’s permissions. Sensitive output or device echoes may also enter logs.",
+      "trustNotice": "Requires paired Aide 0.1.18.0 RC3 or newer. Graphical panes additionally require a host with workbench.viewer.protocol=1 and Linux Xvfb/x11vnc/openbox/websockify. Relay copies share the configured target and relay key but have independent connections, PTYs and logs. Upgrading/stopping disconnects sessions, without replay or automatic reconnection. Base64 relay configuration backups contain the relay key and must be kept private. Loading fills a draft only; users initiate connections after saving. With built-in graphical windows for direct or relay SSH, remote applications can access that session’s dedicated display—connect only to trusted devices. Remote clipboard transfer requires manual copying. External DISPLAY or custom Xauthority uses restricted forwarding. Previously deployed relay scripts remain usable. Echo push requires a capable Aide host; older hosts continue polling."
+    },
+    "todo": {
+      "name": "Task List",
+      "description": "DSH todo capability preset: registers task-list tools and panel declarations; task-query and status-update handlers are not yet implemented.",
+      "dependencies": [],
+      "permissions": "Registers task-coordination tools. Actual task execution and management operations use existing Aide permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "tts-tools": {
+      "name": "TTS Tools · Speech File Generation",
+      "description": "Synthesize explicit text into downloadable MP3/WAV files with independent model and voice selection, without changing the assistant’s default speech.",
+      "permissions": "The plugin does not store or read API keys. Provider requests and credentials are managed by the Aide host.",
+      "trustNotice": "Public MIT plugin. Digests verify package integrity; they are not publisher signatures or a permission sandbox."
+    },
+    "video-preview": {
+      "name": "Video Preview",
+      "description": "Editing-project-first track and media indexing, with video, subtitles, frame captures, and local FFmpeg-compatible previews.",
+      "permissions": "Reads the currently bound project and relative media explicitly clicked by the user. Optional engines download online only after explicit installation. Compatible video copies are generated locally without modifying originals.",
+      "trustNotice": "MIT wrapper; the standalone FFmpeg/x264 engine uses GPL-2.0-or-later. Node plugins run in the host, and digests are not a permission sandbox."
+    },
+    "workflow": {
+      "name": "Workflows",
+      "description": "DSH workflow capability preset: registers workflow tools and panel declarations; workflow-execution and progress-query handlers are not yet implemented.",
+      "dependencies": [],
+      "permissions": "Registers task-coordination tools. Actual task execution and management operations use existing Aide permissions.",
+      "trustNotice": "Node plugins run in the host. Catalog review and digest verification are not a permission sandbox. Installation registers and enables the plugin."
+    },
+    "strategy-generator": {
+      "name": "Strategy Generator",
+      "description": "Calculate Aide policy parameters for nine task purposes and real model limits, with live Aide theme synchronization, official starting points for ten models/modes, practical guidance, and sources."
+    },
+    "pjplan": {
+      "name": "PjPlan Project Documents · Commercial Preview",
+      "description": "Plan project-document naming, revisions, and Office-generation parameters using real product and module numbers. A future commercial edition will be privately delivered; this preview is not for sale.",
+      "dependencies": [
+        "Requires an Aide build that supports privately licensed installation.",
+        "Enable the Office document plugin and bind a writable automatic system-document source.",
+        "Protected commercial delivery requires a platform-specific standalone core and a separate core license.",
+        "Core device keys depend on the system credential vault; Docker use requires separately configured host connections and read-only mounts."
+      ],
+      "permissions": "Provides generation parameters to host Office document tools. Actual writes and approvals remain controlled by Aide’s source and file permissions.",
+      "trustNotice": "Future paid packages will not be uploaded to the public market, Pages, or public Releases. This listing has no signing public key or purchase entry and cannot be installed. The connection layer contains no algorithm; the standalone core verifies its own runtime license but cannot guarantee protection against administrator reverse engineering or memory extraction.",
+      "license": "Commercial terms to be published; existing versions and third-party rights are unchanged retroactively",
+      "priceLabel": "Price to be announced"
+    }
+  }
+}

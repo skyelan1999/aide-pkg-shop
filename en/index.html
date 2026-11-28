@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://raw.githubusercontent.com; connect-src 'self'; object-src 'none'; base-uri 'none'">
+  <meta name="description" content="The official Aide plugin market: browse, review, and download installable plugin packages.">
+  <title>Aide · Official Plugin Market</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="zh-CN" href="../">
+  <link rel="alternate" hreflang="en" href="./">
+  <link rel="stylesheet" href="../market.css">
+  <script src="../market.js" defer></script>
+</head>
+<body data-base="../">
+  <header>
+    <a class="brand" href="./"><span class="logo">a</span><b>aide.</b><sup class="brand-phase" title="Research · Development · Productivity">R/D/P</sup><span class="divider">/</span><span>Plugin Market</span></a>
+    <nav aria-label="Main navigation">
+      <a href="https://skyelan1999.github.io/aide/en/">Aide Home</a>
+      <a href="#plugins">Official Plugins</a>
+      <a href="#guide">Installation</a>
+      <a href="https://github.com/skyelan1999/aide-pkg-shop" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+      <a class="language-switch" href="../" hreflang="zh-CN" lang="zh-CN" aria-label="切换到中文">中文</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span></span> OFFICIAL PLUGIN COLLECTION</div>
+      <h1>Professional tools,<br><em>built for your workflow.</em></h1>
+      <p>Extend your professional work with focused capabilities.<br>Browse official plugins, review their details, download, then install through Aide.</p>
+      <div class="hero-foot"><span id="count">Loading catalog</span><span>Local-first · Transparent licensing · Reviewable</span></div>
+      <div class="hero-art" aria-hidden="true"><span>+</span><div class="art-orbit"></div><div class="art-core">a</div><i>✧</i></div>
+    </section>
+    <section id="plugins" class="collection">
+      <div class="section-heading"><div><span class="eyebrow">THE COLLECTION</span><h2>Find the right tools</h2></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search plugins, capabilities, or keywords" aria-label="Search official plugins"></label></div>
+      <div id="categories" class="categories" role="group" aria-label="Plugin categories"></div>
+      <p id="status" role="status" aria-live="polite"></p>
+      <div id="grid" class="grid"></div>
+    </section>
+    <section id="guide" class="guide">
+      <div><span class="eyebrow">MADE TO BE REVIEWED</span><h2>Review before you download.</h2><p>The official catalog provides pinned versions and SHA-256 digests. Verification confirms package integrity; it does not replace reviewing code and permissions.</p></div>
+      <ol><li><b>Explore capabilities</b><span>Review features, permissions, and the minimum Aide version.</span></li><li><b>Download and verify</b><span>The site checks the package SHA-256 before saving the ZIP.</span></li><li><b>Hand off to your workspace</b><span>Choose the ZIP under “Plugins → Upload” in Aide; newer market-enabled versions can install directly.</span></li></ol>
+    </section>
+  </main>
+  <footer><a class="brand" href="https://skyelan1999.github.io/aide/en/">aide.</a><span>Professional work, under your control.</span><small>Catalog inclusion does not mean every plugin can run without its host or additional dependencies.</small></footer>
+  <dialog id="details" aria-labelledby="detail-title"><div class="dialog-top"><span class="eyebrow">PLUGIN DETAILS</span><button id="close" aria-label="Close details">×</button></div><div id="detail-body"></div></dialog>
+</body>
+</html>
